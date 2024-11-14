@@ -94,7 +94,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 });
 
   // Job Seeker routes
-  Route::get('/', function () {
-    return view('job-seeker/home');
-  })->name('home');
-
+  use App\Http\Controllers\JobSeeker\HomeController;
+  use App\Http\Controllers\JobSeeker\JobSeekerController;
+  Route::get('/', [HomeController::class, 'index'])->name('home');
+  Route::get('/job-seeker/home', [HomeController::class, 'index'])->name('home');
+  Route::post('/jobs/{id}/apply', [JobSeekerController::class, 'applyJob'])->name('job.apply');
+  Route::get('jobs/{job}', [JobSeekerController::class, 'show'])->name('detail-job');

@@ -42,18 +42,9 @@ class JobSeekerController extends Controller
         ]);
     }
 
-    public function getJobDetail($id)
+    public function show(Job $job)
     {
-        $job = Job::with([
-            'company',
-            'location',
-            'categories'
-        ])->findOrFail($id);
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $job
-        ]);
+        return view('job-seeker.detail-job', compact('job'));
     }
 
     public function toggleSaveJob(Request $request, $jobId)

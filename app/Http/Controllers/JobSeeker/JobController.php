@@ -30,14 +30,14 @@ class JobController extends Controller
             });
         }
 
-        return view('jobs.search', [
+        return view('search', [
             'jobs' => $query->paginate(10)
         ]);
     }
 
     public function show(Job $job)
     {
-        return view('jobs.show', compact('job'));
+        return view('detail-job', compact('job'));
     }
 
     public function toggleSave(Job $job)
