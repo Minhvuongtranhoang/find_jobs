@@ -260,11 +260,10 @@
                 <div class="company-card text-center">
                     <a href="{{ $company->website }}" class="company-link">
                         <div class="company-logo">
-                            <img src="{{ $company->logo }}" 
-                                 alt="Logo của {{ $company->name }}" 
+                            <img src="{{ $company->logo }}"
+                                 alt="Logo của {{ $company->name }}"
                                  class="img-fluid">
                         </div>
-                        <h3 class="company-name mt-3">{{ $company->name }}</h3>
                     </a>
                 </div>
             </div>
@@ -291,21 +290,20 @@
                         </div>
                         <div>
                             <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
-                                <h5>{{ $job->title }}</h5>
+                                <h6>{{ $job->title }}</h6>
                             </a>
-                            <p class="nav-link text-muted mb-2">{{ $job->company->name }}</p>
-                            <div class="nav-link text-muted mb-3">
+                            <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
+                            <div style="margin-left: 10px" class="text-muted mb-3">
                                 <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->address }}
                                 <i class="fas fa-dollar-sign ms-3 me-2"></i>{{ $job->salary }}
                             </div>
-                            <button class="btn btn-primary">Ứng tuyển</button>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
-    
+
 
 </section>
 
