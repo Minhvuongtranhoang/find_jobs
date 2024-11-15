@@ -10,24 +10,39 @@ class ProfileController extends Controller
     public function show()
     {
         $jobSeeker = auth()->guard()->user()->jobSeeker;
-        return view('jobseeker.profile.show', compact('jobSeeker'));
+        return view('job-seeker.profile', compact('jobSeeker'));
     }
 
     public function update(Request $request)
-    {
-        $request->validate([
-            'full_name' => 'required',
-            'avatar' => 'nullable|image|max:1024'
-        ]);
+{
+    $request->validate([
+        'full_name' => 'required',
+        'avatar' => 'nullable|image|max:1024'
+    ]);
 
-        $jobSeeker = auth()->guard()->user()->jobSeeker;
-        $jobSeeker->update($request->only('full_name'));
+    $jobSeeker = auth()->guard()->user()->jobSeeker;
 
-        if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $jobSeeker->update(['avatar' => $avatarPath]);
+    // Cập nhật tên
+    $jobSeeker->update($request->only('full_name'));
+
+    if ($request->hasFile('avatar')) {
+        // Xóa tệp cũ nếu tồn tại
+        if ($jobSeeker->avatar && file_exists(public_path($jobSeeker->avatar))) {
+            unlink(public_path($jobSeeker->avatar));
         }
 
-        return back()->with('success', 'Profile updated successfully');
+        // Lấy file và tạo tên tệp
+        $avatarFile = $request->file('avatar');
+        $avatarName = time() . '_' . $avatarFile->getClientOriginalName();
+
+        // Lưu file vào thư mục public/storage/avatars
+        $avatarFile->move(public_path('storage/avatars'), $avatarName);
+
+        // Lưu đường dẫn tệp vào database
+        $jobSeeker->update(['avatar' => 'storage/avatars/' . $avatarName]);
     }
+
+    return back()->with('success', 'Profile updated successfully');
+}
+
 }

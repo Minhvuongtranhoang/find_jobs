@@ -47,4 +47,11 @@ class CompanyController extends Controller
         return redirect()->route('recruiter.company.edit')
             ->with('success', 'Company information updated successfully.');
     }
+    public function index()
+    {
+        // Lấy danh sách công ty
+        $companies = Company::orderBy('created_at', 'desc')->paginate(10);
+
+        return view('job-seeker.list-company', compact('companies'));
+    }
 }

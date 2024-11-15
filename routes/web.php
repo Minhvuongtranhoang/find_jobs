@@ -96,7 +96,16 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
   // Job Seeker routes
   use App\Http\Controllers\JobSeeker\HomeController;
   use App\Http\Controllers\JobSeeker\JobSeekerController;
+  use App\Http\Controllers\JobSeeker\ProfileController;
   Route::get('/', [HomeController::class, 'index'])->name('home');
   Route::get('/job-seeker/home', [HomeController::class, 'index'])->name('home');
   Route::post('/jobs/{id}/apply', [JobSeekerController::class, 'applyJob'])->name('job.apply');
   Route::get('jobs/{job}', [JobSeekerController::class, 'show'])->name('detail-job');
+  Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('job-seeker.profile.update');
+});
+Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
+Route::get('/about', function () {
+  return view('general.seekajob-company');
+})->name('about');

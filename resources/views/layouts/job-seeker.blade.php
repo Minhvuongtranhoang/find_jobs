@@ -10,51 +10,69 @@
 </head>
 <body>
   <!-- Modern Header -->
-<nav class="navbar navbar-expand-lg sticky-top">
-  <div class="container">
-      <a class="navbar-brand" href="#">JobPortal</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Trang chủ</a>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('home') }}">JobPortal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">Trang chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Việc làm</a>
+                  <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
+                      <li><a class="dropdown-item" href="#">Công việc đã lưu</a></li>
+                      <li><a class="dropdown-item" href="#">Công việc mới nhất</a></li>
+                      <li><a class="dropdown-item" href="#">Công việc đã ứng tuyển</a></li>
+                      <li><a class="dropdown-item" href="#">Công việc phù hợp</a></li>
+                  </ul>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" ilid="jobsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Việc làm</a>
-                <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
-                    <li><a class="dropdown-item" href="#">Công việc đã lưu</a></li>
-                    <li><a class="dropdown-item" href="#">Công việc mới nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Công việc đã ứng tuyển</a></li>
-                    <li><a class="dropdown-item" href="#">Công việc phù hợp</a></li>
+                <a class="nav-link dropdown-toggle" href="#" id="companiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Công ty</a>
+                <ul class="dropdown-menu" aria-labelledby="companiesDropdown">
+                    <li><a class="dropdown-item" href="{{ route('companies.index') }}">Danh sách công ty</a></li>
+                    <li><a class="dropdown-item" href="#">Công ty Hàng đầu</a></li>
+                    <li><a class="dropdown-item" href="#">Công ty Công nghệ</a></li>
                 </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" ilid="jobsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Công ty</a>
-              <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
-                  <li><a class="dropdown-item" href="#">Danh sách công ty</a></li>
-                  <li><a class="dropdown-item" href="#">Công ty Hàng đầu</a></li>
-                  <li><a class="dropdown-item" href="#">Công ty Công nghệ</a></li>
-              </ul>
-            </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Trợ giúp</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Liên lạc</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Về chúng tôi</a>
-              </li>
-          </ul>
-          <div class="d-flex gap-2">
-              <button class="btn btn-outline-primary" onclick="window.location.href='{{ route('login') }}'">Đăng nhập</button>
-              <button class="btn btn-primary">Đăng ký</button>
-          </div>
-      </div>
-  </div>
-</nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trợ giúp</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Liên lạc</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('about') }}">Về chúng tôi</a>
+                </li>
+            </ul>
+            <div class="d-flex gap-2">
+                @auth
+                    <!-- Hiển thị tên người dùng khi đã đăng nhập -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="{{ route('profile') }}">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng xuất</a></li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </ul>
+                    </div>
+                @else
+                    <!-- Hiển thị nút Đăng nhập và Đăng ký khi chưa đăng nhập -->
+                    <button class="btn btn-outline-primary" onclick="window.location.href='{{ route('login') }}'">Đăng nhập</button>
+                    <button class="btn btn-primary" onclick="window.location.href='{{ route('register.job-seeker') }}'">Đăng ký</button>
+                @endauth
+            </div>
+        </div>
+    </div>
+  </nav>
+  
 
 <div class="main-content">
   @yield('content')
