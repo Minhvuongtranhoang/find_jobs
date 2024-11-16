@@ -10,35 +10,42 @@
                 <p class="lead mb-5">Tìm việc làm IT phù hợp với bạn</p>
 
                 <!-- Search Form -->
-                <div class="search-form">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm công việc...">
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select form-select-lg">
-                                <option selected>Chọn ngành nghề</option>
-                                <option>Frontend Developer</option>
-                                <option>Backend Developer</option>
-                                <option>Full Stack Developer</option>
-                                <option>DevOps Engineer</option>
-                                <option>Data Scientist</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select form-select-lg">
-                                <option selected>Chọn địa điểm</option>
-                                <option>Hà Nội</option>
-                                <option>Hồ Chí Minh</option>
-                                <option>Đà Nẵng</option>
-                                <option>Remote</option>
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
+                <form action="{{ route('search.jobs') }}" method="GET">
+                    <div class="search-form">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm công việc..." name="keyword" value="{{ request('keyword') }}">
+                            </div>
+                
+                            <div class="col-md-6">
+                                <select class="form-select form-select-lg" name="category_id">
+                                    <option selected value="">Chọn ngành nghề</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                
+                            <div class="col-md-6">
+                                <select class="form-select form-select-lg" name="location">
+                                    {{-- <option selected value="">Chọn địa điểm (tùy chọn)</option>
+                                    @foreach($locations as $location)
+                                        <option value="{{ $location }}" {{ request('location') == $location ? 'selected' : '' }}>
+                                            {{ $location }}
+                                        </option>
+                                    @endforeach --}}
+                                </select>
+                            </div>
+                
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+                 
             </div>
             <div class="col-lg-6">
                 <img src="https://www.ryrob.com/wp-content/uploads/2022/04/How-to-Name-a-Blog-45-Blog-Name-Ideas-and-Examples-to-Learn-From.jpg" alt="Hero Image" class="img-fluid rounded-3 shadow">
@@ -256,21 +263,22 @@
         <h2 class="mb-4">Nhà tuyển dụng nổi bật</h2>
         <div class="row">
             @foreach($featuredCompanies as $company)
-            <div class="col-lg-2 col-md-6 mb-4">
-                <div class="company-card text-center">
-                    <a href="{{ $company->website }}" class="company-link">
-                        <div class="company-logo">
-                            <img src="{{ $company->logo }}"
-                                 alt="Logo của {{ $company->name }}"
-                                 class="img-fluid">
-                        </div>
-                    </a>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="company-card text-center">
+                        <a href="{{ $company->website }}" class="company-link">
+                            <div class="company-logo">
+                                <img src="{{ $company->logo }}"
+                                     alt="Logo của {{ $company->name }}"
+                                     class="img-fluid">
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
 </section>
+
 
 <!-- Latest Jobs -->
 
@@ -294,7 +302,7 @@
                             </a>
                             <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
                             <div style="margin-left: 10px" class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->address }}
+                                <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->city }}
                                 <i class="fas fa-dollar-sign ms-3 me-2"></i>{{ $job->salary }}
                             </div>
                         </div>
