@@ -22,4 +22,15 @@ class HomeController extends Controller
 
         return view('job-seeker.home', compact('categories', 'featuredJobs', 'highlightedCategories', 'featuredCompanies', 'jobs'));// nhớ thêm blogg vào
     }
+    // Hiển thị trang Điều khoản sử dụng
+    public function termsOfService()
+    {
+        return view('general.terms-of-service');
+    }
+
+    // Hiển thị trang Chính sách bảo mật
+    public function privacyPolicy()
+    {
+        return view('general.privacy-policy');
+    }
 }

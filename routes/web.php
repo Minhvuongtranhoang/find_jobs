@@ -109,3 +109,15 @@ Route::get('/companies', [CompanyController::class, 'index'])->name('companies.i
 Route::get('/about', function () {
   return view('general.seekajob-company');
 })->name('about');
+Route::get('/contact', function () {
+  return view('general.contact');
+})->name('contact');
+Route::get('/help', function () {
+  return view('general.help');
+})->name('help');
+Route::get('/top-companies', [CompanyController::class, 'topCompanies'])->name('companies.top');
+Route::post('/save-job', [JobSeekerController::class, 'toggleSaveJob'])->name('save-job');
+Route::get('/saved-jobs', [JobSeekerController::class, 'showSavedJobs'])->name('saved-jobs');
+Route::get('/latest-jobs', [JobSeekerController::class, 'showLatestJobs'])->name('latest-jobs');
+Route::get('/terms-of-service', [HomeController::class, 'termsOfService'])->name('terms-of-service');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');

@@ -281,10 +281,10 @@
             @foreach($jobs as $job)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="job-card">
-                    <div class="favorite-icon" data-id="{{ $job->id }}">
-                        <i class="fa {{ $job->isFavoritedByUser ? 'fas' : 'far' }} fa-heart"></i>
+                    <div class="favorite-icon" data-id="{{ $job->id }}" onclick="toggleFavorite({{ $job->id }}, this)">
+                        <i class="fa {{ $job->isFavoritedByUser() ? 'fas' : 'far' }} fa-heart"></i>
                     </div>
-                    <div class="d-flex align-items">
+                    <div class="d-flex align-items-center">
                         <div class="square-company-logo">
                             <img src="{{ $job->company->logo }}" alt="Company Logo" class="job-logo">
                         </div>
@@ -303,9 +303,9 @@
             </div>
             @endforeach
         </div>
-
-
+    </div>
 </section>
+
 
 <!-- Blog Section -->
 <section class="py-5">

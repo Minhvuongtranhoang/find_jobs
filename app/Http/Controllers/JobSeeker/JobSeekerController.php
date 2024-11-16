@@ -47,28 +47,47 @@ class JobSeekerController extends Controller
         return view('job-seeker.detail-job', compact('job'));
     }
 
-    public function toggleSaveJob(Request $request, $jobId)
+    public function toggleSaveJob(Request $request)
     {
-        $userId = Auth::id();
-        $savedJob = SavedJob::where('user_id', $userId)
-            ->where('job_id', $jobId)
-            ->first();
+        if (!auth()->check()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        $userId = auth()->id();
+        $jobId = $request->job_id;
+
+        // Kiểm tra xem công việc đã được lưu chưa
+        $savedJob = SavedJob::where('user_id', $userId)->where('job_id', $jobId)->first();
 
         if ($savedJob) {
+            // Nếu đã lưu thì xóa
             $savedJob->delete();
-            $message = 'Job removed from saved list';
+            return response()->json(['status' => 'removed']);
         } else {
+            // Nếu chưa lưu thì thêm mới
             SavedJob::create([
                 'user_id' => $userId,
-                'job_id' => $jobId
+                'job_id' => $jobId,
             ]);
-            $message = 'Job saved successfully';
+            return response()->json(['status' => 'saved']);
         }
+    }
+    public function showSavedJobs()
+    {
+        $userId = auth()->id();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => $message
-        ]);
+        // Lấy tất cả công việc đã lưu của người dùng
+        $savedJobs = SavedJob::where('user_id', $userId)->with('job.company', 'job.location')->get();
+
+        return view('job-seeker.saved-jobs', compact('savedJobs'));
+    }
+    public function showLatestJobs()
+    {
+        // Lấy các công việc mới nhất theo id giảm dần
+        $jobs = Job::with('company', 'location') // Bao gồm thông tin công ty và vị trí
+            ->orderBy('id', 'desc') // Sắp xếp theo id từ lớn nhất đến nhỏ nhất
+            ->paginate(10); // Sử dụng phân trang, 10 công việc mỗi trang
+
+        return view('job-seeker.latest-jobs', compact('jobs'));
     }
 
     public function applyJob(Request $request, $jobId)

@@ -8,23 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'company_id',
-        'location_id',
-        'title',
-        'description',
-        'requirements',
-        'benefits',
-        'working_hours',
-        'salary',
-        'deadline',
-        'status',
-        'is_featured'
-    ];
+    protected $fillable = ['company_id', 'location_id', 'title', 'description', 'requirements', 'benefits', 'working_hours', 'salary', 'deadline', 'status', 'is_featured'];
 
     protected $casts = [
         'deadline' => 'date',
-        'is_featured' => 'boolean'
+        'is_featured' => 'boolean',
     ];
 
     public function company()
@@ -44,7 +32,12 @@ class Job extends Model
 
     public function savedJobs()
     {
-        return $this->hasMany(SavedJob::class);
+        return $this->hasMany(SavedJob::class, 'job_id');
+    }
+
+    public function isFavoritedByUser()
+    {
+        return $this->savedJobs()->where('user_id', auth()->id())->exists();
     }
 
     public function jobApplications()
@@ -57,5 +50,4 @@ class Job extends Model
     {
         return $this->morphMany(Report::class, 'reported');
     }
-
 }

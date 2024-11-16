@@ -54,4 +54,13 @@ class CompanyController extends Controller
 
         return view('job-seeker.list-company', compact('companies'));
     }
+    public function topCompanies()
+    {
+        // Lấy danh sách công ty hàng đầu dựa trên số lượng nhân viên, sắp xếp giảm dần
+        $companies = Company::orderBy('employee_count', 'desc')
+            ->take(10)
+            ->get();
+
+        return view('general.top-company', compact('companies'));
+    }
 }
