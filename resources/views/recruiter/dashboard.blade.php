@@ -17,7 +17,7 @@
                               </div>
                               <div class="flex-grow-1 ms-3">
                                   <h6 class="mb-1">Active Jobs</h6>
-                                  <h3 class="mb-0">245</h3>
+                                  <h3 class="mb-0"><a href=""></a></h3>
                               </div>
                           </div>
                       </div>
@@ -34,7 +34,7 @@
                           </div>
                           <div class="flex-grow-1 ms-3">
                               <h6 class="mb-1">Applications</h6>
-                              <h3 class="mb-0">1,482</h3>
+                              <h3 class="mb-0"><a href=""></a></h3>
                           </div>
                       </div>
                   </div>
@@ -51,7 +51,7 @@
                           </div>
                           <div class="flex-grow-1 ms-3">
                               <h6 class="mb-1">Pending Review</h6>
-                              <h3 class="mb-0">74</h3>
+                              <h3 class="mb-0"><a href=""></a></h3>
                           </div>
                       </div>
                   </div>
@@ -67,8 +67,8 @@
                               </div>
                           </div>
                           <div class="flex-grow-1 ms-3">
-                              <h6 class="mb-1">Hired</h6>
-                              <h3 class="mb-0">126</h3>
+                              <h6 class="mb-1">Approved</h6>
+                              <h3 class="mb-0">{{ \App\Models\Job::where('status', 'approved')->count() }}</h3>
                           </div>
                       </div>
                   </div>
@@ -220,7 +220,8 @@
                                   <i class="fas fa-calendar-alt me-2"></i>
                                   <span>Oct 25, 3:15 PM</span>
                               </div>
-                          </div>
+
+                            </div>
                       </div>
                   </div>
               </div>

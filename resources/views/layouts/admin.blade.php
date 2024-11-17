@@ -29,10 +29,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
+                <a class="nav-link dropdown-toggle {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="#" id="userManagementDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-users"></i>
                     <span>User Management</span>
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="userManagementDropdown">
+                  <li><a class="dropdown-item" href="{{ route('admin.users.recruiters') }}">Recruiter</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.users.job_seekers') }}">Jobseeker</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.users.banned') }}">Ban Account</a></li>
+              </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.jobs.pending') ? 'active' : '' }}" href="{{ route('admin.jobs.pending') }}">

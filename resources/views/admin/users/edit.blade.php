@@ -22,19 +22,20 @@
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
+
     <form action="{{ route('admin.users.banned', $user->id) }}" method="POST" style="margin-top: 10px;">
-        @csrf
-        @method('PUT')
-        <div class="mb-3">
-            <label for="note" class="form-label">Note</label>
-            <textarea class="form-control" id="note" name="note" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-danger">Ban</button>
-    </form>
-    <form action="{{ route('admin.users.unbanned', $user->id) }}" method="POST" style="margin-top: 10px;">
-        @csrf
-        @method('PUT')
-        <button type="submit" class="btn btn-success">Unban</button>
-    </form>
+      @csrf
+      @method('PUT')
+      <div class="mb-3">
+          <label for="note" class="form-label">Note</label>
+          <textarea class="form-control" id="note" name="note" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-danger">Ban</button>
+  </form>
+  <form action="{{ route('admin.users.unbanned', $user->id) }}" method="POST" style="margin-top: 10px;">
+      @csrf
+      @method('PUT')
+      <button type="submit" class="btn btn-success">Unban</button>
+  </form>
 </div>
 @endsection

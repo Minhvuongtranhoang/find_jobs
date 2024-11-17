@@ -16,7 +16,7 @@ class User extends Authenticatable
         'phone',
         'role',
         'is_banned',
-        'ban_reason',
+        'banned_reason',
         'banned_at',
     ];
 
@@ -27,6 +27,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'is_banned' => 'boolean',
+        'banned_reason' => 'string',
         'banned_at' => 'datetime',
     ];
 

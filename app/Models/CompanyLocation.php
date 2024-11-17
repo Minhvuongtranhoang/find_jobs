@@ -8,7 +8,11 @@ class CompanyLocation extends Model
 {
     protected $fillable = [
         'company_id',
-        'address',
+        'house_number',
+        'street',
+        'ward',
+        'district',
+        'city',
         'google_maps_link'
     ];
 

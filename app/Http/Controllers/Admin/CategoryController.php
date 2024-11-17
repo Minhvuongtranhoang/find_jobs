@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Models\Job;
 
 class CategoryController extends Controller
 {
@@ -32,8 +33,9 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
+        $category = Category::with('jobs')->findOrFail($id);
+        $jobs = Job::all();
+        return view('admin.categories.edit', compact('category', 'jobs'));
     }
 
     public function update(Request $request, $id)
@@ -43,7 +45,14 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::findOrFail($id);
-        $category->update($request->all());
+        $category->update($request->only('name'));
+
+        // Sync jobs
+        if ($request->has('jobs')) {
+            $category->jobs()->sync($request->input('jobs'));
+        } else {
+            $category->jobs()->detach();
+        }
 
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }

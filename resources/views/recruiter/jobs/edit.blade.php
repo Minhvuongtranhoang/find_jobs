@@ -25,7 +25,7 @@
                         <option value="">Select Location</option>
                         @foreach($locations as $location)
                             <option value="{{ $location->id }}" {{ old('location_id', $job->location_id) == $location->id ? 'selected' : '' }}>
-                                {{ $location->address }}
+                              số {{ $location->house_number }}, đường {{ $location->street }}, phường {{$location->ward}}, quận {{$location->district}}, TP. {{ $location->city }}
                             </option>
                         @endforeach
                     </select>

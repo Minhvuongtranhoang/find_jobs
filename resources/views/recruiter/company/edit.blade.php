@@ -62,70 +62,105 @@
             </div>
 
             <div class="mb-4">
-                <label class="form-label">Locations</label>
-                <div id="locations-container">
-                    @foreach($company->locations as $location)
-                        <div class="location-item mb-4 p-4 border rounded">
-                            <input type="hidden" name="locations[{{ $loop->index }}][id]" value="{{ $location->id }}">
-                            <div class="mb-2">
-                                <label class="form-label">Address</label>
-                                <input type="text" name="locations[{{ $loop->index }}][address]"
-                                       value="{{ $location->address }}" class="form-control">
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label">Google Maps Link</label>
-                                <input type="url" name="locations[{{ $loop->index }}][google_maps_link]"
-                                       value="{{ $location->google_maps_link }}" class="form-control">
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <button type="button" id="add-location" class="btn btn-primary mt-2">
-                  Add Location
-                </button>
-            </div>
-
-            <div class="d-flex justify-content-end">
+              <label class="form-label">Locations</label>
+              <div id="locations-container">
+                  @foreach($company->locations as $location)
+                      <div class="location-item mb-4 p-4 border rounded">
+                          <input type="hidden" name="locations[{{ $loop->index }}][id]" value="{{ $location->id }}">
+                          <div class="mb-2">
+                              <label class="form-label">House Number</label>
+                              <input type="text" name="locations[{{ $loop->index }}][house_number]"
+                                     value="{{ $location->house_number }}" class="form-control">
+                          </div>
+                          <div class="mb-2">
+                              <label class="form-label">Street</label>
+                              <input type="text" name="locations[{{ $loop->index }}][street]"
+                                     value="{{ $location->street }}" class="form-control">
+                          </div>
+                          <div class="mb-2">
+                              <label class="form-label">Ward</label>
+                              <input type="text" name="locations[{{ $loop->index }}][ward]"
+                                     value="{{ $location->ward }}" class="form-control">
+                          </div>
+                          <div class="mb-2">
+                              <label class="form-label">District</label>
+                              <input type="text" name="locations[{{ $loop->index }}][district]"
+                                     value="{{ $location->district }}" class="form-control">
+                          </div>
+                          <div class="mb-2">
+                              <label class="form-label">City</label>
+                              <input type="text" name="locations[{{ $loop->index }}][city]"
+                                     value="{{ $location->city }}" class="form-control">
+                          </div>
+                          <div class="mb-2">
+                              <label class="form-label">Google Maps Link</label>
+                              <input type="url" name="locations[{{ $loop->index }}][google_maps_link]"
+                                     value="{{ $location->google_maps_link }}" class="form-control">
+                          </div>
+                      </div>
+                  @endforeach
+              </div>
+              <button type="button" id="add-location" class="btn btn-primary mt-2">
+                Add Location
+              </button>
+              <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-success">
                     Update Company
                 </button>
-            </div>
-        </form>
-    </div>
-  </div>
-</div>
+              </div>
+          </div>
 
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM fully loaded and parsed');
-        const addButton = document.getElementById('add-location');
-        const container = document.getElementById('locations-container');
+          @push('scripts')
+          <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  const addButton = document.getElementById('add-location');
+                  const container = document.getElementById('locations-container');
 
-        if (addButton && container) {
-            addButton.addEventListener('click', function() {
-                console.log('Add Location button clicked');
-                const index = container.children.length;
+                  if (addButton && container) {
+                      addButton.addEventListener('click', function() {
+                          const index = container.children.length;
 
-                const template = `
-                    <div class="location-item mb-4 p-4 border rounded">
-                        <div class="mb-2">
-                            <label class="form-label">Address</label>
-                            <input type="text" name="locations[${index}][address]" class="form-control">
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">Google Maps Link</label>
-                            <input type="url" name="locations[${index}][google_maps_link]" class="form-control">
-                        </div>
-                    </div>
-                `;
+                          const template = `
+                              <div class="location-item mb-4 p-4 border rounded">
+                                  <div class="mb-2">
+                                      <label class="form-label">House Number</label>
+                                      <input type="text" name="locations[${index}][house_number]" class="form-control">
+                                  </div>
+                                  <div class="mb-2">
+                                      <label class="form-label">Street</label>
+                                      <input type="text" name="locations[${index}][street]" class="form-control">
+                                  </div>
+                                  <div class="mb-2">
+                                      <label class="form-label">Ward</label>
+                                      <input type="text" name="locations[${index}][ward]" class="form-control">
+                                  </div>
+                                  <div class="mb-2">
+                                      <label class="form-label">District</label>
+                                      <input type="text" name="locations[${index}][district]" class="form-control">
+                                  </div>
+                                  <div class="mb-2">
+                                      <label class="form-label">City</label>
+                                      <input type="text" name="locations[${index}][city]" class="form-control">
+                                  </div>
+                                  <div class="mb-2">
+                                      <label class="form-label">Google Maps Link</label>
+                                      <input type="url" name="locations[${index}][google_maps_link]" class="form-control">
+                                  </div>
+                              </div>
+                          `;
 
-                container.insertAdjacentHTML('beforeend', template);
-            });
-        } else {
-            console.error('Add Location button or Locations container not found');
-        }
-    });
-</script>
-@endpush
+                          container.insertAdjacentHTML('beforeend', template);
+                      });
+                  } else {
+                      console.error('Add Location button or Locations container not found');
+                  }
+              });
+          </script>
+        @endpush
 @endsection
+
+
+
+
+
+
