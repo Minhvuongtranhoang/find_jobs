@@ -16,7 +16,7 @@
                             <div class="col-12">
                                 <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm công việc..." name="keyword" value="{{ request('keyword') }}">
                             </div>
-                
+
                             <div class="col-md-6">
                                 <select class="form-select form-select-lg" name="category_id">
                                     <option selected value="">Chọn ngành nghề</option>
@@ -27,7 +27,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                
+
                             <div class="col-md-6">
                                 <select class="form-select form-select-lg" name="location">
                                     {{-- <option selected value="">Chọn địa điểm (tùy chọn)</option>
@@ -38,14 +38,14 @@
                                     @endforeach --}}
                                 </select>
                             </div>
-                
+
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
                             </div>
                         </div>
                     </div>
                 </form>
-                 
+
             </div>
             <div class="col-lg-6">
                 <img src="https://www.ryrob.com/wp-content/uploads/2022/04/How-to-Name-a-Blog-45-Blog-Name-Ideas-and-Examples-to-Learn-From.jpg" alt="Hero Image" class="img-fluid rounded-3 shadow">
