@@ -16,11 +16,11 @@ class HomeController extends Controller
         $categories = Category::all();
         $featuredJobs = Job::where('is_featured', 1)->get();
         $highlightedCategories = Category::whereIn('id', [/* List IDs of featured categories */])->get();
-        $featuredCompanies = Company::take(5)->get();
+        $featuredCompanies = Company::where('is_featured', 1)->take(5)->get();
         $jobs = Job::latest()->take(6)->get();
-        // $blogs = Blog::latest()->take(3)->get();
+     
 
-        return view('job-seeker.home', compact('categories', 'featuredJobs', 'highlightedCategories', 'featuredCompanies', 'jobs'));// nhớ thêm blogg vào
+        return view('job-seeker.home', compact('categories', 'featuredJobs', 'highlightedCategories', 'featuredCompanies', 'jobs'));
     }
     // Hiển thị trang Điều khoản sử dụng
     public function termsOfService()

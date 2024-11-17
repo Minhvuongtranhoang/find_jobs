@@ -10,37 +10,43 @@ use App\Models\JobApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
+use App\Models\CompanyLocation;
 
 class JobSeekerController extends Controller
 {
     public function searchJobs(Request $request)
     {
-        $query = Job::with(['company', 'location', 'categories'])
-            ->where('status', 'approved');
+        // Khởi tạo query tìm kiếm
+        $query = Job::with(['company', 'location', 'categories'])->where('status', 'approved');
 
-        if ($request->has('keyword')) {
+        // Kiểm tra nếu có keyword
+        if ($request->has('keyword') && $request->keyword) {
             $query->where('title', 'like', '%' . $request->keyword . '%');
         }
 
-        if ($request->has('category')) {
-            $query->whereHas('categories', function($q) use ($request) {
-                $q->where('id', $request->category);
+        // Kiểm tra nếu có category_id
+        if ($request->has('category_id') && $request->category_id) {
+            $query->whereHas('categories', function ($q) use ($request) {
+                $q->where('id', $request->category_id);
             });
         }
 
-        if ($request->has('location')) {
-            $query->whereHas('location', function($q) use ($request) {
-                $q->where('address', 'like', '%' . $request->location . '%');
+        // Kiểm tra nếu có location
+        if ($request->has('location') && $request->location) {
+            $query->whereHas('location', function ($q) use ($request) {
+                $q->where('city', 'like', '%' . $request->location . '%');
             });
         }
 
+        // Lấy kết quả và phân trang
         $jobs = $query->paginate(10);
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $jobs
-        ]);
+        // Trả kết quả về view
+        return view('job-seeker.search-results', compact('jobs'));
     }
+
+
 
     public function show(Job $job)
     {
