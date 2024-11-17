@@ -29,7 +29,7 @@
                         <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
                             <li><a class="dropdown-item" href="{{ route('saved-jobs') }}">Công việc đã lưu</a></li>
                             <li><a class="dropdown-item" href="{{ route('latest-jobs') }}">Công việc mới nhất</a></li>
-                            <li><a class="dropdown-item" href="#">Công việc đã ứng tuyển</a></li>
+                            <li><a class="dropdown-item" href="{{ route('job-applications') }}">Công việc đã ứng tuyển</a></li>
                             <li><a class="dropdown-item" href="#">Công việc phù hợp</a></li>
                         </ul>
                     </li>
