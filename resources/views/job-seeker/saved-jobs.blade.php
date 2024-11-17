@@ -14,7 +14,7 @@
                             <div class="job-card">
                                 <div class="favorite-icon" data-id="{{ $savedJob->job->id }}"
                                     onclick="toggleFavorite({{ $savedJob->job->id }}, this)">
-                                    <i class="fa fas fa-heart"></i> <!-- Trái tim đầy, vì đã lưu -->
+                                    <i class="fa fas fa-heart"></i> 
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="square-company-logo">
