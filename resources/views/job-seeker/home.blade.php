@@ -56,142 +56,52 @@
 
 <!-- Modern Job Carousel -->
 <section class="py-5">
-  <div class="container">
-      <h2 class="mb-4">Việc làm nổi bật</h2>
-      <div class="job-carousel">
-          <div id="jobCarousel" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                  <!-- First Slide -->
-                  <div class="carousel-item active">
-                      <div class="job-slide-wrapper">
-                          <div class="job-card-carousel">
-                              <div class="d-flex align-items-center mb-3">
-                                <img src="https://fptsoftware.com/-/media/project/fpt-software/fso/uplift/logo-fpt.png?modified=20241017090751/50/50" alt="Company Logo" class="job-logo">
-                                <div>
-                                    <h5 class="h5">Frontend Developer</h5>
-                                    <p class="text-muted mb-2">Tech Company A</p>
-                                </div>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                  <span>Hà Nội</span>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-dollar-sign text-primary me-2"></i>
-                                  <span>20-30 triệu</span>
-                              </div>
-                              <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
-                          </div>
-                          <div class="job-card-carousel">
-                            <div class="d-flex align-items-center mb-3">
-                              <img src="https://fptsoftware.com/-/media/project/fpt-software/fso/uplift/logo-fpt.png?modified=20241017090751/50/50" alt="Company Logo" class="job-logo">
-                              <div>
-                                  <h5 class="h5">Frontend Developer</h5>
-                                  <p class="text-muted mb-2">Tech Company A</p>
-                              </div>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                  <span>Hồ Chí Minh</span>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-dollar-sign text-primary me-2"></i>
-                                  <span>25-35 triệu</span>
-                              </div>
-                              <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
-                          </div>
-                          <div class="job-card-carousel">
-                              <div class="d-flex align-items-center mb-3">
-                                <img src="https://fptsoftware.com/-/media/project/fpt-software/fso/uplift/logo-fpt.png?modified=20241017090751/50/50" alt="Company Logo" class="job-logo">
-                                <div>
-                                    <h5 class="h5">Frontend Developer</h5>
-                                    <p class="text-muted mb-2">Tech Company A</p>
-                                </div>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                  <span>Đà Nẵng</span>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-dollar-sign text-primary me-2"></i>
-                                  <span>30-40 triệu</span>
-                              </div>
-                              <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Second Slide -->
-                  <div class="carousel-item">
-                      <div class="job-slide-wrapper">
-                          <div class="job-card-carousel">
-                              <div class="d-flex align-items-center mb-3">
-                                <img src="https://fptsoftware.com/-/media/project/fpt-software/fso/uplift/logo-fpt.png?modified=20241017090751/50/50" alt="Company Logo" class="job-logo">
-                                <div>
-                                    <h5 class="h5">Frontend Developer</h5>
-                                    <p class="text-muted mb-2">Tech Company A</p>
-                                </div>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                  <span>Hà Nội</span>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-dollar-sign text-primary me-2"></i>
-                                  <span>35-45 triệu</span>
-                              </div>
-                              <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
-                          </div>
-                          <div class="job-card-carousel">
-                              <div class="d-flex align-items-center mb-3">
-                                <img src="https://fptsoftware.com/-/media/project/fpt-software/fso/uplift/logo-fpt.png?modified=20241017090751/50/50" alt="Company Logo" class="job-logo">
-                                <div>
-                                    <h5 class="h5">Frontend Developer</h5>
-                                    <p class="text-muted mb-2">Tech Company A</p>
-                                </div>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                  <span>Hồ Chí Minh</span>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                  <i class="fas fa-dollar-sign text-primary me-2"></i>
-                                  <span>28-38 triệu</span>
-                              </div>
-                              <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
-                          </div>
-                          <div class="job-card-carousel">
-                              <div class="d-flex align-items-center mb-3">
-                                <img src="https://fptsoftware.com/-/media/project/fpt-software/fso/uplift/logo-fpt.png?modified=20241017090751/50/50" alt="Company Logo" class="job-logo">
-                                <div>
-                                    <h5 class="h5">Frontend Developer</h5>
-                                    <p class="text-muted mb-2">Tech Company A</p>
-                                </div>
-                              </div>
-                              <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                                <span>Remote</span>
+    <div class="container">
+        <h2 class="mb-4">Việc làm nổi bật</h2>
+        <div class="job-carousel">
+            <div id="jobCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach($featuredJobs->chunk(3) as $chunkIndex => $jobChunk)
+                        <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
+                            <div class="job-slide-wrapper">
+                                @foreach($jobChunk as $job)
+                                    <div class="job-card-carousel">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="{{ $job->company->logo }}" 
+                                                 alt="Company Logo" class="job-logo">
+                                            <div>
+                                                <h5 class="h5">{{ $job->title }}</h5>
+                                                <p class="text-muted mb-2">{{ $job->company->name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                            <span>{{ $job->location->city }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="fas fa-dollar-sign text-primary me-2"></i>
+                                            <span>{{ $job->salary }}</span>
+                                        </div>
+                                        <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-dollar-sign text-primary me-2"></i>
-                                <span>25-35 triệu</span>
-                            </div>
-                            <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
-</div>
-</section>
+  </section>
+  
 
 <!-- Popular Categories Section with Enhanced Design -->
 <section class="py-5 bg-light">

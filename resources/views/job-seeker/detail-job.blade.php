@@ -81,7 +81,7 @@
                         <h2 class="card-title h4 mb-4">
                             <i class="bi bi-send me-2"></i>Ứng tuyển ngay
                         </h2>
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('job.apply', $job->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">

@@ -96,44 +96,43 @@ class JobSeekerController extends Controller
         return view('job-seeker.latest-jobs', compact('jobs'));
     }
 
-    public function applyJob(Request $request, $jobId)
+    public function apply(Request $request, Job $job)
     {
-        $validated = $request->validate([
-            'cv_file' => 'required|file|mimes:doc,docx,pdf|max:2048',
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email',
+        // Validate the form input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'phone' => 'required|string|max:20',
-            'cover_letter' => 'required|string'
+            'cv_file' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'cover_letter' => 'nullable|string|max:1000',
         ]);
 
-        $cvPath = $request->file('cv_file')->store('cvs', 'public');
+        // Store the uploaded CV file
+        $cvFilePath = $request->file('cv_file')->store('cv_files', 'public');
 
-        $application = JobApplication::create([
-            'job_id' => $jobId,
-            'user_id' => Auth::id(),
-            'cv_file' => $cvPath,
-            'cover_letter' => $validated['cover_letter'],
-            'status' => 'pending'
+        // Save job application to the database
+        JobApplication::create([
+            'job_id' => $job->id,
+            'user_id' => auth()->id(), // Assumes user is logged in
+            'cv_file' => $cvFilePath,
+            'cover_letter' => $request->input('cover_letter'),
         ]);
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Application submitted successfully',
-            'data' => $application
-        ]);
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Ứng tuyển thành công! Chúng tôi sẽ sớm liên hệ với bạn.');
     }
 
     public function getMyApplications()
-    {
-        $applications = JobApplication::with(['job.company'])
-            ->where('user_id', Auth::id())
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $applications
-        ]);
+    {       
+        {
+                    // Lấy danh sách các ứng dụng công việc của người dùng hiện tại
+            $applications = JobApplication::with('job')
+                ->where('user_id', auth()->id())
+                ->latest()
+                ->get();
+    
+            return view('job-seeker.job-applications', compact('applications'));
+        }
     }
 
     public function getSavedJobs()
