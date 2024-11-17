@@ -52,7 +52,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about') }}">Về chúng tôi</a>
                     </li>
-                </ul>
+                </ul>      
                 <div class="d-flex gap-2">
                     @auth
                         <!-- Hiển thị tên người dùng khi đã đăng nhập -->
