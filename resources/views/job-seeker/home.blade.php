@@ -29,16 +29,16 @@
                             </div>
                 
                             <div class="col-md-6">
-                                <select class="form-select form-select-lg" name="location">
-                                    {{-- <option selected value="">Chọn địa điểm (tùy chọn)</option>
-                                    @foreach($locations as $location)
-                                        <option value="{{ $location }}" {{ request('location') == $location ? 'selected' : '' }}>
-                                            {{ $location }}
+                                <select class="form-select form-select-lg selectpicker" name="location" data-live-search="true">
+                                    <option selected value="">Chọn địa điểm </option>
+                                    @foreach ($locations as $location)
+                                        <option value="{{ $location['name'] }}" {{ request('location') == $location['name'] ? 'selected' : '' }}>
+                                            {{ $location['name'] }}
                                         </option>
-                                    @endforeach --}}
+                                    @endforeach
                                 </select>
                             </div>
-                
+                                    
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
                             </div>
