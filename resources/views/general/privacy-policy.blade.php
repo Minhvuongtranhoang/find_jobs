@@ -7,7 +7,7 @@
         <div class="privacy-policy-content">
             <h4>Giới thiệu</h4>
             <p>
-                Chúng tôi cam kết bảo mật mọi thông tin cá nhân mà bạn cung cấp trong quá trình sử dụng dịch vụ của JobPortal.
+                Chúng tôi cam kết bảo mật mọi thông tin cá nhân mà bạn cung cấp trong quá trình sử dụng dịch vụ của Seek a Job.
             </p>
 
             <h4>1. Thông tin thu thập</h4>

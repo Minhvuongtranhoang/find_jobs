@@ -10,17 +10,17 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         @if ($company->logo)
-                            <img 
-                                src="{{ asset($company->logo) }}" 
-                                alt="{{ $company->name }}" 
-                                class="card-img-top" 
+                            <img
+                                src="{{ filter_var($company->logo, FILTER_VALIDATE_URL) ? $company->logo : Storage::url($company->logo) }}"
+                                alt="{{ $company->name }}"
+                                class="card-img-top"
                                 style="height: 200px; object-fit: contain;"
                             >
                         @else
-                            <img 
-                                src="{{ asset('default-logo.png') }}" 
-                                alt="Default Logo" 
-                                class="card-img-top" 
+                            <img
+                                src="{{ asset('default-logo.png') }}"
+                                alt="Default Logo"
+                                class="card-img-top"
                                 style="height: 200px; object-fit: contain;"
                             >
                         @endif

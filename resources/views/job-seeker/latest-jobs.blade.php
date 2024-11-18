@@ -14,7 +14,7 @@
                             <div class="job-card">
                                 <div class="d-flex align-items-center">
                                     <div class="square-company-logo">
-                                        <img src="{{ $job->company->logo }}" alt="Company Logo" class="job-logo">
+                                        <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}" alt="Company Logo" class="job-logo">
                                     </div>
                                     <div>
                                         <a class="nav-link" href="{{ route('detail-job', $job->id) }}">

@@ -14,11 +14,11 @@
                             <div class="job-card">
                                 <div class="favorite-icon" data-id="{{ $savedJob->job->id }}"
                                     onclick="toggleFavorite({{ $savedJob->job->id }}, this)">
-                                    <i class="fa fas fa-heart"></i> 
+                                    <i class="fa fas fa-heart"></i>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="square-company-logo">
-                                        <img src="{{ $savedJob->job->company->logo }}" alt="Company Logo" class="job-logo">
+                                        <img src="{{ filter_var($savedJob->job->company->logo, FILTER_VALIDATE_URL) ? $savedJob->job->company->logo : Storage::url($savedJob->job->company->logo) }}" alt="Company Logo" class="job-logo">
                                     </div>
                                     <div>
                                         <a class="nav-link" href="{{ route('detail-job', $savedJob->job->id) }}">

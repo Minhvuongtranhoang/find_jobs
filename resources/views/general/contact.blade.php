@@ -18,7 +18,7 @@
             <!-- Contact Info -->
             <div class="col-md-6">
                 <h2 class="mb-4">Thông tin liên hệ</h2>
-                <p class="mb-3"><i class="bi bi-envelope-fill text-primary"></i> Email: support@jobportal.com</p>
+                <p class="mb-3"><i class="bi bi-envelope-fill text-primary"></i> Email: seekajob2024@gmail.com</p>
                 <p class="mb-3"><i class="bi bi-phone-fill text-primary"></i> Điện thoại: +84 123 456 789</p>
                 <p class="mb-3"><i class="bi bi-geo-alt-fill text-primary"></i> Địa chỉ: Số 123, Đường ABC, TP.HCM</p>
                 <p>Thời gian làm việc: Thứ 2 - Thứ 6 (9:00 - 18:00)</p>
@@ -53,7 +53,7 @@
     <div class="container text-center py-5">
         <h2 class="mb-4">Địa chỉ của chúng tôi</h2>
         <div class="ratio ratio-16x9">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1217417996234!2d106.66017211476338!3d10.762622992330461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ee14e02148d%3A0x2e87702807451cf8!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1695709202302!5m2!1sen!2s" 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1217417996234!2d106.66017211476338!3d10.762622992330461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ee14e02148d%3A0x2e87702807451cf8!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1695709202302!5m2!1sen!2s"
                     allowfullscreen="" loading="lazy" style="border: 0;"></iframe>
         </div>
     </div>

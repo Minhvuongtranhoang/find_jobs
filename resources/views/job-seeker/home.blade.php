@@ -38,7 +38,11 @@
                                     @endforeach
                                 </select>
                             </div>
+<<<<<<<<< Temporary merge branch 1
 
+=========
+
+>>>>>>>>> Temporary merge branch 2
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
                             </div>
@@ -177,7 +181,7 @@
                     <div class="company-card text-center">
                         <a href="{{ $company->website }}" class="company-link">
                             <div class="company-logo">
-                                <img src="{{ $company->logo }}"
+                                <img src="{{ filter_var($company->logo, FILTER_VALIDATE_URL) ? $company->logo : Storage::url($company->logo) }}"
                                      alt="Logo của {{ $company->name }}"
                                      class="img-fluid">
                             </div>
@@ -191,7 +195,6 @@
 
 
 <!-- Latest Jobs -->
-
 <section class="py-5 bg-light">
     <div class="container">
         <h2 class="mb-4">Việc làm mới nhất</h2>
@@ -204,7 +207,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="square-company-logo">
-                            <img src="{{ $job->company->logo }}" alt="Company Logo" class="job-logo">
+                            <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}" alt="Company Logo" class="job-logo">
                         </div>
                         <div>
                             <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
@@ -212,8 +215,8 @@
                             </a>
                             <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
                             <div style="margin-left: 10px" class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->city }}
-                                <i class="fas fa-dollar-sign ms-3 me-2"></i>{{ $job->salary }}
+                                <i class="fas fa-map-marker-alt me-1"></i>{{ $job->location->city }}
+                                <i class="fas fa-dollar-sign ms-2 me-1"></i>{{ $job->salary }}
                             </div>
                         </div>
                     </div>

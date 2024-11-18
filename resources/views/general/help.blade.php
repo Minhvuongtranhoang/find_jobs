@@ -64,7 +64,7 @@
         <div class="row text-center">
             <div class="col-md-4">
                 <i class="bi bi-envelope-fill fs-1 text-primary"></i>
-                <p>Email: support@jobportal.com</p>
+                <p>Email: seekajob2024@gmail.com</p>
             </div>
             <div class="col-md-4">
                 <i class="bi bi-phone-fill fs-1 text-primary"></i>

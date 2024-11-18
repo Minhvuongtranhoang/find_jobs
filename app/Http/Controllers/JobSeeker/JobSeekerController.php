@@ -161,7 +161,7 @@ class JobSeekerController extends Controller
     public function getMyApplications()
     {
         {
-           // Lấy danh sách các ứng dụng công việc của người dùng hiện tại
+            // Lấy danh sách các ứng dụng công việc của người dùng hiện tại
             $applications = JobApplication::with('job')
                 ->where('user_id', Auth::id())
                 ->latest()
