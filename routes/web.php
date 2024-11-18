@@ -100,7 +100,7 @@ use App\Http\Controllers\JobSeeker\JobSeekerController;
 use App\Http\Controllers\JobSeeker\ProfileController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/job-seeker/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/jobs/search', [JobSeekerController::class, 'searchJobs'])->name('search.jobs');
 Route::get('jobs/{job}', [JobSeekerController::class, 'show'])->name('detail-job');
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
@@ -122,7 +122,7 @@ Route::get('/saved-jobs', [JobSeekerController::class, 'showSavedJobs'])->name('
 Route::get('/latest-jobs', [JobSeekerController::class, 'showLatestJobs'])->name('latest-jobs');
 Route::get('/terms-of-service', [HomeController::class, 'termsOfService'])->name('terms-of-service');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
-Route::get('/jobs/search', [JobSeekerController::class, 'searchJobs'])->name('search.jobs');
+
 Route::post('/jobs/{job}/apply', [JobSeekerController::class, 'apply'])->name('job.apply');
 Route::get('/applications', [JobSeekerController::class, 'getMyApplications'])->name('job-applications');
 
