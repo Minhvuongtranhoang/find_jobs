@@ -6,7 +6,7 @@
 <!-- Hero Section -->
 <div class="hero-section">
     <div class="container text-center py-5 text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?technology,team') no-repeat center center/cover;">
-        <h1>Chào mừng đến với JobPortal</h1>
+        <h1>Chào mừng đến với Seek a Job</h1>
         <p class="lead">Nơi kết nối người tìm việc và nhà tuyển dụng tốt nhất!</p>
         <a href="#" class="btn btn-primary btn-lg mt-4">Tìm hiểu thêm</a>
     </div>
@@ -41,7 +41,7 @@
 <div class="team-section py-5">
     <div class="container text-center">
         <h2 class="mb-4">Đội ngũ của chúng tôi</h2>
-        <p class="mb-5">Những con người tận tâm đứng sau JobPortal.</p>
+        <p class="mb-5">Những con người tận tâm đứng sau Seek a Job.</p>
         <div class="row">
             <div class="col-md-4">
                 <div class="card">

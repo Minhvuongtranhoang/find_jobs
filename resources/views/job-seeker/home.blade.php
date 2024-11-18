@@ -67,7 +67,7 @@
                                 @foreach($jobChunk as $job)
                                     <div class="job-card-carousel">
                                         <div class="d-flex align-items-center mb-3">
-                                            <img src="{{ $job->company->logo }}" 
+                                            <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}"
                                                  alt="Company Logo" class="job-logo">
                                             <div>
                                                 <h5 class="h5">{{ $job->title }}</h5>
@@ -101,7 +101,7 @@
         </div>
     </div>
   </section>
-  
+
 
 <!-- Popular Categories Section with Enhanced Design -->
 <section class="py-5 bg-light">
@@ -177,7 +177,7 @@
                     <div class="company-card text-center">
                         <a href="{{ $company->website }}" class="company-link">
                             <div class="company-logo">
-                                <img src="{{ $company->logo }}"
+                                <img src="{{ filter_var($company->logo, FILTER_VALIDATE_URL) ? $company->logo : Storage::url($company->logo) }}"
                                      alt="Logo của {{ $company->name }}"
                                      class="img-fluid">
                             </div>
@@ -204,7 +204,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="square-company-logo">
-                            <img src="{{ $job->company->logo }}" alt="Company Logo" class="job-logo">
+                            <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}" alt="Company Logo" class="job-logo">
                         </div>
                         <div>
                             <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
@@ -213,7 +213,7 @@
                             <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
                             <div style="margin-left: 10px" class="text-muted mb-3">
                                 <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->city }}
-                                <i class="fas fa-dollar-sign ms-3 me-2"></i>{{ $job->salary }}
+                                <i class="fas fa-dollar-sign ms-2 me-2"></i>{{ $job->salary }}
                             </div>
                         </div>
                     </div>

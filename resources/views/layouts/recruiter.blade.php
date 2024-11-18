@@ -37,7 +37,7 @@
                 <i class="fas fa-users"></i>
                 Candidates
             </a>
-            <a href="#" class="nav-link">
+            <a href="{{ url('job-seeker/home') }}" class="nav-link">
                 <i class="fas fa-chart-bar"></i>
                 Reports
             </a>

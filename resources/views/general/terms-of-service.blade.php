@@ -7,7 +7,7 @@
         <div class="terms-content">
             <h4>Giới thiệu</h4>
             <p>
-                Chào mừng bạn đến với JobPortal. Trước khi sử dụng dịch vụ của chúng tôi, bạn vui lòng đọc kỹ các điều khoản và điều kiện dưới đây.
+                Chào mừng bạn đến với Seek a Job. Trước khi sử dụng dịch vụ của chúng tôi, bạn vui lòng đọc kỹ các điều khoản và điều kiện dưới đây.
             </p>
 
             <h4>1. Quyền và nghĩa vụ của người dùng</h4>
@@ -32,7 +32,7 @@
 
             <h4>5. Chấm dứt dịch vụ</h4>
             <p>
-                JobPortal có quyền chấm dứt quyền truy cập của người dùng nếu có hành vi vi phạm các điều khoản sử dụng.
+                Seek a Job có quyền chấm dứt quyền truy cập của người dùng nếu có hành vi vi phạm các điều khoản sử dụng.
             </p>
         </div>
     </div>

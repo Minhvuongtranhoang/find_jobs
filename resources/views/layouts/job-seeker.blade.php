@@ -14,7 +14,7 @@
     <!-- Modern Header -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">JobPortal</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight">Job</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -52,7 +52,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about') }}">Về chúng tôi</a>
                     </li>
-                </ul>      
+                </ul>
                 <div class="d-flex gap-2">
                     @auth
                         <!-- Hiển thị tên người dùng khi đã đăng nhập -->
@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h5 class="mb-4">Về JobPortal</h5>
+                    <h5 class="mb-4">Về Seek a Job</h5>
                     <p>Nền tảng tuyển dụng IT hàng đầu Việt Nam, kết nối ứng viên với các cơ hội việc làm tốt nhất từ
                         những công ty công nghệ hàng đầu.</p>
                     <div class="mt-4">
@@ -137,14 +137,14 @@
                         <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Tòa nhà Innovation, Khu Công nghệ
                             cao, Hà Nội</li>
                         <li class="mb-2"><i class="fas fa-phone me-2"></i>(+84) 123-456-789</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>contact@jobportal.vn</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>seekajob2024@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <hr class="my-4">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2024 JobPortal. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2024 Seek a Job. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <a href="{{ route('terms-of-service') }}" class="text-light text-decoration-none me-3">Điều khoản sử dụng</a>
