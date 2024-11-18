@@ -5,16 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Portal</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/job-seeker.css') }}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome (nếu cần) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="{{ asset('css/job-seeker.css') }}" rel="stylesheet">
+
+<!-- Bootstrap Select CSS -->
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select/dist/css/bootstrap-select.min.css"> --}}
+
+<!-- jQuery (Load before any Bootstrap JS or Select JS) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap Select JS -->
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select/dist/js/bootstrap-select.min.js"></script> --}}
+
+
+
 </head>
 
 <body>
     <!-- Modern Header -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
+<<<<<<< HEAD
             <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight">Job</span></a>
+=======
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('storage/company-logos/logo.png') }}"
+                    style="height: 50px; width: 50px;"></a>
+>>>>>>> d7fef1c9e8b51ffff71d1b08b830a42bc4f16323
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,7 +54,8 @@
                         <ul class="dropdown-menu" aria-labelledby="jobsDropdown">
                             <li><a class="dropdown-item" href="{{ route('saved-jobs') }}">Công việc đã lưu</a></li>
                             <li><a class="dropdown-item" href="{{ route('latest-jobs') }}">Công việc mới nhất</a></li>
-                            <li><a class="dropdown-item" href="{{ route('job-applications') }}">Công việc đã ứng tuyển</a></li>
+                            <li><a class="dropdown-item" href="{{ route('job-applications') }}">Công việc đã ứng
+                                    tuyển</a></li>
                             <li><a class="dropdown-item" href="#">Công việc phù hợp</a></li>
                         </ul>
                     </li>
@@ -147,16 +173,17 @@
                     <p class="mb-0">&copy; 2024 Seek a Job. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <a href="{{ route('terms-of-service') }}" class="text-light text-decoration-none me-3">Điều khoản sử dụng</a>
-                    <a href="{{ route('privacy-policy') }}" class="text-light text-decoration-none">Chính sách bảo mật</a>
+                    <a href="{{ route('terms-of-service') }}" class="text-light text-decoration-none me-3">Điều khoản
+                        sử dụng</a>
+                    <a href="{{ route('privacy-policy') }}" class="text-light text-decoration-none">Chính sách bảo
+                        mật</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 
     <script>
         // Initialize tooltips
@@ -183,7 +210,7 @@
                     }
                 },
                 error: function() {
-                    alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                    alert('Vui Lòng Đăng Nhập');
                 }
             });
         }

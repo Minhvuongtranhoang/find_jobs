@@ -12,39 +12,59 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\CompanyLocation;
+use Illuminate\Support\Facades\File;
 
 class JobSeekerController extends Controller
 {
     public function searchJobs(Request $request)
-    {
-        // Khởi tạo query tìm kiếm
-        $query = Job::with(['company', 'location', 'categories'])->where('status', 'approved');
+{
+    // Lấy danh sách các categories
+    $categories = Category::all();
 
-        // Kiểm tra nếu có keyword
-        if ($request->has('keyword') && $request->keyword) {
-            $query->where('title', 'like', '%' . $request->keyword . '%');
-        }
+    // Đọc danh sách địa phương từ file JSON
+    $locations = json_decode(File::get(resource_path('provinces.json')), true);
 
-        // Kiểm tra nếu có category_id
-        if ($request->has('category_id') && $request->category_id) {
-            $query->whereHas('categories', function ($q) use ($request) {
-                $q->where('id', $request->category_id);
-            });
-        }
+    // Lấy từ khóa tìm kiếm
+    $keyword = $request->input('keyword');
 
-        // Kiểm tra nếu có location
-        if ($request->has('location') && $request->location) {
-            $query->whereHas('location', function ($q) use ($request) {
-                $q->where('city', 'like', '%' . $request->location . '%');
-            });
-        }
+    // Lấy category_id
+    $category_id = $request->input('category_id');
 
-        // Lấy kết quả và phân trang
-        $jobs = $query->paginate(10);
+    // Lấy city
+    $city = $request->input('location');
 
-        // Trả kết quả về view
-        return view('job-seeker.search-results', compact('jobs'));
+    // Khởi tạo query
+    $query = Job::query();
+
+    // Tìm kiếm theo từ khóa
+    if ($keyword) {
+        $query->where(function ($q) use ($keyword) {
+            $q->where('title', 'like', '%' . $keyword . '%')
+              ->orWhere('description', 'like', '%' . $keyword . '%');
+        });
     }
+
+    // Tìm kiếm theo category_id qua bảng job_categories
+    if ($category_id) {
+        $query->whereHas('categories', function ($q) use ($category_id) {
+            $q->where('id', $category_id);
+        });
+    }
+
+    // Tìm kiếm theo city (liên kết qua công ty và company_locations)
+    if ($city) {
+        $query->whereHas('company.locations', function ($q) use ($city) {
+            $q->where('city', $city);
+        });
+    }
+
+    // Lấy danh sách công việc
+    $jobs = $query->get();
+
+    // Truyền dữ liệu vào view
+    return view('job-seeker.search-results', compact('categories', 'jobs', 'locations', 'keyword', 'category_id', 'city'));
+}
+
 
 
 
@@ -91,13 +111,18 @@ class JobSeekerController extends Controller
         // Lấy các công việc mới nhất theo id giảm dần
         $jobs = Job::with('company', 'location') // Bao gồm thông tin công ty và vị trí
             ->orderBy('id', 'desc') // Sắp xếp theo id từ lớn nhất đến nhỏ nhất
-            ->paginate(10); // Sử dụng phân trang, 10 công việc mỗi trang
+            ->paginate(9); // Sử dụng phân trang, 10 công việc mỗi trang
 
         return view('job-seeker.latest-jobs', compact('jobs'));
     }
 
     public function apply(Request $request, Job $job)
     {
+        // Kiểm tra xem người dùng đã đăng nhập chưa
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Vui lòng đăng nhập để ứng tuyển.');
+        }
+
         // Validate the form input
         $request->validate([
             'name' => 'required|string|max:255',
@@ -107,8 +132,17 @@ class JobSeekerController extends Controller
             'cover_letter' => 'nullable|string|max:1000',
         ]);
 
+        // Kiểm tra xem người dùng đã ứng tuyển công việc này chưa
+        $existingApplication = JobApplication::where('job_id', $job->id)
+            ->where('user_id', Auth::id()) // Assumes user is logged in
+            ->first();
+
+        if ($existingApplication) {
+            return redirect()->back()->with('error', 'Bạn đã ứng tuyển công việc này trước đó.');
+        }
+
         // Store the uploaded CV file
-        $cvFilePath = $request->file('cv_file')->store('cv_files', 'public');
+        $cvFilePath = $request->file('cv_file')->store('cvs', 'public');
 
         // Save job application to the database
         JobApplication::create([
@@ -122,10 +156,12 @@ class JobSeekerController extends Controller
         return redirect()->back()->with('success', 'Ứng tuyển thành công! Chúng tôi sẽ sớm liên hệ với bạn.');
     }
 
+
+
     public function getMyApplications()
     {
         {
-                    // Lấy danh sách các ứng dụng công việc của người dùng hiện tại
+            // Lấy danh sách các ứng dụng công việc của người dùng hiện tại
             $applications = JobApplication::with('job')
                 ->where('user_id', Auth::id())
                 ->latest()
