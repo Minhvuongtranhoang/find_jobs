@@ -34,12 +34,7 @@
     <!-- Modern Header -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-<<<<<<< HEAD
             <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight">Job</span></a>
-=======
-            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('storage/company-logos/logo.png') }}"
-                    style="height: 50px; width: 50px;"></a>
->>>>>>> d7fef1c9e8b51ffff71d1b08b830a42bc4f16323
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -183,7 +178,7 @@
     </footer>
 
     <!-- Scripts -->
-    
+
 
     <script>
         // Initialize tooltips

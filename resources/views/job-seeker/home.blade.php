@@ -38,11 +38,6 @@
                                     @endforeach
                                 </select>
                             </div>
-<<<<<<< HEAD
-
-=======
-                                    
->>>>>>> d7fef1c9e8b51ffff71d1b08b830a42bc4f16323
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
                             </div>
@@ -195,7 +190,6 @@
 
 
 <!-- Latest Jobs -->
-
 <section class="py-5 bg-light">
     <div class="container">
         <h2 class="mb-4">Việc làm mới nhất</h2>
@@ -216,8 +210,8 @@
                             </a>
                             <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
                             <div style="margin-left: 10px" class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->city }}
-                                <i class="fas fa-dollar-sign ms-2 me-2"></i>{{ $job->salary }}
+                                <i class="fas fa-map-marker-alt me-1"></i>{{ $job->location->city }}
+                                <i class="fas fa-dollar-sign ms-2 me-1"></i>{{ $job->salary }}
                             </div>
                         </div>
                     </div>
