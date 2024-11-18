@@ -55,10 +55,10 @@ class JobSeekerController extends Controller
 
     public function toggleSaveJob(Request $request)
     {
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        $userId = auth()->id();
+        $userId = Auth::id();
         $jobId = $request->job_id;
 
         // Kiểm tra xem công việc đã được lưu chưa
@@ -79,7 +79,7 @@ class JobSeekerController extends Controller
     }
     public function showSavedJobs()
     {
-        $userId = auth()->id();
+        $userId = Auth::id();
 
         // Lấy tất cả công việc đã lưu của người dùng
         $savedJobs = SavedJob::where('user_id', $userId)->with('job.company', 'job.location')->get();
@@ -113,7 +113,7 @@ class JobSeekerController extends Controller
         // Save job application to the database
         JobApplication::create([
             'job_id' => $job->id,
-            'user_id' => auth()->id(), // Assumes user is logged in
+            'user_id' => Auth::id(), // Assumes user is logged in
             'cv_file' => $cvFilePath,
             'cover_letter' => $request->input('cover_letter'),
         ]);
@@ -123,14 +123,14 @@ class JobSeekerController extends Controller
     }
 
     public function getMyApplications()
-    {       
+    {
         {
                     // Lấy danh sách các ứng dụng công việc của người dùng hiện tại
             $applications = JobApplication::with('job')
-                ->where('user_id', auth()->id())
+                ->where('user_id', Auth::id())
                 ->latest()
                 ->get();
-    
+
             return view('job-seeker.job-applications', compact('applications'));
         }
     }
