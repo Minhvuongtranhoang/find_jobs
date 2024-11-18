@@ -38,11 +38,6 @@
                                     @endforeach
                                 </select>
                             </div>
-<<<<<<<<< Temporary merge branch 1
-
-=========
-
->>>>>>>>> Temporary merge branch 2
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
                             </div>
@@ -71,7 +66,7 @@
                                 @foreach($jobChunk as $job)
                                     <div class="job-card-carousel">
                                         <div class="d-flex align-items-center mb-3">
-                                            <img src="{{ $job->company->logo }}"
+                                            <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}"
                                                  alt="Company Logo" class="job-logo">
                                             <div>
                                                 <h5 class="h5">{{ $job->title }}</h5>
