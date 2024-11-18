@@ -44,12 +44,14 @@ class JobSeekerController extends Controller
         });
     }
 
-    // Tìm kiếm theo category_id
+    // Tìm kiếm theo category_id qua bảng job_categories
     if ($category_id) {
-        $query->where('category_id', $category_id);
+        $query->whereHas('categories', function ($q) use ($category_id) {
+            $q->where('id', $category_id);
+        });
     }
 
-    // Tìm kiếm theo city
+    // Tìm kiếm theo city (liên kết qua công ty và company_locations)
     if ($city) {
         $query->whereHas('company.locations', function ($q) use ($city) {
             $q->where('city', $city);
@@ -62,6 +64,7 @@ class JobSeekerController extends Controller
     // Truyền dữ liệu vào view
     return view('job-seeker.search-results', compact('categories', 'jobs', 'locations', 'keyword', 'category_id', 'city'));
 }
+
 
 
 
