@@ -23,7 +23,7 @@ class HomeController extends Controller
     $highlightedCategories = Category::whereIn('id', [/* List IDs of featured categories */])->get();
 
     // Lấy các công ty nổi bật
-    $featuredCompanies = Company::where('is_featured', 1)->take(5)->get();
+    $featuredCompanies = Company::where('is_featured', 1)->take(6)->get();
 
     // Lấy các công việc gần đây
     $jobs = Job::latest()->take(6)->get();
@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     // Tìm kiếm theo từ khóa (nếu có)
     $keyword = $request->input('keyword');
-    
+
     // Khởi tạo query để tìm công việc
     // $query = Job::query();
 
@@ -41,7 +41,7 @@ class HomeController extends Controller
     return view('job-seeker.home', compact('categories', 'featuredJobs', 'highlightedCategories', 'featuredCompanies', 'jobs', 'locations'));
 }
 
-    
+
     // Hiển thị trang Điều khoản sử dụng
     public function termsOfService()
     {

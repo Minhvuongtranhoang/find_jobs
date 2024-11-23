@@ -34,9 +34,10 @@
                     <span>User Management</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="userManagementDropdown">
-                  <li><a class="dropdown-item" href="#">Recruiter</a></li>
-                  <li><a class="dropdown-item" href="#">Jobseeker</a></li>
-                  <li><a class="dropdown-item" href="#">Ban Account</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.users.recruiters') }}">Recruiter</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.users.jobseekers') }}">Jobseeker</a></li>
+                  <li><a class="dropdown-item" href="">Ban Account</a></li>
+
               </ul>
             </li>
             <li class="nav-item">

@@ -17,7 +17,7 @@
                               </div>
                               <div class="flex-grow-1 ms-3">
                                   <h6 class="mb-1">Active Jobs</h6>
-                                  <h3 class="mb-0"><a href=""></a></h3>
+                                  <h3 class="mb-0">{{ \App\Models\Job::where('status', 'active')->count() }}</h3>
                               </div>
                           </div>
                       </div>
@@ -34,7 +34,7 @@
                           </div>
                           <div class="flex-grow-1 ms-3">
                               <h6 class="mb-1">Applications</h6>
-                              <h3 class="mb-0"><a href=""></a></h3>
+                              <h3 class="mb-0">{{ \App\Models\JobApplication::count() }}</h3>
                           </div>
                       </div>
                   </div>
@@ -51,7 +51,7 @@
                           </div>
                           <div class="flex-grow-1 ms-3">
                               <h6 class="mb-1">Pending Review</h6>
-                              <h3 class="mb-0"><a href=""></a></h3>
+                              <h3 class="mb-0">{{ \App\Models\Job::where('status', 'pending')->count() }}</h3>
                           </div>
                       </div>
                   </div>

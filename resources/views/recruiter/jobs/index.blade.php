@@ -33,7 +33,7 @@
             @foreach($jobs as $job)
                 <tr>
                     <td>{{ $job->title }}</td>
-                    <td>{{ $job->location->address }}</td>
+                    <td>{{ $job->location->district}} - {{$job->location->city}}</td>
                     <td>
                         <span class="badge
                             {{ $job->status === 'approved' ? 'status-badge status-approved' :
