@@ -122,7 +122,12 @@ Route::get('/saved-jobs', [JobSeekerController::class, 'showSavedJobs'])->name('
 Route::get('/latest-jobs', [JobSeekerController::class, 'showLatestJobs'])->name('latest-jobs');
 Route::get('/terms-of-service', [HomeController::class, 'termsOfService'])->name('terms-of-service');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
-
-Route::post('/jobs/{job}/apply', [JobSeekerController::class, 'apply'])->name('job.apply');
+Route::post('/job/{jobId}/apply', [JobSeekerController::class, 'apply'])->name('job.apply');
 Route::get('/applications', [JobSeekerController::class, 'getMyApplications'])->name('job-applications');
-
+Route::get('/categories/{id}/jobs', [HomeController::class, 'showJobs'])->name('category-job');
+Route::get('/companies/{id}', [JobSeekerController::class, 'showCompany'])->name('companies.show');
+Route::post('/jobs/{jobId}/report', [JobSeekerController::class, 'reportJob'])->name('job.report');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/notifications', [JobSeekerController::class, 'getNotifications']);
+    Route::post('/notifications/{id}/read', [JobSeekerController::class, 'markAsRead']);
+});

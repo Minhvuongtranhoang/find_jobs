@@ -18,11 +18,12 @@
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="square-company-logo">
-                                        <img src="{{ filter_var($savedJob->job->company->logo, FILTER_VALIDATE_URL) ? $savedJob->job->company->logo : Storage::url($savedJob->job->company->logo) }}" alt="Company Logo" class="job-logo">
+                                        <img src="{{ filter_var($savedJob->job->company->logo, FILTER_VALIDATE_URL) ? $savedJob->job->company->logo : Storage::url($savedJob->job->company->logo) }}"
+                                            alt="Company Logo" class="job-logo">
                                     </div>
                                     <div>
                                         <a class="nav-link" href="{{ route('detail-job', $savedJob->job->id) }}">
-                                            <h6>{{ $savedJob->job->title }}</h6>
+                                            <h6 class="limited-text">{{ $savedJob->job->title }}</h6>
                                         </a>
                                         <p style="margin-left: 10px" class="text-muted mb-2">
                                             {{ $savedJob->job->company->name }}</p>

@@ -22,7 +22,7 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Enhanced Job Carousel */
+
 .job-carousel {
   padding: 40px 0;
   background: white;
@@ -63,7 +63,7 @@ body {
   object-fit: cover;
 }
 
-/* Custom Carousel Controls */
+
 .carousel-control-prev,
 .carousel-control-next {
   width: 50px;
@@ -89,7 +89,7 @@ body {
   height: 20px;
 }
 
-/* Modern Header Styles */
+
 .navbar {
   background: white;
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -124,6 +124,14 @@ body {
   color: var(--primary-color);
 }
 
+.limited-text {
+  display: block;
+  width: 250px; /* Đặt chiều rộng cố định cho thẻ <a> */
+  white-space: nowrap; /* Không cho phép xuống dòng */
+  overflow: hidden; /* Ẩn văn bản vượt quá chiều rộng */
+  text-overflow: ellipsis; /* Hiển thị ba chấm khi văn bản bị cắt */
+}
+
 .carousel-item {
   height: 300px;
   background: white;
@@ -135,7 +143,7 @@ body {
   text-align: center;
 }
 
-/* Enhanced Category Cards */
+
 .category-card {
   background: white;
   padding: 30px;
@@ -271,6 +279,94 @@ body {
 .favorite-icon:hover {
   color: red;
 }
+
+/* Wrapper chung */
+.notification-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Icon thông báo */
+.notification-icon {
+  position: relative;
+  margin-right: 30px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transform: translate(50%, -50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu thông báo */
+.notification-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: none; /* Ẩn menu mặc định */
+  z-index: 1000;
+}
+
+.notification-menu h4 {
+  margin: 0;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.notification-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-menu ul li {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.notification-menu ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.notification-menu ul li:hover {
+  background-color: #f9f9f9;
+}
+
+.job-detail-save {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.job-detail-save button {
+  font-size: 1.25rem;
+  padding: 10px 20px;
+}
+
 
 @media (max-width: 768px) {
   .hero-section {
