@@ -94,9 +94,6 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    
-
                     @auth
                         <!-- Hiển thị tên người dùng khi đã đăng nhập -->
                         <div class="dropdown">
@@ -403,99 +400,7 @@
         });
 
         //========================================================================
-        function toggleNotificationMenu() {
-            const menu = document.getElementById('notificationMenu');
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
-            }
-        }
-
-        // Đóng menu nếu click ra ngoài
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('notificationMenu');
-            const icon = document.querySelector('.notification-icon');
-            if (!menu.contains(event.target) && !icon.contains(event.target)) {
-                menu.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-    const notificationMenu = document.getElementById('notificationMenu');
-    const notificationBadge = document.getElementById('notificationBadge');
-    const notificationList = document.getElementById('notificationList');
-
-    // Mở/Đóng menu
-    function toggleNotificationMenu() {
-        if (notificationMenu.style.display === 'block') {
-            notificationMenu.style.display = 'none';
-        } else {
-            notificationMenu.style.display = 'block';
-            fetchNotifications();
-        }
-    }
-
-    // Đóng menu khi click ra ngoài
-    document.addEventListener('click', function (event) {
-        if (!notificationMenu.contains(event.target) && 
-            !document.querySelector('.notification-icon').contains(event.target)) {
-            notificationMenu.style.display = 'none';
-        }
-    });
-
-    // Lấy danh sách thông báo từ server
-    async function fetchNotifications() {
-        try {
-            const response = await fetch('/notifications');
-            const notifications = await response.json();
-
-            // Cập nhật danh sách thông báo
-            notificationList.innerHTML = '';
-            if (notifications.length > 0) {
-                notifications.forEach(notification => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = notification.title;
-
-                    // Đánh dấu là đã đọc khi click
-                    listItem.addEventListener('click', () => markAsRead(notification.id));
-
-                    notificationList.appendChild(listItem);
-                });
-
-                notificationBadge.textContent = notifications.filter(n => !n.is_read).length;
-            } else {
-                notificationList.innerHTML = '<li>Không có thông báo mới</li>';
-                notificationBadge.textContent = '0';
-            }
-        } catch (error) {
-            console.error('Lỗi khi lấy thông báo:', error);
-        }
-    }
-
-    // Đánh dấu thông báo là đã đọc
-    async function markAsRead(notificationId) {
-        try {
-            const response = await fetch(`/notifications/${notificationId}/read`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                }
-            });
-
-            if (response.ok) {
-                fetchNotifications(); // Refresh danh sách
-            }
-        } catch (error) {
-            console.error('Lỗi khi đánh dấu thông báo:', error);
-        }
-    }
-
-    // Gắn sự kiện vào icon
-    window.toggleNotificationMenu = toggleNotificationMenu;
-});
-
-        //========================================================================
+        //notification
         document.addEventListener('DOMContentLoaded', function () {
     const notificationMenu = document.getElementById('notificationMenu');
     const notificationBadge = document.getElementById('notificationBadge');
@@ -575,6 +480,67 @@
     window.toggleNotificationMenu = toggleNotificationMenu;
 });
 
+
+        //================================================
+        //reported
+        document.addEventListener("DOMContentLoaded", function() {
+            const reportForm = document.getElementById('reportForm');
+            const notification = document.getElementById('notification');
+
+            reportForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Ngăn form gửi yêu cầu mặc định
+
+                const formData = new FormData(reportForm);
+
+                try {
+                    const response = await fetch(reportForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                .getAttribute('content')
+                        }
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.status === 'reported') {
+                        showNotification("Báo cáo thành công! Cảm ơn bạn đã phản hồi.", "success");
+                        reportForm.reset();
+                        bootstrap.Modal.getInstance(document.getElementById('reportModal')).hide();
+                    } else {
+                        showNotification("Có lỗi xảy ra. Vui lòng thử lại.", "error");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    showNotification("Có lỗi xảy ra trong hệ thống.", "error");
+                }
+            });
+
+            function showNotification(message, type = 'success') {
+                const notificationMessage = document.getElementById('notification-message');
+
+                notificationMessage.textContent = message;
+
+                if (type === 'success') {
+                    notification.style.backgroundColor = '#4CAF50'; // Xanh lá
+                } else if (type === 'error') {
+                    notification.style.backgroundColor = '#f44336'; // Đỏ
+                } else if (type === 'info') {
+                    notification.style.backgroundColor = '#2196F3'; // Xanh dương
+                }
+
+                notification.style.display = 'block';
+
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 5000);
+            }
+
+            document.getElementById('notification-close').addEventListener('click', () => {
+                notification.style.display = 'none';
+            });
+        });
     </script>
     @stack('scripts')
 </body>
