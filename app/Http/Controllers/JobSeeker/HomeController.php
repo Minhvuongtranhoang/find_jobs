@@ -13,14 +13,19 @@ class HomeController extends Controller
 {
     public function index(Request $request)
 {
-    // Lấy danh sách các categories
     $categories = Category::all();
 
-    // Lấy các công việc nổi bật
-    $featuredJobs = Job::where('is_featured', 1)->get();
+    // Lấy các danh mục nổi bật
+    $highlightedCategories = Category::where('is_featured', true)
+        ->withCount('jobs')
+        ->take(4)
+        ->get();
 
-    // Lấy các categories được đánh dấu nổi bật
-    $highlightedCategories = Category::whereIn('id', [/* List IDs of featured categories */])->get();
+    // Lấy các công việc nổi bật
+    $featuredJobs = Job::where('is_featured', 1)
+        ->latest()
+        ->take(6)
+        ->get();
 
     // Lấy các công ty nổi bật
     $featuredCompanies = Company::where('is_featured', 1)->take(6)->get();
@@ -28,17 +33,37 @@ class HomeController extends Controller
     // Lấy các công việc gần đây
     $jobs = Job::latest()->take(6)->get();
 
+
     // Đọc danh sách địa phương từ file JSON
     $locations = json_decode(File::get(resource_path('provinces.json')), true);
 
-    // Tìm kiếm theo từ khóa (nếu có)
+    // Lấy từ khóa tìm kiếm (nếu có)
     $keyword = $request->input('keyword');
 
-    // Khởi tạo query để tìm công việc
-    // $query = Job::query();
+    // Lấy các công việc gần đây, phân trang
+    $jobs = Job::when($keyword, function ($query, $keyword) {
+            $query->where('title', 'LIKE', '%' . $keyword . '%');
+        })
+        ->latest()
+        ->paginate(6);
 
-    // Truyền tất cả dữ liệu vào view
-    return view('job-seeker.home', compact('categories', 'featuredJobs', 'highlightedCategories', 'featuredCompanies', 'jobs', 'locations'));
+    // Kiểm tra nếu là yêu cầu AJAX
+    if ($request->ajax()) {
+        return response()->json([
+            'jobs' => view('job-seeker.jobs', compact('jobs'))->render(),
+            'pagination' => view('job-seeker.pagination', compact('jobs'))->render()
+        ]);
+    }
+
+    // Truyền dữ liệu vào view
+    return view('job-seeker.home', compact(
+        'categories',
+        'highlightedCategories',
+        'featuredJobs',
+        'featuredCompanies',
+        'jobs',
+        'locations'
+    ));
 }
 
 
@@ -53,4 +78,13 @@ class HomeController extends Controller
     {
         return view('general.privacy-policy');
     }
+    public function showJobs($id)
+    {
+        $category = Category::findOrFail($id);
+        $jobs = $category->jobs()->with('company', 'location')->get();
+
+        return view('job-seeker.category-jobs', compact('category', 'jobs'));
+    }
+
+
 }

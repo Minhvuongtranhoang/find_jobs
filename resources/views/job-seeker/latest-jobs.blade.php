@@ -14,11 +14,12 @@
                             <div class="job-card">
                                 <div class="d-flex align-items-center">
                                     <div class="square-company-logo">
-                                        <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}" alt="Company Logo" class="job-logo">
+                                        <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}"
+                                            alt="Company Logo" class="job-logo">
                                     </div>
                                     <div>
                                         <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
-                                            <h6>{{ $job->title }}</h6>
+                                            <h6 class="limited-text">{{ $job->title }}</h6>
                                         </a>
                                         <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
                                         <div style="margin-left: 10px" class="text-muted mb-3">
@@ -33,14 +34,13 @@
                 </div>
 
                 <div class="d-flex flex-column align-items-center" style="margin-top: 30px">
-                  <div>
-                    {{ $jobs->links('pagination::bootstrap-4') }}
-                  </div>
-                  <div class="text-muted mt-2">
-                  Showing {{ $jobs->firstItem() }} to {{ $jobs->lastItem() }} of {{ $jobs->total() }} results
-                  </div>
+                    <div>
+                        {{ $jobs->links('pagination::bootstrap-4') }}
+                    </div>
+                    <div class="text-muted mt-2">
+                        Showing {{ $jobs->firstItem() }} to {{ $jobs->lastItem() }} of {{ $jobs->total() }} results
+                    </div>
                 </div>
-
             @endif
         </div>
     </section>

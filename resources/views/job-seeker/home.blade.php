@@ -58,7 +58,7 @@
     <div class="container">
         <h2 class="mb-4">Việc làm nổi bật</h2>
         <div class="job-carousel">
-            <div id="jobCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="jobCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                 <div class="carousel-inner">
                     @foreach($featuredJobs->chunk(3) as $chunkIndex => $jobChunk)
                         <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
@@ -81,7 +81,7 @@
                                             <i class="fas fa-dollar-sign text-primary me-2"></i>
                                             <span>{{ $job->salary }}</span>
                                         </div>
-                                        <button class="btn btn-primary w-100">Ứng tuyển ngay</button>
+                                        <a class="btn btn-primary w-100" href={{ route('detail-job', $job->id) }}>Chi tiết</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -104,67 +104,50 @@
 
 <!-- Popular Categories Section with Enhanced Design -->
 <section class="py-5 bg-light">
-  <div class="container">
-      <div class="row mb-4">
-          <div class="col-lg-6">
-              <h2 class="mb-0">Danh mục phổ biến</h2>
-          </div>
-          <div class="col-lg-6 text-lg-end">
-              <a href="#" class="btn btn-outline-primary">Xem tất cả danh mục</a>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-lg-3 col-md-6 mb-4">
-              <div class="category-card text-center">
-                  <div class="category-icon">
-                      <i class="fas fa-code"></i>
-                  </div>
-                  <h3 class="h5">Frontend Development</h3>
-                  <p class="text-muted">125 việc làm</p>
-                  <div class="mt-3">
-                      <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-              <div class="category-card text-center">
-                  <div class="category-icon">
-                      <i class="fas fa-database"></i>
-                  </div>
-                  <h3 class="h5">Backend Development</h3>
-                  <p class="text-muted">98 việc làm</p>
-                  <div class="mt-3">
-                      <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-              <div class="category-card text-center">
-                  <div class="category-icon">
-                      <i class="fas fa-mobile-alt"></i>
-                  </div>
-                  <h3 class="h5">Mobile Development</h3>
-                  <p class="text-muted">87 việc làm</p>
-                  <div class="mt-3">
-                      <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-              <div class="category-card text-center">
-                  <div class="category-icon">
-                      <i class="fas fa-cloud"></i>
-                  </div>
-                  <h3 class="h5">Cloud Computing</h3>
-                  <p class="text-muted">76 việc làm</p>
-                  <div class="mt-3">
-                      <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <h2 class="mb-0">Danh mục phổ biến</h2>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <a href="#" class="btn btn-outline-primary">Xem tất cả danh mục</a>
+            </div>
+        </div>
+        <div class="highlighted-categories mb-4">
+            <div class="row">
+                @foreach ($highlightedCategories as $category)
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="category-card text-center border p-3">
+                            <div class="category-icon mb-2">
+                                @php
+                                    // Tạo mảng các biểu tượng
+                                    $icons = [
+                                        'fas fa-briefcase', 
+                                        'fas fa-laptop-code', 
+                                        'fas fa-chart-line', 
+                                        'fas fa-users', 
+                                        'fas fa-cogs', 
+                                        'fas fa-bullhorn', 
+                                        'fas fa-handshake', 
+                                        'fas fa-heart'
+                                    ];
+                                    // Lấy một biểu tượng ngẫu nhiên từ mảng
+                                    $randomIcon = $icons[array_rand($icons)];
+                                @endphp
+                                <!-- Hiển thị biểu tượng ngẫu nhiên -->
+                                <i class="{{ $randomIcon }}" style="font-size: 2rem;"></i>
+                            </div>
+                            <h3 class="h5">{{ $category->name }}</h3>
+                            <p class="text-muted">{{ $category->jobs_count }} việc làm</p>
+                            <a href="{{ route('category-job', $category->id) }}" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>  
+    </div>
+  </section>
+  
 
 <!-- Featured Companies -->
 <section class="py-5">
@@ -174,7 +157,7 @@
             @foreach($featuredCompanies as $company)
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="company-card text-center">
-                        <a href="{{ $company->website }}" class="company-link">
+                        <a href="{{ route('companies.show', $company->id) }}" class="company-link">
                             <div class="company-logo">
                                 <img src="{{ filter_var($company->logo, FILTER_VALIDATE_URL) ? $company->logo : Storage::url($company->logo) }}"
                                      alt="Logo của {{ $company->name }}"
@@ -193,34 +176,15 @@
 <section class="py-5 bg-light">
     <div class="container">
         <h2 class="mb-4">Việc làm mới nhất</h2>
-        <div class="row">
-            @foreach($jobs as $job)
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="job-card">
-                    <div class="favorite-icon" data-id="{{ $job->id }}" onclick="toggleFavorite({{ $job->id }}, this)">
-                        <i class="fa {{ $job->isFavoritedByUser() ? 'fas' : 'far' }} fa-heart"></i>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="square-company-logo">
-                            <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}" alt="Company Logo" class="job-logo">
-                        </div>
-                        <div>
-                            <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
-                                <h6>{{ $job->title }}</h6>
-                            </a>
-                            <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
-                            <div style="margin-left: 10px" class="text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-1"></i>{{ $job->location->city }}
-                                <i class="fas fa-dollar-sign ms-2 me-1"></i>{{ $job->salary }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
+        <div class="row" id="job-list">
+            @include('job-seeker.jobs', ['jobs' => $jobs])
+        </div>
+        <div id="pagination-container">
+            @include('job-seeker.pagination', ['jobs' => $jobs])
         </div>
     </div>
 </section>
+
 
 
 <!-- Blog Section -->
