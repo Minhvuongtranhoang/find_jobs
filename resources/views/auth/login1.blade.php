@@ -91,7 +91,7 @@
     <div class="container">
         <div class="form-container">
             <div class="logo-container">
-                <h4 class="text-success mb-3">Chào mừng bạn đến với TopCV</h4>
+                <h4 class="text-success mb-3">Chào mừng bạn đến với Seek a Job</h4>
                 <p class="text-muted">Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lý tưởng</p>
             </div>
 

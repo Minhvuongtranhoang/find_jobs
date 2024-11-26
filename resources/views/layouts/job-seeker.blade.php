@@ -94,8 +94,8 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    
+
+
 
                     @auth
                         <!-- Hiển thị tên người dùng khi đã đăng nhập -->
@@ -134,15 +134,15 @@
     </div>
 
     <!-- Enhanced Footer -->
-    <footer class="bg-dark text-light py-5">
+    <footer class="text-light py-5" style="background-color: #666666">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h5 class="mb-4">Về Seek a Job</h5>
-                    <p>Nền tảng tuyển dụng IT hàng đầu Việt Nam, kết nối ứng viên với các cơ hội việc làm tốt nhất từ
+                    <p>Nền tảng tuyển dụng việc làm hàng đầu Việt Nam, kết nối ứng viên với các cơ hội việc làm tốt nhất từ
                         những công ty công nghệ hàng đầu.</p>
                     <div class="mt-4">
-                        <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/minhh.vuongg.967" class="btn btn-outline-light me-2"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="btn btn-outline-light"><i class="fab fa-instagram"></i></a>
@@ -178,8 +178,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">Liên hệ</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Tòa nhà Innovation, Khu Công nghệ
-                            cao, Hà Nội</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Trường ĐH CNTT&TT Việt-Hàn, Làng Đại học Đà Nẵng</li>
                         <li class="mb-2"><i class="fas fa-phone me-2"></i>(+84) 123-456-789</li>
                         <li class="mb-2"><i class="fas fa-envelope me-2"></i>seekajob2024@gmail.com</li>
                     </ul>
@@ -438,7 +437,7 @@
 
     // Đóng menu khi click ra ngoài
     document.addEventListener('click', function (event) {
-        if (!notificationMenu.contains(event.target) && 
+        if (!notificationMenu.contains(event.target) &&
             !document.querySelector('.notification-icon').contains(event.target)) {
             notificationMenu.style.display = 'none';
         }
@@ -513,7 +512,7 @@
 
     // Đóng menu khi click ra ngoài
     document.addEventListener('click', function (event) {
-        if (!notificationMenu.contains(event.target) && 
+        if (!notificationMenu.contains(event.target) &&
             !document.querySelector('.notification-icon').contains(event.target)) {
             notificationMenu.style.display = 'none';
         }
@@ -534,7 +533,7 @@
                     title.textContent = notification.title; // Title in đậm
                     const content = document.createElement('p');
                     content.textContent = notification.content; // Content dưới title
-                    
+
                     // Đánh dấu là đã đọc khi click
                     listItem.addEventListener('click', () => markAsRead(notification.id));
 
