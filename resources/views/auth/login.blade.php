@@ -1,77 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="vi">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Đăng ký tài khoản</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/job-seeker.css') }}" rel="stylesheet">
-  </head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="logo-container">
+                <h4 class="text-success mb-3">Chào mừng bạn đã quay trở lại</h4>
+                <p class="text-muted">Hãy cùng đồng hành với chúng tôi để nhận được các cơ hội việc làm lý tưởng bạn nhé!</p>
+            </div>
 
-  <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h2 class="mb-0">Đăng Nhập</h2>
-                    </div>
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
 
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="form-group mb-3">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="password">Mật khẩu</label>
-                                <input type="password" id="password" name="password" class="form-control" required>
-                            </div>
-
-                            <div class="form-group form-check mb-3">
-                                <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                                <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
-                            </div>
-
-                            <div class="mt-3 text-center">
-                                <p>
-                                    <a href="{{ route('password.request') }}">Quên mật khẩu?</a>
-                                </p>
-                                <p>
-                                    Chưa có tài khoản?
-                                    <a href="{{ route('register.job-seeker') }}">Đăng ký Người tìm việc</a> |
-                                    <a href="{{ route('register.recruiter') }}">Đăng ký Nhà tuyển dụng</a>
-                                </p>
-                            </div>
-                        </form>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-envelope text-muted"></i></span>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Nhập email" value="{{ old('email') }}" required autofocus>
                     </div>
                 </div>
-            </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-lock text-muted"></i></span>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                        <span class="input-group-text bg-white"><i class="fas fa-eye text-muted"></i></span>
+                    </div>
+                </div>
+
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">
+                            Ghi nhớ đăng nhập
+                        </label>
+                    </div>
+                    <div>
+                      <a href="{{ route('password.request') }}" class="text-success text-decoration-none">Quên mật khẩu?</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mb-3">Đăng nhập</button>
+
+                <div class="text-center mb-3">
+                    <span>Hoặc đăng nhập bằng</span>
+                </div>
+
+                <div class="d-flex social-buttons">
+                    <button type="button" class="btn btn-google">
+                        <i class="fab fa-google me-2"></i>Google
+                    </button>
+                    <button type="button" class="btn btn-facebook">
+                        <i class="fab fa-facebook-f me-2"></i>Facebook
+                    </button>
+                    <button type="button" class="btn btn-linkedin">
+                        <i class="fab fa-linkedin-in me-2"></i>LinkedIn
+                    </button>
+                </div>
+
+                <div class="text-center mt-4">
+                    <p class="mb-0">Bạn đã chưa có tài khoản? <a href="{{ route('register.job-seeker') }}" class="text-success">Đăng ký Người tìm việc</a> | <a href="{{ route('register.recruiter') }}" class="text-success">Đăng ký Nhà tuyển dụng</a></p>
+                    <p class="mt-3 mb-0">Bạn gặp khó khăn khi đăng nhập?</p>
+                    <p class="text-muted">Vui lòng gọi tới số <strong>(0966) 069 848</strong> (giờ hành chính)</p>
+                </div>
+            </form>
         </div>
     </div>
-  </body>
-  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -17,7 +17,7 @@ class ProfileController extends Controller
 {
     $request->validate([
         'full_name' => 'required',
-        'avatar' => 'nullable|image|max:1024'
+        'avatar' => 'nullable|image|max:2048'
     ]);
 
     $jobSeeker = auth()->guard()->user()->jobSeeker;

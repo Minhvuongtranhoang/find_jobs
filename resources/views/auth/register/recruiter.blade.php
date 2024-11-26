@@ -1,57 +1,88 @@
-{{-- @extends('layouts.app') --}}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Nhà Tuyển Dụng</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="logo-container">
+                <h4 class="text-success mb-3">Đăng Ký Nhà Tuyển Dụng</h4>
+            </div>
 
-@section('content')
-<div class="container">
-    <h2>Đăng Ký Nhà Tuyển Dụng</h2>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+            <form method="POST" action="{{ route('register.recruiter') }}">
+                @csrf
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-envelope text-muted"></i></span>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-lock text-muted"></i></span>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Mật khẩu" required>
+                        <span class="input-group-text bg-white"><i class="fas fa-eye text-muted"></i></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-lock text-muted"></i></span>
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Xác nhận mật khẩu" required>
+                        <span class="input-group-text bg-white"><i class="fas fa-eye text-muted"></i></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-phone text-muted"></i></span>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="Số điện thoại" value="{{ old('phone') }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-building text-muted"></i></span>
+                        <input type="text" id="company_name" name="company_name" class="form-control" placeholder="Tên công ty" value="{{ old('company_name') }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-muted"></i></span>
+                        <textarea id="company_address" name="company_address" class="form-control" placeholder="Địa chỉ công ty (chỉ điền tên Thành phố)" required>{{ old('company_address') }}</textarea>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-map text-muted"></i></span>
+                        <input type="text" id="google_maps_link" name="google_maps_link" class="form-control" placeholder="Link Google Maps (không bắt buộc)" value="{{ old('google_maps_link') }}">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mb-3">Đăng ký</button>
+            </form>
+        </div>
     </div>
-    @endif
 
-    <form method="POST" action="{{ route('register.recruiter') }}">
-        @csrf
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Mật khẩu</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-            <label for="password_confirmation">Xác nhận mật khẩu</label>
-            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Số điện thoại</label>
-            <input type="tel" id="phone" name="phone" class="form-control" value="{{ old('phone') }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="company_name">Tên công ty</label>
-            <input type="text" id="company_name" name="company_name" class="form-control" value="{{ old('company_name') }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="company_address">Địa chỉ công ty</label>
-            <textarea id="company_address" name="company_address" class="form-control" required>{{ old('company_address') }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="google_maps_link">Link Google Maps (không bắt buộc)</label>
-            <input type="text" id="google_maps_link" name="google_maps_link" class="form-control" value="{{ old('google_maps_link') }}">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Đăng ký</button>
-    </form>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

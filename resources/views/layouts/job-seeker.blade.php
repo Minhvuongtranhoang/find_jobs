@@ -94,6 +94,9 @@
                             </ul>
                         </div>
                     </div>
+                    
+                    
+
                     @auth
                         <!-- Hiển thị tên người dùng khi đã đăng nhập -->
                         <div class="dropdown">
@@ -131,15 +134,15 @@
     </div>
 
     <!-- Enhanced Footer -->
-    <footer class="bg-dark text-light py-5">
+    <footer class="text-light py-5" style="background-color: #666666">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h5 class="mb-4">Về Seek a Job</h5>
-                    <p>Nền tảng tuyển dụng IT hàng đầu Việt Nam, kết nối ứng viên với các cơ hội việc làm tốt nhất từ
+                    <p>Nền tảng tuyển dụng việc làm hàng đầu Việt Nam, kết nối ứng viên với các cơ hội việc làm tốt nhất từ
                         những công ty công nghệ hàng đầu.</p>
                     <div class="mt-4">
-                        <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/minhh.vuongg.967" class="btn btn-outline-light me-2"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="btn btn-outline-light"><i class="fab fa-instagram"></i></a>
@@ -175,8 +178,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">Liên hệ</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Tòa nhà Innovation, Khu Công nghệ
-                            cao, Hà Nội</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Trường ĐH CNTT&TT Việt-Hàn, Làng Đại học Đà Nẵng</li>
                         <li class="mb-2"><i class="fas fa-phone me-2"></i>(+84) 123-456-789</li>
                         <li class="mb-2"><i class="fas fa-envelope me-2"></i>seekajob2024@gmail.com</li>
                     </ul>
@@ -400,7 +402,24 @@
         });
 
         //========================================================================
-        //notification
+        function toggleNotificationMenu() {
+            const menu = document.getElementById('notificationMenu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        // Đóng menu nếu click ra ngoài
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('notificationMenu');
+            const icon = document.querySelector('.notification-icon');
+            if (!menu.contains(event.target) && !icon.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
     const notificationMenu = document.getElementById('notificationMenu');
     const notificationBadge = document.getElementById('notificationBadge');
@@ -435,11 +454,86 @@
             if (notifications.length > 0) {
                 notifications.forEach(notification => {
                     const listItem = document.createElement('li');
+                    listItem.textContent = notification.title;
+
+                    // Đánh dấu là đã đọc khi click
+                    listItem.addEventListener('click', () => markAsRead(notification.id));
+
+                    notificationList.appendChild(listItem);
+                });
+
+                notificationBadge.textContent = notifications.filter(n => !n.is_read).length;
+            } else {
+                notificationList.innerHTML = '<li>Không có thông báo mới</li>';
+                notificationBadge.textContent = '0';
+            }
+        } catch (error) {
+            console.error('Lỗi khi lấy thông báo:', error);
+        }
+    }
+
+    // Đánh dấu thông báo là đã đọc
+    async function markAsRead(notificationId) {
+        try {
+            const response = await fetch(`/notifications/${notificationId}/read`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+
+            if (response.ok) {
+                fetchNotifications(); // Refresh danh sách
+            }
+        } catch (error) {
+            console.error('Lỗi khi đánh dấu thông báo:', error);
+        }
+    }
+
+    // Gắn sự kiện vào icon
+    window.toggleNotificationMenu = toggleNotificationMenu;
+});
+
+        //========================================================================
+        document.addEventListener('DOMContentLoaded', function () {
+    const notificationMenu = document.getElementById('notificationMenu');
+    const notificationBadge = document.getElementById('notificationBadge');
+    const notificationList = document.getElementById('notificationList');
+
+    // Mở/Đóng menu
+    function toggleNotificationMenu() {
+        if (notificationMenu.style.display === 'block') {
+            notificationMenu.style.display = 'none';
+        } else {
+            notificationMenu.style.display = 'block';
+            fetchNotifications();
+        }
+    }
+
+    // Đóng menu khi click ra ngoài
+    document.addEventListener('click', function (event) {
+        if (!notificationMenu.contains(event.target) &&
+            !document.querySelector('.notification-icon').contains(event.target)) {
+            notificationMenu.style.display = 'none';
+        }
+    });
+
+    // Lấy danh sách thông báo từ server
+    async function fetchNotifications() {
+        try {
+            const response = await fetch('/notifications');
+            const notifications = await response.json();
+
+            // Cập nhật danh sách thông báo
+            notificationList.innerHTML = '';
+            if (notifications.length > 0) {
+                notifications.forEach(notification => {
+                    const listItem = document.createElement('li');
                     const title = document.createElement('strong');
                     title.textContent = notification.title; // Title in đậm
                     const content = document.createElement('p');
                     content.textContent = notification.content; // Content dưới title
-                    
+
                     // Đánh dấu là đã đọc khi click
                     listItem.addEventListener('click', () => markAsRead(notification.id));
 

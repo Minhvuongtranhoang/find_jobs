@@ -2,12 +2,12 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
+<section class="hero-section" style="background: linear-gradient(135deg, #3C6E71 0%, #75ABBC 100%);">
+    <div class="container" >
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-4">Khám phá cơ hội nghề nghiệp</h1>
-                <p class="lead mb-5">Tìm việc làm IT phù hợp với bạn</p>
+                <h1 class="display-4 fw-bold mb-4" style="color: #ffffff">Khám phá cơ hội nghề nghiệp hấp dẫn</h1>
+                <p class="lead mb-5"style="color: #ffffff">Tìm việc làm phù hợp với sở trường của bạn</p>
 
                 <!-- Search Form -->
                 <form action="{{ route('search.jobs') }}" method="GET">
@@ -44,17 +44,16 @@
                         </div>
                     </div>
                 </form>
+            </div>
 
-            </div>
             <div class="col-lg-6">
-                <img src="https://www.ryrob.com/wp-content/uploads/2022/04/How-to-Name-a-Blog-45-Blog-Name-Ideas-and-Examples-to-Learn-From.jpg" alt="Hero Image" class="img-fluid rounded-3 shadow">
-            </div>
+                <img src="https://png.pngtree.com/png-clipart/20240111/original/pngtree-recruiter-looking-for-candidates-with-resume-in-hand-png-image_14082883.png" alt="Hero Image" class="img-fluid">
         </div>
     </div>
 </section>
 
 <!-- Modern Job Carousel -->
-<section class="py-5">
+<section class="py-5" style="background: #ffffff">
     <div class="container">
         <h2 class="mb-4">Việc làm nổi bật</h2>
         <div class="job-carousel">
@@ -109,9 +108,6 @@
             <div class="col-lg-6">
                 <h2 class="mb-0">Danh mục phổ biến</h2>
             </div>
-            <div class="col-lg-6 text-lg-end">
-                <a href="#" class="btn btn-outline-primary">Xem tất cả danh mục</a>
-            </div>
         </div>
         <div class="highlighted-categories mb-4">
             <div class="row">
@@ -122,13 +118,13 @@
                                 @php
                                     // Tạo mảng các biểu tượng
                                     $icons = [
-                                        'fas fa-briefcase', 
-                                        'fas fa-laptop-code', 
-                                        'fas fa-chart-line', 
-                                        'fas fa-users', 
-                                        'fas fa-cogs', 
-                                        'fas fa-bullhorn', 
-                                        'fas fa-handshake', 
+                                        'fas fa-briefcase',
+                                        'fas fa-laptop-code',
+                                        'fas fa-chart-line',
+                                        'fas fa-users',
+                                        'fas fa-cogs',
+                                        'fas fa-bullhorn',
+                                        'fas fa-handshake',
                                         'fas fa-heart'
                                     ];
                                     // Lấy một biểu tượng ngẫu nhiên từ mảng
@@ -144,10 +140,10 @@
                     </div>
                 @endforeach
             </div>
-        </div>  
+        </div>
     </div>
   </section>
-  
+
 
 <!-- Featured Companies -->
 <section class="py-5">
@@ -173,7 +169,7 @@
 
 
 <!-- Latest Jobs -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" style="background: linear-gradient(135deg, #ffffff 0%, #fdfdfd 100%);">
     <div class="container">
         <h2 class="mb-4">Việc làm mới nhất</h2>
         <div class="row" id="job-list">
@@ -185,6 +181,38 @@
     </div>
 </section>
 
+
+<!-- Why Choose Us Section -->
+<section style="padding: 4rem 1rem; background-color: var(--neutral-bg);">
+  <div class="container">
+      <div class="section-title" style="text-align: center">
+          <h3>Tại sao chọn <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight">Job</span></a></h3>
+          <p>Nền tảng tuyển dụng hàng đầu tại Việt Nam</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div class="category-card">
+              <i class="fas fa-search category-icon"></i>
+              <h3>Tìm kiếm thông minh</h3>
+              <p>Công nghệ AI giúp kết nối ứng viên với công việc phù hợp nhất</p>
+          </div>
+          <div class="category-card">
+              <i class="fas fa-shield-alt category-icon"></i>
+              <h3>Uy tín & Bảo mật</h3>
+              <p>Thông tin ứng viên được bảo mật tuyệt đối</p>
+          </div>
+          <div class="category-card">
+              <i class="fas fa-bolt category-icon"></i>
+              <h3>Cập nhật realtime</h3>
+              <p>Việc làm mới nhất từ các doanh nghiệp hàng đầu</p>
+          </div>
+          <div class="category-card">
+              <i class="fas fa-headset category-icon"></i>
+              <h3>Hỗ trợ 24/7</h3>
+              <p>Đội ngũ tư vấn chuyên nghiệp luôn sẵn sàng hỗ trợ</p>
+          </div>
+      </div>
+  </div>
+</section>
 
 
 <!-- Blog Section -->
@@ -242,7 +270,7 @@
 </section>
 
 <!-- Newsletter Section -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
@@ -256,5 +284,25 @@
     </div>
 </div>
 </section>
+
+<script>
+  // Add scroll animation for cards
+  const cards = document.querySelectorAll('.category-card, .job-card');
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = 1;
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      });
+
+      cards.forEach(card => {
+          card.style.opacity = 0;
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'all 0.5s ease-out';
+          observer.observe(card);
+      });
+</script>
 
 @endSection

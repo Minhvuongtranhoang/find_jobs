@@ -62,30 +62,30 @@ class UserController extends Controller
     }
 
     public function banned(Request $request, $id)
-{
-    $request->validate([
-        'note' => 'required|string|max:255',
-    ]);
+    {
+        $request->validate([
+            'note' => 'required|string|max:255',
+        ]);
 
-    $user = User::findOrFail($id);
-    $user->is_banned = true;
-    $user->banned_at = now();
-    $user->banned_reason = $request->note;
-    $user->save();
+        $user = User::findOrFail($id);
+        $user->is_banned = true;
+        $user->banned_at = now();
+        $user->banned_reason = $request->note;
+        $user->save();
 
-    return redirect()->route('admin.users.index')->with('success', 'User banned successfully.');
-}
+        return redirect()->route('admin.users.index')->with('success', 'User banned successfully.');
+    }
 
-public function unbanned($id)
-{
-    $user = User::findOrFail($id);
-    $user->is_banned = false;
-    $user->banned_at = null;
-    $user->banned_reason = null;
-    $user->save();
+    public function unbanned($id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_banned = false;
+        $user->banned_at = null;
+        $user->banned_reason = null;
+        $user->save();
 
-    return redirect()->route('admin.users.index')->with('success', 'User unbanned successfully.');
-}
+        return redirect()->route('admin.users.index')->with('success', 'User unbanned successfully.');
+    }
 
     public function recruiters()
     {

@@ -72,8 +72,11 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UserController::class);
-        Route::put('users/{id}/banned', [UserController::class, 'banned'])->name('users.banned');
-        Route::put('users/{id}/unbanned', [UserController::class, 'unbanned'])->name('users.unbanned');
+        Route::get('users/recruiters', [UserController::class, 'recruiters'])->name('users.recruiters');
+        Route::get('users/job-seekers', [UserController::class, 'job_Seekers'])->name('users.jobseekers');
+        // Route::put('users/{user}/banned', [UserController::class, 'banned'])->name('users.banned');
+        // Route::put('users/{user}/unbanned', [UserController::class, 'unbanned'])->name('users.unbanned');
+
         // Job management routes
         Route::get('/jobs', [AdminJobController::class, 'index'])->name('jobs.index');
         Route::get('/jobs/pending', [AdminJobController::class, 'pending'])->name('jobs.pending');

@@ -39,7 +39,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     @if($application->user->jobSeeker->avatar)
-                                      <img src="{{ Storage::url($application->user->jobSeeker->avatar)}}" class="rounded-circle me-2" style="height: 40px" width="40px" alt="Avatar">
+                                      <img src="{{ filter_var($application->user->jobSeeker->avatar, FILTER_VALIDATE_URL) ? $application->user->jobSeeker->avatar : asset('storage/' . $application->user->jobSeeker->avatar)}}" class="rounded-circle me-2" style="height: 40px" width="40px" alt="Avatar">
                                     @endif
                                     <div>
                                       <h6 class="mb-0">

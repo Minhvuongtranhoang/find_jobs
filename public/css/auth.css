@@ -1,0 +1,78 @@
+body {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.form-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem auto;
+}
+.form-control {
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #dee2e6;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem #3C6E71(40, 167, 69, 0.25);
+  border-color: #3C6E71;
+}
+.btn-success {
+  background-color: #3C6E71;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.btn-success:hover {
+  background-color: #356063;
+}
+.social-buttons .btn {
+  flex: 1;
+  padding: 0.8rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.btn-google {
+  background-color: #ea4335;
+  color: white;
+}
+.btn-facebook {
+  background-color: #1877f2;
+  color: white;
+}
+.btn-linkedin {
+  background-color: #0a66c2;
+  color: white;
+}
+.form-check-input:checked {
+  background-color: #3C6E71;
+  border-color: #3C6E71;
+}
+.logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #dee2e6;
+}
+.divider span {
+  padding: 0 1rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}

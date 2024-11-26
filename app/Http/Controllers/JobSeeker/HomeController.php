@@ -28,9 +28,11 @@ class HomeController extends Controller
         ->get();
 
     // Lấy các công ty nổi bật
-    $featuredCompanies = Company::where('is_featured', 1)
-        ->take(6)
-        ->get();
+    $featuredCompanies = Company::where('is_featured', 1)->take(6)->get();
+
+    // Lấy các công việc gần đây
+    $jobs = Job::latest()->take(6)->get();
+
 
     // Đọc danh sách địa phương từ file JSON
     $locations = json_decode(File::get(resource_path('provinces.json')), true);
@@ -64,7 +66,7 @@ class HomeController extends Controller
     ));
 }
 
-    
+
     // Hiển thị trang Điều khoản sử dụng
     public function termsOfService()
     {
@@ -80,9 +82,9 @@ class HomeController extends Controller
     {
         $category = Category::findOrFail($id);
         $jobs = $category->jobs()->with('company', 'location')->get();
-    
+
         return view('job-seeker.category-jobs', compact('category', 'jobs'));
     }
-    
+
 
 }
