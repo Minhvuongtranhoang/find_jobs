@@ -207,10 +207,11 @@ class JobSeekerController extends Controller
         return response()->json(['status' => 'reported']);
     }
 
-    // Lấy danh sách thông báo của người dùng hiện tại
     public function getNotifications(Request $request)
     {
-        $notifications = Notification::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
+        $notifications = Notification::where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return response()->json($notifications);
     }
@@ -218,10 +219,27 @@ class JobSeekerController extends Controller
     // Đánh dấu thông báo đã đọc
     public function markAsRead($id)
     {
-        $notification = Notification::where('id', $id)->where('user_id', auth()->id())->first();
+        $notification = Notification::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->first();
 
         if ($notification) {
             $notification->update(['is_read' => true]);
+            return response()->json(['status' => 'success']);
+        }
+
+        return response()->json(['status' => 'error'], 404);
+    }
+
+    // Xóa thông báo
+    public function deleteNotification($id)
+    {
+        $notification = Notification::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->first();
+
+        if ($notification) {
+            $notification->delete();
             return response()->json(['status' => 'success']);
         }
 

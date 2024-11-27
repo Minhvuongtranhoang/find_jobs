@@ -122,7 +122,7 @@
                                 @endif
                             @endforeach
                         </p>
-                        <p class="mb-2"><strong>Hạn nộp hồ sơ:</strong> {{ $job->deadline }}</p>
+                        <p class="mb-2"><strong>Hạn nộp hồ sơ:</strong> {{ $job->deadline->format('h:m, d/m/Y') }}</p>
                         <p class="mb-2"><strong>Mức lương:</strong> {{ $job->salary }}</p>
                     </div>
                 </div>

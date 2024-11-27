@@ -43,11 +43,40 @@
 
                 <div class="mb-3">
                     <div class="input-group">
-                        <span class="input-group-text bg-white"><i class="fas fa-lock text-muted"></i></span>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Nhập mật khẩu" required>
-                        <span class="input-group-text bg-white"><i class="fas fa-eye text-muted"></i></span>
+                        <span class="input-group-text bg-white">
+                            <i class="fas fa-lock text-muted"></i>
+                        </span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-control" 
+                            placeholder="Nhập mật khẩu" 
+                            required>
+                        <span 
+                            class="input-group-text bg-white toggle-password" 
+                            onclick="togglePassword()">
+                            <i class="fas fa-eye text-muted" id="password-icon"></i>
+                        </span>
                     </div>
                 </div>
+                
+                <script>
+                    function togglePassword() {
+                        const passwordInput = document.getElementById('password');
+                        const passwordIcon = document.getElementById('password-icon');
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            passwordIcon.classList.remove('fa-eye');
+                            passwordIcon.classList.add('fa-eye-slash');
+                        } else {
+                            passwordInput.type = 'password';
+                            passwordIcon.classList.remove('fa-eye-slash');
+                            passwordIcon.classList.add('fa-eye');
+                        }
+                    }
+                </script>
+                
 
                 <div class="mb-3 d-flex justify-content-between align-items-center">
                     <div class="form-check">

@@ -90,34 +90,18 @@
                         <div class="notification-menu" id="notificationMenu">
                             <h4>Thông báo</h4>
                             <ul id="notificationList">
-                                <!-- Ví dụ một thông báo -->
-                                <li>
-                                    <div class="notification-content">
-                                        <strong>Title thông báo</strong>
-                                        <span class="delete-icon" onclick="deleteNotification(notificationId)">
-                                            <i class="fa fa-trash"></i>
-                                        </span>
-                                    </div>
-                                    <p>Content thông báo</p>
-                                </li>
-                                <!-- Thông báo mặc định -->
-                                <li>
-                                    <div class="notification-content">
-                                        <strong>Không có thông báo mới</strong>
-                                    </div>
-                                </li>
+                                <li>Không có thông báo mới</li>
                             </ul>
                         </div>
                     </div>
-
                     @auth
                         <!-- Hiển thị tên người dùng khi đã đăng nhập -->
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <button class="btn dropdown-toggle" type="button" id="userMenu"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 @if (Auth::user()->JobSeeker && Auth::user()->JobSeeker->avatar)
-                                    <img src="{{ asset(Auth::user()->JobSeeker->avatar) }}" alt="Avatar"
-                                        class="rounded-circle" width="30" height="30">
+                                <img src="{{ asset(Auth::user()->JobSeeker->avatar) }}" alt="Avatar" class="rounded-circle"
+                                        width="30" height="30">
                                 @else
                                     Người dùng
                                 @endif
@@ -356,7 +340,7 @@
             $('#cover_letter').val(coverLetterContent); // Truyền nội dung vào textarea ẩn
         });
         //============================================================
-        //Apply
+
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById('applyForm');
             const notification = document.getElementById('notification');
@@ -431,9 +415,8 @@
 
 
 
-
+        
         //========================================================================
-        //notification
         document.addEventListener('DOMContentLoaded', function() {
             const notificationMenu = document.getElementById('notificationMenu');
             const notificationBadge = document.getElementById('notificationBadge');
@@ -469,23 +452,15 @@
                         notifications.forEach(notification => {
                             const listItem = document.createElement('li');
                             const title = document.createElement('strong');
-                            title.textContent = notification.title;
-
+                            title.textContent = notification.title; // Title in đậm
                             const content = document.createElement('p');
-                            content.textContent = notification.content;
+                            content.textContent = notification.content; // Content dưới title
 
-                            // Icon xóa
-                            const deleteIcon = document.createElement('span');
-                            deleteIcon.className = 'delete-icon';
-                            deleteIcon.innerHTML = '<i class="fa fa-trash"></i>';
-                            deleteIcon.onclick = () => deleteNotification(notification.id);
-
-                            // Đánh dấu đã đọc khi click vào thông báo
-                            listItem.onclick = () => markAsRead(notification.id);
+                            // Đánh dấu là đã đọc khi click
+                            listItem.addEventListener('click', () => markAsRead(notification.id));
 
                             listItem.appendChild(title);
                             listItem.appendChild(content);
-                            listItem.appendChild(deleteIcon);
                             notificationList.appendChild(listItem);
                         });
 
@@ -499,50 +474,28 @@
                 }
             }
 
-            // Đánh dấu thông báo đã đọc
+            // Đánh dấu thông báo là đã đọc
             async function markAsRead(notificationId) {
                 try {
                     const response = await fetch(`/notifications/${notificationId}/read`, {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                .getAttribute('content'),
-                        },
+                                .getAttribute('content')
+                        }
                     });
 
                     if (response.ok) {
-                        fetchNotifications(); // Làm mới danh sách
+                        fetchNotifications(); // Refresh danh sách
                     }
                 } catch (error) {
-                    console.error('Lỗi khi đánh dấu đã đọc:', error);
-                }
-            }
-
-            // Xóa thông báo
-            async function deleteNotification(notificationId) {
-                try {
-                    const response = await fetch(`/notifications/${notificationId}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                .getAttribute('content'),
-                        },
-                    });
-
-                    if (response.ok) {
-                        fetchNotifications(); // Làm mới danh sách
-                    } else {
-                        console.error('Lỗi khi xóa thông báo:', await response.text());
-                    }
-                } catch (error) {
-                    console.error('Lỗi khi xóa thông báo:', error);
+                    console.error('Lỗi khi đánh dấu thông báo:', error);
                 }
             }
 
             // Gắn sự kiện vào icon
             window.toggleNotificationMenu = toggleNotificationMenu;
         });
-
 
 
         //================================================

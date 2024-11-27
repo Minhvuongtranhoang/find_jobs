@@ -280,16 +280,13 @@ body {
   color: red;
 }
 
-/* Wrapper chung */
 .notification-wrapper {
   position: relative;
   display: inline-block;
 }
 
-/* Icon thông báo */
 .notification-icon {
   position: relative;
-  margin-right: 30px;
   font-size: 24px;
   color: #333;
   cursor: pointer;
@@ -313,7 +310,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Menu thông báo */
 .notification-menu {
   position: absolute;
   top: 40px;
@@ -323,7 +319,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
-  display: none; /* Ẩn menu mặc định */
+  display: none;
   z-index: 1000;
 }
 
@@ -343,19 +339,31 @@ body {
 }
 
 .notification-menu ul li {
+  position: relative;
   padding: 10px;
   border-bottom: 1px solid #f0f0f0;
   font-size: 14px;
 }
 
-.notification-menu ul li a {
-  text-decoration: none;
-  color: #007bff;
+.notification-menu ul li strong {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.notification-menu ul li:hover {
-  background-color: #f9f9f9;
+.notification-menu ul li .delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ff4d4f;
+  cursor: pointer;
+  display: none;
 }
+
+.notification-menu ul li:hover .delete-icon {
+  display: inline;
+}
+
 
 .job-detail-save {
   text-align: center;

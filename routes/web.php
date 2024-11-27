@@ -110,6 +110,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('job-seeker.profile.update');
 });
 Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
+Route::get('/companies/fetch', [CompanyController::class, 'fetchCompanies']);
 Route::get('/about', function () {
     return view('general.seekajob-company');
 })->name('about');
@@ -130,7 +131,8 @@ Route::get('/applications', [JobSeekerController::class, 'getMyApplications'])->
 Route::get('/categories/{id}/jobs', [HomeController::class, 'showJobs'])->name('category-job');
 Route::get('/companies/{id}', [JobSeekerController::class, 'showCompany'])->name('companies.show');
 Route::post('/jobs/{jobId}/report', [JobSeekerController::class, 'reportJob'])->name('job.report');
-Route::middleware(['auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/notifications', [JobSeekerController::class, 'getNotifications']);
     Route::post('/notifications/{id}/read', [JobSeekerController::class, 'markAsRead']);
+    Route::delete('/notifications/{id}', [JobSeekerController::class, 'deleteNotification']); 
 });

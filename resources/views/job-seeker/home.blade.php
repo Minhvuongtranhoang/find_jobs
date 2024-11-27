@@ -285,7 +285,7 @@
 </div>
 </section>
 
-<script>
+{{-- <script>
   // Add scroll animation for cards
   const cards = document.querySelectorAll('.category-card, .job-card');
       const observer = new IntersectionObserver(entries => {
@@ -303,6 +303,6 @@
           card.style.transition = 'all 0.5s ease-out';
           observer.observe(card);
       });
-</script>
+</script> --}}
 
 @endSection

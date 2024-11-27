@@ -8,6 +8,7 @@ use App\Models\CompanyLocation;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CompanyUpdateRequest;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
@@ -48,12 +49,45 @@ class CompanyController extends Controller
             ->with('success', 'Company information updated successfully.');
     }
     public function index()
-    {
-        // Lấy danh sách công ty
-        $companies = Company::orderBy('created_at', 'desc')->paginate(10);
+{
+    // Lấy danh sách các ngành (industry) duy nhất
+    $industries = Company::distinct()
+        ->whereNotNull('industry')
+        ->pluck('industry');
 
-        return view('job-seeker.list-company', compact('companies'));
+    // Lấy danh sách tất cả các công ty (mặc định hiển thị tất cả)
+    $companies = Company::paginate(12);
+
+    return view('job-seeker.list-company', compact('industries', 'companies'));
+}
+
+public function fetchCompanies(Request $request)
+{
+    $industry = $request->input('industry');
+
+    $query = Company::query();
+
+    if ($industry === 'featured') {
+        // Lọc công ty nổi bật
+        $query->where('is_featured', 1);
+    } elseif ($industry && $industry !== 'all') {
+        // Lọc theo ngành
+        $query->where('industry', $industry);
     }
+
+    // Phân trang công ty
+    $companies = $query->paginate(12);
+
+    // Render HTML của danh sách công ty
+    $html = view('job-seeker.companies.company', compact('companies'))->render();
+    $pagination = $companies->links()->render();  // Lấy các link phân trang
+
+    return response()->json(['html' => $html, 'pagination' => $pagination]);
+}
+
+
+
+
     public function topCompanies()
     {
         // Lấy danh sách công ty hàng đầu dựa trên số lượng nhân viên, sắp xếp giảm dần
