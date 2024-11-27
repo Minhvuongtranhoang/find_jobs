@@ -64,13 +64,43 @@
                     </div>
                 </div>
 
+                <!-- Address fields -->
                 <div class="mb-3">
                     <div class="input-group">
-                        <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-muted"></i></span>
-                        <textarea id="company_address" name="company_address" class="form-control" placeholder="Địa chỉ công ty (chỉ điền tên Thành phố)" required>{{ old('company_address') }}</textarea>
+                        <span class="input-group-text bg-white"><i class="fas fa-home text-muted"></i></span>
+                        <input type="text" id="house_number" name="house_number" class="form-control" placeholder="Số nhà" value="{{ old('house_number') }}" required>
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-road text-muted"></i></span>
+                        <input type="text" id="street" name="street" class="form-control" placeholder="Đường" value="{{ old('street') }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-muted"></i></span>
+                        <input type="text" id="ward" name="ward" class="form-control" placeholder="Phường" value="{{ old('ward') }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-muted"></i></span>
+                        <input type="text" id="district" name="district" class="form-control" placeholder="Quận" value="{{ old('district') }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-city text-muted"></i></span>
+                        <input type="text" id="city" name="city" class="form-control" placeholder="Thành phố" value="{{ old('city') }}" required>
+                    </div>
+                </div>
+
+                <!-- Google Maps Link -->
                 <div class="mb-3">
                     <div class="input-group">
                         <span class="input-group-text bg-white"><i class="fas fa-map text-muted"></i></span>

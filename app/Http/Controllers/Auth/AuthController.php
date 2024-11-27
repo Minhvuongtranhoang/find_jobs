@@ -107,54 +107,66 @@ class AuthController extends Controller
      * Handle recruiter registration
      */
     public function registerRecruiter(Request $request)
-    {
-        $validated = $request->validate([
-            'email' => 'required|email|unique:users',
-            'password' => ['required', 'confirmed', Password::defaults()],
-            'phone' => 'required|string|max:20',
-            'company_name' => 'required|string|max:255',
-            'company_address' => 'required|string',
-            'google_maps_link' => 'nullable|url',
+{
+    $validated = $request->validate([
+        'email' => 'required|email|unique:users',
+        'password' => ['required', 'confirmed', Password::defaults()],
+        'phone' => 'required|string|max:20',
+        'company_name' => 'required|string|max:255',
+        'house_number' => 'required|string|max:50',
+        'street' => 'required|string|max:255',
+        'ward' => 'required|string|max:100',
+        'district' => 'required|string|max:100',
+        'city' => 'required|string|max:100',
+        'google_maps_link' => 'nullable|url',
+    ]);
+
+    DB::beginTransaction();
+    try {
+        // Tạo user mới
+        $user = User::create([
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'phone' => $validated['phone'],
+            'role' => 'recruiter',
         ]);
 
-        DB::beginTransaction();
-        try {
-            $user = User::create([
-                'email' => $validated['email'],
-                'password' => Hash::make($validated['password']),
-                'phone' => $validated['phone'],
-                'role' => 'recruiter',
-            ]);
+        // Tạo công ty mới
+        $company = Company::create([
+            'name' => $validated['company_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+        ]);
 
-            $company = Company::create([
-                'name' => $validated['company_name'],
-                'email' => $validated['email'],
-                'phone' => $validated['phone'],
-            ]);
+        // Lưu thông tin địa chỉ công ty vào bảng company_locations
+        CompanyLocation::create([
+            'company_id' => $company->id,
+            'house_number' => $validated['house_number'],
+            'street' => $validated['street'],
+            'ward' => $validated['ward'],
+            'district' => $validated['district'],
+            'city' => $validated['city'],
+            'google_maps_link' => $validated['google_maps_link'],
+        ]);
 
-            CompanyLocation::create([
-                'company_id' => $company->id,
-                'address' => $validated['company_address'],
-                'google_maps_link' => $validated['google_maps_link'],
-            ]);
+        // Tạo đối tượng recruiter liên kết với user và company
+        Recruiter::create([
+            'user_id' => $user->id,
+            'company_id' => $company->id,
+        ]);
 
-            Recruiter::create([
-                'user_id' => $user->id,
-                'company_id' => $company->id,
-            ]);
+        DB::commit();
+        Auth::login($user);
 
-            DB::commit();
-            Auth::login($user);
-
-            return redirect('/auth/login')
-                ->with('success', 'Registration successful!');
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return back()->withErrors(['error' => 'Registration failed. Please try again.'])
-                        ->withInput($request->except('password'));
-        }
+        return redirect('/auth/login')
+            ->with('success', 'Đăng ký thành công!');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return back()->withErrors(['error' => 'Đăng ký thất bại. Vui lòng thử lại.'])
+                    ->withInput($request->except('password'));
     }
+}
+
 
     /**
      * Handle user logout
