@@ -122,7 +122,7 @@
         list-style: none;
     }
 
-    .tab-item { 
+    .tab-item {
         display: inline-block;
         padding: 10px 20px;
         white-space: nowrap;
@@ -171,7 +171,7 @@
 
     <!-- Tabs -->
     <div class="scrolling-tabs">
-        <button class="scroll-btn prev-btn" onclick="scrollTabs(-1)">&lt;</button>
+        <button class="scroll-btn prev-btn" onclick="scrollTabs(-4)">&lt;</button>
         <div class="tabs-container">
             <ul class="tabs-list">
                 <li>
@@ -187,7 +187,7 @@
                 @endforeach
             </ul>
         </div>
-        <button class="scroll-btn next-btn" onclick="scrollTabs(1)">&gt;</button>
+        <button class="scroll-btn next-btn" onclick="scrollTabs(4)">&gt;</button>
     </div>
 
     <!-- Tab Content -->
@@ -205,12 +205,34 @@
         </div>
     </div>
 </div>
-@endsection
+@endSection
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const tabs = document.querySelectorAll('.tab-item');
+    const tabsContainer = document.querySelector('.tabs-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
 
+    // Hàm cuộn danh sách tab
+    function scrollTabs(direction) {
+        const scrollAmount = 100; // Khoảng cách cuộn (px)
+        tabsContainer.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth' // Cuộn mượt mà
+        });
+    }
+
+    // Gắn sự kiện cho nút cuộn
+    prevBtn.addEventListener('click', function () {
+        scrollTabs(-4); // Cuộn sang trái
+    });
+
+    nextBtn.addEventListener('click', function () {
+        scrollTabs(4); // Cuộn sang phải
+    });
+
+    // Sự kiện thay đổi tab
+    const tabs = document.querySelectorAll('.tab-item');
     tabs.forEach(tab => {
         tab.addEventListener('click', function (e) {
             e.preventDefault();
@@ -231,7 +253,7 @@
             .then(data => {
                 // Cập nhật danh sách công ty và phân trang
                 document.getElementById('company-list').innerHTML = data.html;
-                document.querySelector('.pagination').innerHTML = data.pagination;  // Cập nhật phân trang
+                document.querySelector('.pagination').innerHTML = data.pagination;
             })
             .catch(error => console.error('Error:', error));
         });

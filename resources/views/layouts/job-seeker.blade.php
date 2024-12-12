@@ -24,6 +24,10 @@
     <!-- Quill Editor Styles -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <!-- Quill Editor Script -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
@@ -297,29 +301,32 @@
         });
 
 
-        //==============================================================================
-        // Ajax for jobs
-        $(document).on('click', '.pagination a', function(e) {
-            e.preventDefault();
-
-            let url = $(this).attr('href');
-            fetchJobs(url);
-        });
-
-        function fetchJobs(url) {
-            $.ajax({
-                url: url,
-                type: 'GET',
-                success: function(response) {
-                    $('#job-list').html(response.jobs);
-                    $('#pagination-container').html(response.pagination);
+        // //==============================================================================
+        document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.mySwiper', {
+            slidesPerView: 6, // Số lượng slide hiển thị cùng lúc
+            spaceBetween: 20, // Khoảng cách giữa các slide (px)
+            autoplay: {
+                delay: 3000, // Thời gian chờ giữa các lần chuyển (ms)
+                disableOnInteraction: false, // Tiếp tục autoplay sau khi người dùng tương tác
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 2, // Hiển thị 2 slide trên màn hình nhỏ
+                    spaceBetween: 10,
                 },
-                error: function(xhr) {
-                    console.error("Error fetching jobs:", xhr.responseText);
-                }
-            });
-        }
-
+                768: {
+                    slidesPerView: 4, // Hiển thị 4 slide trên màn hình trung bình
+                    spaceBetween: 15,
+                },
+                1024: {
+                    slidesPerView: 6, // Hiển thị 6 slide trên màn hình lớn
+                    spaceBetween: 20,
+                },
+            },
+            loop: true, // Kích hoạt chế độ lặp
+          });
+        });
 
         //============================================================
         //Quill for texteditor

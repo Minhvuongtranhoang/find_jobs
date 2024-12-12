@@ -147,24 +147,26 @@
 
 <!-- Featured Companies -->
 <section class="py-5">
-    <div class="container">
-        <h2 class="mb-4">Nhà tuyển dụng nổi bật</h2>
-        <div class="row">
-            @foreach($featuredCompanies as $company)
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <div class="company-card text-center">
-                        <a href="{{ route('companies.show', $company->id) }}" class="company-link">
-                            <div class="company-logo">
-                                <img src="{{ filter_var($company->logo, FILTER_VALIDATE_URL) ? $company->logo : Storage::url($company->logo) }}"
-                                     alt="Logo của {{ $company->name }}"
-                                     class="img-fluid">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+  <div class="container">
+      <h2 class="mb-4">Nhà tuyển dụng nổi bật</h2>
+      <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+              @foreach($featuredCompanies as $company)
+                  <div class="swiper-slide">
+                      <div class="company-card text-center">
+                          <a href="{{ route('companies.show', $company->id) }}" class="company-link">
+                              <div class="company-logo">
+                                  <img src="{{ filter_var($company->logo, FILTER_VALIDATE_URL) ? $company->logo : Storage::url($company->logo) }}"
+                                       alt="Logo của {{ $company->name }}"
+                                       class="img-fluid">
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+      </div>
+  </div>
 </section>
 
 
@@ -190,7 +192,7 @@
           <p>Nền tảng tuyển dụng hàng đầu tại Việt Nam</p>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-          <div class="category-card">
+          <div class="category-card" style="text-align: center">
               <i class="fas fa-search category-icon"></i>
               <h3>Tìm kiếm thông minh</h3>
               <p>Công nghệ AI giúp kết nối ứng viên với công việc phù hợp nhất</p>

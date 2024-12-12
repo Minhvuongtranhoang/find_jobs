@@ -28,7 +28,7 @@ class HomeController extends Controller
         ->get();
 
     // Lấy các công ty nổi bật
-    $featuredCompanies = Company::where('is_featured', 1)->take(6)->get();
+    $featuredCompanies = Company::where('is_featured', 1)->get();
 
     // Lấy các công việc gần đây
     $jobs = Job::latest()->take(6)->get();
