@@ -31,6 +31,7 @@
     <!-- Quill Editor Script -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
+    @stack('styles')
 
 </head>
 
@@ -152,11 +153,12 @@
 
 
     <div class="main-content">
+        @stack('scripts')
         @yield('content')
     </div>
 
     <!-- Enhanced Footer -->
-    <footer class="text-light py-5" style="background-color: #666666">
+    <footer class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
@@ -164,39 +166,41 @@
                     <p>Nền tảng tuyển dụng việc làm hàng đầu Việt Nam, kết nối ứng viên với các cơ hội việc làm tốt nhất
                         từ
                         những công ty công nghệ hàng đầu.</p>
-                    <div class="mt-4">
-                        <a href="https://www.facebook.com/minhh.vuongg.967" class="btn btn-outline-light me-2"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/dqv1507" class="btn btn-outline-light me-2"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="btn btn-outline-light"><i class="fab fa-instagram"></i></a>
-                    </div>
+                          <div class="social-icons-container">
+                            <a href="https://www.facebook.com/minhh.vuongg.967" class="social-icon" style="background: #3b5998;">
+                              <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://x.com/dqv1507" class="social-icon" style="background: #1DA1F2;">
+                              <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background: #0077b5;">
+                              <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background: #E4405F;">
+                              <i class="fab fa-instagram"></i>
+                            </a>
+                          </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5 class="mb-4">Liên kết</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Trang chủ</a>
-                        </li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Việc làm</a>
-                        </li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Công ty</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Trợ giúp</a>
-                        </li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Liên lạc</a>
-                        </li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Việc làm</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Công ty</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Trợ giúp</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Liên lạc</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5 class="mb-4">Danh mục việc làm</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Frontend
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Frontend
                                 Development</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Backend
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Backend
                                 Development</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Full Stack
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Full Stack
                                 Development</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">DevOps
+                        <li class="mb-2"><a href="#" class="text-decoration-none">DevOps
                                 Engineering</a></li>
                     </ul>
                 </div>
@@ -211,14 +215,61 @@
                 </div>
             </div>
             <hr class="my-4">
+
+            <h4>Công ty Cổ phần Seek a Job Việt Nam</h4>
+            <div style="display: flex" class="mt-3">
+              <p class="text-muted mb-2">Giấy phép đăng ký kinh doanh số: </p>01xx70071aa
+              <p class="text-muted mb-2">Giấy phép hoạt động dịch vụ việc làm số: </p> 1a/SLĐTBXH-GHĐL
+            </div>
+            <div style="display: flex">
+              <p class="text-muted mb-2">Trụ sở DN:</p> Tòa 2 - kí túc xá VKU, số 470 Trần Đại Nghĩa, P.Hòa Quý, Q.Ngũ Hành Sơn, Đà Nẵng
+            </div>
+            <div style="display: flex">
+              <p class="text-muted mb-2">Chi nhánh Khánh Hòa:</p> Tòa nhà A07, 21A Nguyễn Huệ, P.Vạn Thạnh TP Nha Trang
+            </div>
+            <div>
+              <img src="qrcode.png" alt="QR Code" style="width: 100px; height: 100px;">
+              <p>seekajob2024.com.vn</p>
+            </div>
+            <h6>Dự án Cộng đồng của Chúng tôi</h6>
+            <div class="container">
+              <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+                      <div class="box-image-app">
+                          <img src="https://i.postimg.cc/85cHhzS3/logo.png" alt="App Store">
+                          <span>giới thiệu ngắn gọn</span>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+                      <div class="box-image-app">
+                          <img src="https://www.seekajob2024" alt="App Store">
+                          <span>giới thiệu ngắn gọn</span>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+                      <div class="box-image-app">
+                          <img src="https://www.seekajob2024" alt="App Store">
+                          <span>giới thiệu ngắn gọn</span>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+                      <div class="box-image-app">
+                          <img src="https://www.seekajob2024" alt="App Store">
+                          <span>giới thiệu ngắn gọn</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <p class="mb-0">&copy; 2024 Seek a Job. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <a href="{{ route('terms-of-service') }}" class="text-light text-decoration-none me-3">Điều khoản
+                    <a href="{{ route('terms-of-service') }}" class="text-decoration-none me-3">Điều khoản
                         sử dụng</a>
-                    <a href="{{ route('privacy-policy') }}" class="text-light text-decoration-none">Chính sách bảo
+                    <a href="{{ route('privacy-policy') }}" class="text-decoration-none">Chính sách bảo
                         mật</a>
                 </div>
             </div>

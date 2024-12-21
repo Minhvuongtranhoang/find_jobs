@@ -1,62 +1,69 @@
 @extends('layouts.job-seeker')
 
 @section('content')
-<!-- Hero Section -->
-<section class="hero-section" style="background: linear-gradient(135deg, #3C6E71 0%, #75ABBC 100%);">
-    <div class="container" >
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-4" style="color: #ffffff">Khám phá cơ hội nghề nghiệp hấp dẫn</h1>
-                <p class="lead mb-5"style="color: #ffffff">Tìm việc làm phù hợp với sở trường của bạn</p>
 
-                <!-- Search Form -->
-                <form action="{{ route('search.jobs') }}" method="GET">
-                    <div class="search-form">
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm công việc..." name="keyword" value="{{ request('keyword') }}">
-                            </div>
+<section class="hero-section">
+  <div class="snow-container" id="snow-container"></div>
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-6 hero-content">
+              <h1 class="hero-title">Khám phá cơ hội nghề nghiệp hấp dẫn</h1>
+              <p class="hero-subtitle">Bạn sẽ được tiếp cận <span style="font-size: 1.5em; font-weight: bold; white-space: normal;">1.000<sup>+</sup></span> tin tuyển dụng phù hợp với sở trường của bạn từ những doanh nghiệp uy tín</p>
 
-                            <div class="col-md-6">
-                                <select class="form-select form-select-lg" name="category_id">
-                                    <option selected value="">Chọn ngành nghề</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+              <div class="search-form">
+                  <form action="{{ route('search.jobs') }}" method="GET">
+                      <div class="search-row">
+                          <input type="text" class="form-control search-input" placeholder="Tìm kiếm công việc..." name="keyword" value="{{ request('keyword') }}">
 
-                            <div class="col-md-6">
-                                <select class="form-select form-select-lg selectpicker" name="location" data-live-search="true">
-                                    <option selected value="">Chọn địa điểm </option>
-                                    @foreach ($locations as $location)
-                                        <option value="{{ $location['name'] }}" {{ request('location') == $location['name'] ? 'selected' : '' }}>
-                                            {{ $location['name'] }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-lg w-100">Tìm kiếm</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                          <select class="form-select category-select" name="category_id">
+                              <option selected value="">Lĩnh vực</option>
+                              @foreach($categories as $category)
+                                      <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                          {{ $category->name }}
+                                      </option>
+                                @endForeach
+                          </select>
 
-            <div class="col-lg-6">
-                <img src="https://png.pngtree.com/png-clipart/20240111/original/pngtree-recruiter-looking-for-candidates-with-resume-in-hand-png-image_14082883.png" alt="Hero Image" class="img-fluid">
-        </div>
-    </div>
+                          <select class="form-select location-select" name="location" data-live-search="true">
+                              <option selected value="">Địa điểm</option>
+                              @foreach ($locations as $location)
+                                      <option value="{{ $location['name'] }}" {{ request('location') == $location['name'] ? 'selected' : '' }}>
+                                          {{ $location['name'] }}
+                                      </option>
+                                  @endForeach
+                          </select>
+                          <button type="submit" class="btn btn-primary search-button">
+                              <i class="fas fa-search"></i> Tìm kiếm
+                          </button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+          <div class="col-lg-6">
+              <div class="hero-slider owl-carousel owl-theme">
+                  <div class="item">
+                      <img src="https://i.postimg.cc/zvf5NKyb/h1.png" alt="Recruitment Image 1" class="img-fluid">
+                  </div>
+                  <div class="item">
+                    <img src="https://i.postimg.cc/254yNY1B/a.png" alt="Recruitment Image 1" class="img-fluid">
+                  </div>
+                  <div class="item">
+                      <img src="https://i.postimg.cc/tRkqzYHf/a.png" alt="Recruitment Image 2" class="img-fluid">
+                  </div>
+                  <div class="item">
+                      <img src="https://i.postimg.cc/hvzdVx3k/b.png" alt="Recruitment Image 3" class="img-fluid">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </section>
 
 <!-- Modern Job Carousel -->
-<section class="py-5" style="background: #ffffff">
+<section class="py-5">
     <div class="container">
-        <h2 class="mb-4">Việc làm nổi bật</h2>
-        <div class="job-carousel">
+      <h3><span style="color: #3C6E71; font-weight: bold;">Việc làm nổi bật</span></h3>
             <div id="jobCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                 <div class="carousel-inner">
                     @foreach($featuredJobs->chunk(3) as $chunkIndex => $jobChunk)
@@ -87,26 +94,25 @@
                         </div>
                     @endforeach
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
+                {{-- <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                     <span class="visually-hidden">Next</span>
-                </button>
+                </button> --}}
             </div>
         </div>
-    </div>
   </section>
 
 
 <!-- Popular Categories Section with Enhanced Design -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" style="border-top-left-radius: 50px; border-top-right-radius: 50px;">
     <div class="container">
         <div class="row mb-4">
             <div class="col-lg-6">
-                <h2 class="mb-0">Danh mục phổ biến</h2>
+              <h3><span style="color: #3C6E71; font-weight: bold;">Danh mục phổ biến</span></h3>
             </div>
         </div>
         <div class="highlighted-categories mb-4">
@@ -146,9 +152,9 @@
 
 
 <!-- Featured Companies -->
-<section class="py-5">
+<section class="py-5 bg-light">
   <div class="container">
-      <h2 class="mb-4">Nhà tuyển dụng nổi bật</h2>
+    <h3><span style="color: #3C6E71; font-weight: bold;">Nhà tuyển dụng nổi bật</span></h3>
       <div class="swiper mySwiper">
           <div class="swiper-wrapper">
               @foreach($featuredCompanies as $company)
@@ -169,46 +175,222 @@
   </div>
 </section>
 
+<!-- Newsletter Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Phần nội dung bên trái -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h4>Tìm việc khó <span style="color: #3C6E71; font-weight: bold;">đã có Seek a Job</span></h4>
+        <div class="container-around">
+          <div style="margin-left: 20px">
+            (096) 6069 848
+            <a href="tel:+84966069848">
+              <button class="button-rounded">
+                <i class="fas fa-phone-alt"></i> GỌI NGAY
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div class="mb-4 mt-4">
+          Email hỗ trợ Ứng viên:
+          <a href="mailto:vuongtranhoangminh@gmail.com" style="text-decoration: none;"><i class="fa-solid fa-envelope" style="color: rgb(240, 203, 42)"></i> seekajob2024@gmail.com</a>
+        </div>
+
+        <div class="mb-4 mt-3">
+          Mạng xã hội:
+          <div class="social-icons-container">
+            <a href="https://www.facebook.com/minhh.vuongg.967" class="social-icon" style="background: #3b5998;">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/dqv1507" class="social-icon" style="background: #1DA1F2;">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon" style="background: #0077b5;">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon" style="background: #E4405F;">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phần hình ảnh bên phải -->
+      <div class="col-lg-6">
+        <img src="https://vieclam.thegioididong.com/img/mobile/searchv2/detail_banner/dmx.jpg" alt="Support Representatives" style="height: min-content" class="chat-image img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Latest Jobs -->
-<section class="py-5 bg-light" style="background: linear-gradient(135deg, #ffffff 0%, #fdfdfd 100%);">
+<section class="py-5 bg-light" >
     <div class="container">
-        <h2 class="mb-4">Việc làm mới nhất</h2>
+      <div class="row">
+      <div class="col-lg-8 col-md-6 mb-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h3><span style="color: #3C6E71; font-weight: bold;">Việc làm mới nhất</span></h3>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <span>Lọc theo: Mức lương</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item active" href="#" data-value="Mức lương">Mức lương <span class="checkmark">✓</span></a></li>
+              <li><a class="dropdown-item" href="#" data-value="Địa điểm">Địa điểm <span class="checkmark">✓</span></a></li>
+              <li><a class="dropdown-item" href="#" data-value="Kinh nghiệm">Kinh nghiệm <span class="checkmark">✓</span></a></li>
+              <li><a class="dropdown-item" href="#" data-value="Ngành nghề">Ngành nghề <span class="checkmark">✓</span></a></li>
+              <li><a class="dropdown-item" href="#" data-value="Trình độ">Trình độ <span class="checkmark">✓</span></a></li>
+              <li><a class="dropdown-item" href="#" data-value="Loại công việc">Loại công việc <span class="checkmark">✓</span></a></li>
+              <li><a class="dropdown-item" href="#" data-value="Thời gian làm việc">Thời gian làm việc <span class="checkmark">✓</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Scrolling Tabs -->
+        <div class="scrolling-tabs">
+            <button class="scroll-btn prev-btn" onclick="scrollTabs(-4)">&lt;</button>
+            <div class="tabs-container">
+                <ul class="tabs-list">
+                    <li>
+                        <a href="#" data-industry="all" class="tab-item active">Tất cả</a>
+                    </li>
+                    <li>
+                        <a href="#" data-industry="featured" class="tab-item">Công ty hàng đầu</a>
+                    </li>
+                    @foreach ($industries as $ind)
+                        <li>
+                            <a href="#" data-industry="{{ $ind }}" class="tab-item">{{ $ind }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            <button class="scroll-btn next-btn" onclick="scrollTabs(4)">&gt;</button>
+        </div>
+
         <div class="row" id="job-list">
             @include('job-seeker.jobs', ['jobs' => $jobs])
         </div>
         <div id="pagination-container">
             @include('job-seeker.pagination', ['jobs' => $jobs])
         </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="ad-banner">
+            <div class="hero-slider owl-carousel owl-theme">
+              <div class="item">
+                  <img src="https://amis.misa.vn/wp-content/uploads/2022/09/quang-cao-tuyen-dung-nhan-su-2.jpg" alt="Recruitment Image 1" class="img-fluid">
+              </div>
+              <div class="item">
+                  <img src="https://insieutoc.vn/wp-content/uploads/2021/05/poster-tuyen-dung-zone-media-510x695.jpg" alt="Recruitment Image 2" class="img-fluid">
+              </div>
+              <div class="item">
+                  <img src="https://banghieuquangcao.net/wp-content/uploads/2024/03/poster-tuyen-dung-14.webp" alt="Recruitment Image 3" class="img-fluid">
+              </div>
+          </div>
+        </div>
     </div>
+  </div>
+</div>
 </section>
+
+<!-- Modern Job Carousel -->
+<section class="py-5" style="background: #3C6E71">
+    <div class="container">
+        <div class="col-lg-12">
+          <div class="hero-slider owl-carousel owl-theme" data-autoplay="false">
+            <div class="job-carousel">
+              <div class="carousel-inner d-flex">
+                <div class="item col-lg-6">
+                    <img src="https://i.postimg.cc/nrFg6Q6L/a.png" alt="Recruitment Image 1" class="img-fluid">
+                </div>
+                <div class="item col-lg-6 text-center">
+                  <img style="width: 30%; height: 30%;" src="https://i.postimg.cc/85cHhzS3/logo.png" alt="MVGroup Logo" class="mx-auto d-block">
+                  <p class="tagline">"Innovation for a Better Tomorrow"</p>
+                  <p class="description">
+                      MVGroup là một tập đoàn đa quốc gia hàng đầu trong lĩnh vực công nghệ và dịch vụ. Chúng tôi cam kết mang đến các sản phẩm và giải pháp sáng tạo,
+                      đáp ứng nhu cầu ngày càng cao của khách hàng trên toàn thế giới. Với tầm nhìn dài hạn và đội ngũ chuyên gia giàu kinh nghiệm, MVGroup luôn tiên phong
+                      trong việc áp dụng công nghệ tiên tiến để kiến tạo một tương lai bền vững.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="job-carousel">
+              <div class="carousel-inner d-flex">
+                <div class="item col-lg-6">
+                    <img src="https://i.postimg.cc/BnS5HB2b/a.png" alt="Recruitment Image 1" class="img-fluid">
+                </div>
+                <div class="item col-lg-6 text-center">
+                  <img style="width: 20%; height: 20%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/FPT_logo_2010.svg/1200px-FPT_logo_2010.svg.png" alt="FPT" class="mx-auto d-block">
+                  <p class="tagline">"Enabling Digital Futures"</p>
+                  <p class="description">
+                    FPT Corporation là một tập đoàn công nghệ hàng đầu tại Việt Nam, chuyên cung cấp các giải pháp và dịch vụ số toàn diện. Với sứ mệnh "Kiến tạo tương lai số",
+                    FPT cam kết đồng hành cùng khách hàng trong hành trình chuyển đổi số, mang đến giá trị bền vững và tạo nên sự khác biệt trong kỷ nguyên công nghệ 4.0.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="job-carousel">
+              <div class="carousel-inner d-flex">
+                <div class="item col-lg-6">
+                    <img src="https://i.postimg.cc/PNsj0qzV/a.png" alt="Recruitment Image 1" class="img-fluid">
+                </div>
+                <div class="item col-lg-6 text-center">
+                  <img style="width: 40%; height: 30%;" src="https://i.postimg.cc/gkDSCJDw/a.png" alt="Viettle Logo" class="mx-auto d-block">
+                  <p class="tagline">"Theo cách của bạn"</p>
+                  <p class="description">
+                    Viettel là một trong những tập đoàn viễn thông và công nghệ hàng đầu tại Việt Nam. Với sứ mệnh "Sáng tạo vì con người", Viettel luôn đi đầu trong việc
+                    phát triển các sản phẩm và dịch vụ số hiện đại, đáp ứng nhu cầu kết nối và đổi mới của khách hàng. Viettel cam kết mang lại giá trị bền vững, góp phần thúc đẩy
+                    sự phát triển của xã hội và nền kinh tế số.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
 
 
 <!-- Why Choose Us Section -->
-<section style="padding: 4rem 1rem; background-color: var(--neutral-bg);">
+<section class="py-5 bg-light" style="padding: 4rem 1rem; background-color: var(--neutral-bg);">
   <div class="container">
       <div class="section-title" style="text-align: center">
           <h3>Tại sao chọn <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight">Job</span></a></h3>
           <p>Nền tảng tuyển dụng hàng đầu tại Việt Nam</p>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-          <div class="category-card" style="text-align: center">
-              <i class="fas fa-search category-icon"></i>
+        <div class="category-card text-center border p-3">
+          <div class="category-icon mb-2">
+              <i class="fas fa-search "></i>
+          </div>
               <h3>Tìm kiếm thông minh</h3>
               <p>Công nghệ AI giúp kết nối ứng viên với công việc phù hợp nhất</p>
           </div>
-          <div class="category-card">
-              <i class="fas fa-shield-alt category-icon"></i>
+          <div class="category-card text-center border p-3">
+            <div class="category-icon mb-2">
+              <i class="fas fa-shield-alt"></i>
+            </div>
               <h3>Uy tín & Bảo mật</h3>
               <p>Thông tin ứng viên được bảo mật tuyệt đối</p>
           </div>
-          <div class="category-card">
-              <i class="fas fa-bolt category-icon"></i>
+
+          <div class="category-card text-center border p-3">
+            <div class="category-icon mb-2">
+              <i class="fas fa-bolt"></i>
+            </div>
               <h3>Cập nhật realtime</h3>
               <p>Việc làm mới nhất từ các doanh nghiệp hàng đầu</p>
           </div>
-          <div class="category-card">
-              <i class="fas fa-headset category-icon"></i>
+
+          <div class="category-card text-center border p-3">
+            <div class="category-icon mb-2">
+              <i class="fas fa-headset"></i>
+            </div>
               <h3>Hỗ trợ 24/7</h3>
               <p>Đội ngũ tư vấn chuyên nghiệp luôn sẵn sàng hỗ trợ</p>
           </div>
@@ -220,7 +402,7 @@
 <!-- Blog Section -->
 <section class="py-5">
     <div class="container">
-        <h2 class="mb-4">Blog IT mới nhất</h2>
+        <h3><span style="color: #3C6E71; font-weight: bold;">Blog IT mới nhất</span></h3>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="blog-card">
@@ -238,7 +420,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="blog-card">
-                <img src="https://www.constantcontact.com/blog/wp-content/uploads/2021/04/Social-4.jpg" alt="Blog Image" class="img-fluid blog-img">
+                <img src="https://www.constantcontact.com/blog/wp-content/uploads/2021/04/Social-4.jpg" style="height: 290px" alt="Blog Image" class="img-fluid blog-img">
                 <div class="p-4">
                     <h5>Kỹ năng IT cần có năm 2024</h5>
                     <p class="text-muted mb-3">
@@ -252,7 +434,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="blog-card">
-                <img src="https://images.forbesindia.com/blog/wp-content/uploads/2024/06/AI-Skills_GettyImages-1449294937_BG.jpg?impolicy=website&width=900&height=600" alt="Blog Image" class="img-fluid blog-img">
+                <img src="https://images.forbesindia.com/blog/wp-content/uploads/2024/06/AI-Skills_GettyImages-1449294937_BG.jpg" style="height: 290px" alt="Blog Image" class="img-fluid blog-img">
                 <div class="p-4">
                     <h5>Thị trường việc làm IT 2024</h5>
                     <p class="text-muted mb-3">
@@ -272,39 +454,34 @@
 </section>
 
 <!-- Newsletter Section -->
-<section class="py-5 bg-light" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
+<section class="py-5 bg-light">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
-            <h2 class="mb-4">Đăng ký nhận thông tin việc làm</h2>
+            <h3><span style="color: #3C6E71; font-weight: bold;">Đăng ký nhận thông tin việc làm</span></h3>
             <p class="text-muted mb-4">Nhận thông báo về các cơ hội việc làm mới nhất phù hợp với bạn</p>
-            <form class="d-flex gap-2">
-                <input type="email" class="form-control form-control-lg" placeholder="Nhập email của bạn">
-                <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
-            </form>
+            <div class="container-around">
+                  <button class="button-rounded" style="margin-right: 10px"><i class="fas fa-user-plus"></i> Đăng kí ngay</button>
+            </div>
         </div>
     </div>
 </div>
 </section>
 
-{{-- <script>
-  // Add scroll animation for cards
-  const cards = document.querySelectorAll('.category-card, .job-card');
-      const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  entry.target.style.opacity = 1;
-                  entry.target.style.transform = 'translateY(0)';
-              }
-          });
-      });
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/scrolling-tabs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dropdown-menu.css') }}">
+@endpush
 
-      cards.forEach(card => {
-          card.style.opacity = 0;
-          card.style.transform = 'translateY(20px)';
-          card.style.transition = 'all 0.5s ease-out';
-          observer.observe(card);
-      });
-</script> --}}
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script src="{{ asset('js/scrolling-tabs.js') }}" defer></script>
+<script src="{{ asset('js/hero-slider.js') }}" defer></script>
+@endpush
 
 @endSection

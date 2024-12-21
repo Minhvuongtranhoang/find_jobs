@@ -1,0 +1,68 @@
+/* public/css/scrolling-tabs.css */
+.scrolling-tabs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.tabs-container {
+  overflow-x: scroll; /* Bật cuộn ngang */
+  -ms-overflow-style: none; /* Ẩn thanh cuộn trên IE và Edge */
+  scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn trên Chrome, Safari và Edge */
+}
+
+.tabs-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tab-item {
+  display: inline-block;
+  padding: 10px 20px;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.tab-item.active {
+  border: 2px solid #007bff; /* Viền xung quanh tab khi nó được chọn */
+  border-radius: 5px; /* Góc bo tròn cho viền */
+  color: #007bff; /* Màu chữ khi tab được chọn */
+  padding: 5px 10px; /* Khoảng cách bên trong tab */
+  background-color: #f8f9fa; /* Màu nền nhẹ khi tab được chọn */
+}
+
+.tab-item:hover {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.scroll-btn {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-btn:focus {
+  outline: none;
+}
+
+.scroll-btn:hover {
+  background-color: #f0f0f0;
+}
