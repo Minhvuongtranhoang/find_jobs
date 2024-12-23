@@ -71,11 +71,11 @@
                     </div>
                     <div class="col-md-4">
                         <i class="bi bi-phone-fill fs-1 text-primary"></i>
-                        <p>Điện thoại: +84 123 456 789</p>
+                        <p>Điện thoại: +84 966 069 848</p>
                     </div>
                     <div class="col-md-4">
                         <i class="bi bi-chat-dots-fill fs-1 text-primary"></i>
-                        <p>Chat trực tiếp: <a href="{{ route('contact') }}">Bắt đầu chat</a></p>
+                        <p>Chat trực tiếp: <a class="text-decoration-none" href="{{ route('contact') }}">Bắt đầu chat</a></p>
                     </div>
                 </div>
             </div>

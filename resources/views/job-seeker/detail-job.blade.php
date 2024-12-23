@@ -268,4 +268,9 @@
             </div>
         </div>
     </div>
+
+    @push('styles')
+      <link rel="styleSheet" href="{{ asset('css/dropdown-menu.css') }}">
+    @endPush
+
 @endSection

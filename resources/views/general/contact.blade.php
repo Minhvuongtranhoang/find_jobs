@@ -25,6 +25,15 @@
                       <p class="mb-3"><i class="bi bi-phone-fill text-primary"></i> Điện thoại: +84 123 456 789</p>
                       <p class="mb-3"><i class="bi bi-geo-alt-fill text-primary"></i> Địa chỉ: Số 123, Đường ABC, TP.HCM</p>
                       <p>Thời gian làm việc: Thứ 2 - Thứ 6 (9:00 - 18:00)</p>
+
+                      <div class="map-section">
+                        <div class="container py-5">
+                            <h2 class="mb-4">Địa chỉ của chúng tôi</h2>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.734025012026!2d108.25065207490204!3d15.975260284690657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142108997dc971f%3A0x1295cb3d313469c9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiB2w6AgVHJ1eeG7gW4gdGjDtG5nIFZp4buHdCAtIEjDoG4sIMSQ4bqhaSBo4buNYyDEkMOgIE7hurVuZw!5e0!3m2!1svi!2s!4v1731979566191!5m2!1svi!2s" width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
                   </div>
 
                   <!-- Contact Form -->
@@ -46,20 +55,15 @@
                           </div>
                           <button type="submit" class="btn btn-primary">Gửi</button>
                       </form>
+
+
                   </div>
               </div>
           </div>
       </div>
 
       <!-- Map Section -->
-      <div class="map-section">
-          <div class="container text-center py-5">
-              <h2 class="mb-4">Địa chỉ của chúng tôi</h2>
-              <div class="ratio ratio-16x9">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.734025012026!2d108.25065207490204!3d15.975260284690657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142108997dc971f%3A0x1295cb3d313469c9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiB2w6AgVHJ1eeG7gW4gdGjDtG5nIFZp4buHdCAtIEjDoG4sIMSQ4bqhaSBo4buNYyDEkMOgIE7hurVuZw!5e0!3m2!1svi!2s!4v1731979566191!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-          </div>
-      </div>
+
   </div>
 </section>
 
