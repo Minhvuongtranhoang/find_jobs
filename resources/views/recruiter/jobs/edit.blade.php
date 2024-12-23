@@ -27,7 +27,7 @@
                             <option value="{{ $location->id }}" {{ old('location_id', $job->location_id) == $location->id ? 'selected' : '' }}>
                               số {{ $location->house_number }}, đường {{ $location->street }}, phường {{$location->ward}}, quận {{$location->district}}, TP. {{ $location->city }}
                             </option>
-                        @endforeach
+                        @endForeach
                     </select>
                     @error('location_id')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -97,4 +97,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endSection

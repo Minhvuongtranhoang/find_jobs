@@ -89,10 +89,10 @@
                                         </div>
                                         <a class="btn btn-primary w-100" href={{ route('detail-job', $job->id) }}>Chi tiết</a>
                                     </div>
-                                @endforeach
+                                @endForeach
                             </div>
                         </div>
-                    @endforeach
+                    @endForeach
                 </div>
                 {{-- <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -144,7 +144,7 @@
                             <a href="{{ route('category-job', $category->id) }}" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
                         </div>
                     </div>
-                @endforeach
+                @endForeach
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@
 
 
 <!-- Featured Companies -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" style="box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.05);">
   <div class="container">
     <h3><span style="color: #3C6E71; font-weight: bold;">Nhà tuyển dụng nổi bật</span></h3>
       <div class="swiper mySwiper">
@@ -169,7 +169,7 @@
                           </a>
                       </div>
                   </div>
-              @endforeach
+              @endForeach
           </div>
       </div>
   </div>
@@ -195,7 +195,7 @@
 
         <div class="mb-4 mt-4">
           Email hỗ trợ Ứng viên:
-          <a href="mailto:vuongtranhoangminh@gmail.com" style="text-decoration: none;"><i class="fa-solid fa-envelope" style="color: rgb(240, 203, 42)"></i> seekajob2024@gmail.com</a>
+          <a href="mailto:vuongtranhoangminh@gmail.com" style="text-decoration: none; color: #3C6E71"><i class="fa-solid fa-envelope" style="color: #3C6E71"></i> seekajob2024@gmail.com</a>
         </div>
 
         <div class="mb-4 mt-3">
@@ -264,7 +264,7 @@
                         <li>
                             <a href="#" data-industry="{{ $ind }}" class="tab-item">{{ $ind }}</a>
                         </li>
-                    @endforeach
+                    @endForeach
                 </ul>
             </div>
             <button class="scroll-btn next-btn" onclick="scrollTabs(4)">&gt;</button>
@@ -273,8 +273,10 @@
         <div class="row" id="job-list">
             @include('job-seeker.jobs', ['jobs' => $jobs])
         </div>
-        <div id="pagination-container">
-            @include('job-seeker.pagination', ['jobs' => $jobs])
+        <div class="d-flex justify-content-center mt-3">
+          <div id="pagination">
+              @include('job-seeker.pagination', ['jobs' => $jobs])
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 mb-4">
@@ -304,7 +306,7 @@
             <div class="job-carousel">
               <div class="carousel-inner d-flex">
                 <div class="item col-lg-6">
-                    <img src="https://i.postimg.cc/nrFg6Q6L/a.png" alt="Recruitment Image 1" class="img-fluid">
+                    <img src="https://i.postimg.cc/nrFg6Q6L/a.png" style="height: 300px; width: 500px;" alt="Recruitment Image 1" class="img-fluid">
                 </div>
                 <div class="item col-lg-6 text-center">
                   <img style="width: 30%; height: 30%;" src="https://i.postimg.cc/85cHhzS3/logo.png" alt="MVGroup Logo" class="mx-auto d-block">
@@ -321,7 +323,7 @@
             <div class="job-carousel">
               <div class="carousel-inner d-flex">
                 <div class="item col-lg-6">
-                    <img src="https://i.postimg.cc/BnS5HB2b/a.png" alt="Recruitment Image 1" class="img-fluid">
+                    <img src="https://i.postimg.cc/BnS5HB2b/a.png" style="height: 300px; width: 500px;" alt="Recruitment Image 1" class="img-fluid">
                 </div>
                 <div class="item col-lg-6 text-center">
                   <img style="width: 20%; height: 20%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/FPT_logo_2010.svg/1200px-FPT_logo_2010.svg.png" alt="FPT" class="mx-auto d-block">
@@ -337,19 +339,21 @@
             <div class="job-carousel">
               <div class="carousel-inner d-flex">
                 <div class="item col-lg-6">
-                    <img src="https://i.postimg.cc/PNsj0qzV/a.png" alt="Recruitment Image 1" class="img-fluid">
+                    <img src="https://i.postimg.cc/PNsj0qzV/a.png" style="height: 300px; width: 500px;" alt="Recruitment Image 1" class="img-fluid">
                 </div>
                 <div class="item col-lg-6 text-center">
-                  <img style="width: 40%; height: 30%;" src="https://i.postimg.cc/gkDSCJDw/a.png" alt="Viettle Logo" class="mx-auto d-block">
-                  <p class="tagline">"Theo cách của bạn"</p>
+                  <img style="width: 20%; height: 20%;" src="https://i.postimg.cc/gkDSCJDw/a.png" alt="Viettle" class="mx-auto d-block">
+                  <p class="tagline">"Enabling Digital Futures"</p>
                   <p class="description">
                     Viettel là một trong những tập đoàn viễn thông và công nghệ hàng đầu tại Việt Nam. Với sứ mệnh "Sáng tạo vì con người", Viettel luôn đi đầu trong việc
                     phát triển các sản phẩm và dịch vụ số hiện đại, đáp ứng nhu cầu kết nối và đổi mới của khách hàng. Viettel cam kết mang lại giá trị bền vững, góp phần thúc đẩy
                     sự phát triển của xã hội và nền kinh tế số.
-                  </p>
+                </p>
                 </div>
               </div>
             </div>
+
+
           </div>
       </div>
     </div>
@@ -360,7 +364,7 @@
 <section class="py-5 bg-light" style="padding: 4rem 1rem; background-color: var(--neutral-bg);">
   <div class="container">
       <div class="section-title" style="text-align: center">
-          <h3>Tại sao chọn <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight">Job</span></a></h3>
+          <h3>Tại sao chọn <a class="navbar-brand" href="{{ route('home') }}">Seek a<span class="highlight" style="padding: 8px">Job</span></a></h3>
           <p>Nền tảng tuyển dụng hàng đầu tại Việt Nam</p>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
@@ -469,12 +473,11 @@
 </section>
 
 @push('styles')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/scrolling-tabs.css') }}">
-<link rel="stylesheet" href="{{ asset('css/dropdown-menu.css') }}">
-@endpush
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="styleSheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="styleSheet">
+<link rel="styleSheet" href="{{ asset('css/scrolling-tabs.css') }}">
+<link rel="styleSheet" href="{{ asset('css/dropdown-menu.css') }}">
+@endPush
 
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -482,6 +485,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script src="{{ asset('js/scrolling-tabs.js') }}" defer></script>
 <script src="{{ asset('js/hero-slider.js') }}" defer></script>
-@endpush
+@endPush
 
 @endSection

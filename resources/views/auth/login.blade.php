@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký tài khoản</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="styleSheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="styleSheet">
+    <link href="{{ asset('css/auth.css') }}" rel="styleSheet">
 </head>
 <body>
     <div class="container">
@@ -21,7 +21,7 @@
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
-                        @endforeach
+                        @endForeach
                     </ul>
                 </div>
             @endif
@@ -46,21 +46,21 @@
                         <span class="input-group-text bg-white">
                             <i class="fas fa-lock text-muted"></i>
                         </span>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            class="form-control" 
-                            placeholder="Nhập mật khẩu" 
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Nhập mật khẩu"
                             required>
-                        <span 
-                            class="input-group-text bg-white toggle-password" 
+                        <span
+                            class="input-group-text bg-white toggle-password"
                             onclick="togglePassword()">
                             <i class="fas fa-eye text-muted" id="password-icon"></i>
                         </span>
                     </div>
                 </div>
-                
+
                 <script>
                     function togglePassword() {
                         const passwordInput = document.getElementById('password');
@@ -76,7 +76,7 @@
                         }
                     }
                 </script>
-                
+
 
                 <div class="mb-3 d-flex justify-content-between align-items-center">
                     <div class="form-check">
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <p class="mb-0">Bạn đã chưa có tài khoản? <a href="{{ route('register.job-seeker') }}" class="text-success">Đăng ký Người tìm việc</a> | <a href="{{ route('register.recruiter') }}" class="text-success">Đăng ký Nhà tuyển dụng</a></p>
+                    <p class="mb-0">Bạn đã chưa có tài khoản? <a href="{{ route('register.job-seeker') }}" class="text-success text-decoration-none">Đăng ký Người tìm việc</a> | <a href="{{ route('register.recruiter') }}" class="text-success text-decoration-none">Đăng ký Nhà tuyển dụng</a></p>
                     <p class="mt-3 mb-0">Bạn gặp khó khăn khi đăng nhập?</p>
                     <p class="text-muted">Vui lòng gọi tới số <strong>(0966) 069 848</strong> (giờ hành chính)</p>
                 </div>

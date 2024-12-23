@@ -1,130 +1,70 @@
 @extends('layouts.job-seeker')
-<style>
-    @media (max-width: 768px) {
-        .company-card {
-            margin-bottom: 20px;
-        }
 
-        .company-logo {
-            height: 150px;
-        }
-    }
-
-    .company-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(to right, #007bff, #00c6ff);
-    }
-
-    .scrolling-tabs {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        overflow: hidden;
-    }
-
-    .tabs-container {
-        overflow-x: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .tabs-container::-webkit-scrollbar {
-        display: none;
-    }
-
-    .tabs-list {
-        display: flex;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    .tab-item {
-        display: inline-block;
-        padding: 10px 20px;
-        white-space: nowrap;
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-        border-bottom: 2px solid transparent;
-        transition: all 0.3s;
-    }
-
-    .tab-item.active {
-        border: 2px solid #007bff;
-        border-radius: 5px;
-        color: #007bff;
-        padding: 5px 10px;
-        background-color: #f8f9fa;
-    }
-
-    .tab-item:hover {
-        color: #007bff;
-        border-bottom: 2px solid #007bff;
-    }
-
-    .scroll-btn {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 50%;
-        padding: 5px 10px;
-        cursor: pointer;
-        margin: 0 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .scroll-btn:focus {
-        outline: none;
-    }
-
-    .scroll-btn:hover {
-        background-color: #f0f0f0;
-    }
-</style>
 @section('content')
-<div class="container">
-    <h1 class="mb-4">Danh sách công ty</h1>
-
-    <!-- Tabs -->
-    <div class="scrolling-tabs">
-        <button class="scroll-btn prev-btn" onclick="scrollTabs(-4)">&lt;</button>
-        <div class="tabs-container">
-            <ul class="tabs-list">
-                <li>
-                    <a href="#" data-industry="all" class="tab-item active">Tất cả</a>
-                </li>
-                <li>
-                    <a href="#" data-industry="featured" class="tab-item">Công ty hàng đầu</a>
-                </li>
-                @foreach ($industries as $ind)
-                    <li>
-                        <a href="#" data-industry="{{ $ind }}" class="tab-item">{{ $ind }}</a>
-                    </li>
-                @endForeach
-            </ul>
-        </div>
-        <button class="scroll-btn next-btn" onclick="scrollTabs(4)">&gt;</button>
-    </div>
-
-    <!-- Tab Content -->
-    <div id="company-list">
-        <!-- Hiển thị danh sách công ty mặc định (tất cả công ty) -->
+<section class="py-5 bg-light">
+    <div class="container">
         <div class="row">
-            @foreach ($companies as $company)
-                @include('job-seeker.companies.company-card', ['company' => $company])
-            @endforeach
+            <!-- Cột chính -->
+            <div class="col-12 col-lg-8 mb-4">
+                <h3 style="margin-bottom: 20px"><span style="color: #3C6E71; font-weight: bold;">Danh sách công ty</span></h3>
+
+                <!-- Tabs -->
+                <div class="scrolling-tabs mb-4">
+                    <button class="scroll-btn prev-btn" onclick="scrollTabs(-4)">&lt;</button>
+                    <div class="tabs-container">
+                        <ul class="tabs-list d-flex flex-nowrap">
+                            <li><a data-industry="all" class="tab-item active">Tất cả</a></li>
+                            <li><a data-industry="featured" class="tab-item">Công ty hàng đầu</a></li>
+                            @foreach ($industries as $ind)
+                                <li><a data-industry="{{ $ind }}" class="tab-item">{{ $ind }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <button class="scroll-btn next-btn" onclick="scrollTabs(4)">&gt;</button>
+                </div>
+
+                <!-- Danh sách công ty -->
+                <div class="row g-4 mt-4" id="company-list">
+                  @foreach ($companies as $company)
+                      @include('job-seeker.companies.company-card', ['company' => $company])
+                  @endForeach
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <div id="pagination">
+                    @include('job-seeker.pagination', ['companies' => $companies])
+                  </div>
+                </div>
+            </div>
+
+            <!-- Cột quảng cáo - đảm bảo phù hợp trên mobile -->
+            <div class="col-12 col-lg-4 mb-4">
+                <div class="ad-banner">
+                    <div class="hero-slider owl-carousel owl-theme">
+                        <div class="item">
+                            <img src="https://amis.misa.vn/wp-content/uploads/2022/09/quang-cao-tuyen-dung-nhan-su-2.jpg" alt="Recruitment Image 1" class="img-fluid">
+                        </div>
+                        <div class="item">
+                            <img src="https://insieutoc.vn/wp-content/uploads/2021/05/poster-tuyen-dung-zone-media-510x695.jpg" alt="Recruitment Image 2" class="img-fluid">
+                        </div>
+                        <div class="item">
+                            <img src="https://insieutoc.vn/wp-content/uploads/2021/05/poster-tuyen-dung-zone-media-510x695.jpg" alt="Recruitment Image 3" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-@endSection
+</section>
+
+@push('styles')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="styleSheet">
+<link href="{{ asset('css/scrolling-tabs.css') }}" rel="styleSheet">
+<link href="{{ asset('css/dropdown-menu.css') }}" rel="styleSheet">
+@endPush
 
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="{{ asset('js/scrolling-tabs.js') }}" defer></script>
+<script src="{{ asset('js/hero-slider.js') }}" defer></script>
 @endPush
+@endSection

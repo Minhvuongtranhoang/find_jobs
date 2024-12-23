@@ -29,7 +29,7 @@
                     <div>{!! $company->description !!}</div>
                 </div>
             </div>
-            
+
 
             <!-- Danh sách tuyển dụng -->
             <div class="card mb-4">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        @endForeach
                     </div>
                 </div>
             </div>
@@ -74,20 +74,20 @@
                     @foreach ($company->locations as $location)
                         <p>{{ $location->house_number }}, {{ $location->street }}, {{ $location->ward }}, {{ $location->district }}, {{ $location->city }}</p>
                         @if ($location->google_maps_link)
-                            <iframe 
-                                src="{{ $location->google_maps_link }}" 
-                                width="100%" 
-                                height="150" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
+                            <iframe
+                                src="{{ $location->google_maps_link }}"
+                                width="100%"
+                                height="150"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         @endif
-                    @endforeach
+                    @endForeach
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+@endSection

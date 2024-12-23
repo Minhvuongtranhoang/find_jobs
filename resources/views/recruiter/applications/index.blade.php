@@ -72,7 +72,7 @@
                               </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @endForeach
                 </tbody>
               </table>
 
@@ -89,4 +89,4 @@
       </div>
     </div>
   </div>
-@endsection
+@endSection

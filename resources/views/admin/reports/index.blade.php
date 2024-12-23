@@ -30,8 +30,8 @@
           </form>
         </td>
       </tr>
-      @endforeach
+      @endForeach
     </tbody>
   </table>
 </div>
-@endsection
+@endSection

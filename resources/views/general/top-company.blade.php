@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @endForeach
     </div>
 </div>
-@endsection
+@endSection

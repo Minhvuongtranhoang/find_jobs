@@ -90,12 +90,12 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="reason" class="form-label">Lý do báo cáo</label>
-                            <textarea 
-                                class="form-control" 
-                                id="reason" 
-                                name="reason" 
-                                rows="4" 
-                                placeholder="Mô tả lý do báo cáo..." 
+                            <textarea
+                                class="form-control"
+                                id="reason"
+                                name="reason"
+                                rows="4"
+                                placeholder="Mô tả lý do báo cáo..."
                                 required></textarea>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                                 {{ $category->name }}@if (!$loop->last)
                                     ,
                                 @endif
-                            @endforeach
+                            @endForeach
                         </p>
                         <p class="mb-2"><strong>Hạn nộp hồ sơ:</strong> {{ $job->deadline->format('h:m, d/m/Y') }}</p>
                         <p class="mb-2"><strong>Mức lương:</strong> {{ $job->salary }}</p>
@@ -267,8 +267,8 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endForeach
             </div>
         </div>
     </div>
-@endsection
+@endSection

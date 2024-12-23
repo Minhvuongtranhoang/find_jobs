@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <h1 class="my-4">Kết quả tìm kiếm</h1>
-    
+
     <form action="{{ route('search.jobs') }}" method="GET">
         <div class="search-form">
             <div class="row g-3">
                 <div class="col-12">
                     <input type="text" class="form-control form-control-lg" placeholder="Tìm kiếm công việc..." name="keyword" value="{{ $keyword ?? '' }}">
                 </div>
-                
+
                 <div class="col-md-6">
                     <select class="form-select form-select-lg" name="category_id">
                         <option selected value="">Chọn ngành nghề</option>
@@ -18,10 +18,10 @@
                             <option value="{{ $category->id }}" {{ $category->id == $category_id ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
-                        @endforeach
+                        @endForeach
                     </select>
                 </div>
-                
+
                 <div class="col-md-6">
                     <select class="form-select form-select-lg selectpicker" name="location" data-live-search="true">
                         <option selected value="">Chọn địa điểm</option>
@@ -29,7 +29,7 @@
                             <option value="{{ $location['name'] }}" {{ $location['name'] == $city ? 'selected' : '' }}>
                                 {{ $location['name'] }}
                             </option>
-                        @endforeach
+                        @endForeach
                     </select>
                 </div>
 
@@ -52,10 +52,10 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endForeach
         </div>
     @else
         <p>Không tìm thấy công việc phù hợp với yêu cầu của bạn.</p>
     @endif
 </div>
-@endsection
+@endSection

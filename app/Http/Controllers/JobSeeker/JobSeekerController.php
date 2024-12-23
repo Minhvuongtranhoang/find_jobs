@@ -120,7 +120,7 @@ class JobSeekerController extends Controller
         // Lấy các công việc mới nhất theo id giảm dần
         $jobs = Job::with('company', 'location') // Bao gồm thông tin công ty và vị trí
             ->orderBy('id', 'desc') // Sắp xếp theo id từ lớn nhất đến nhỏ nhất
-            ->paginate(9); // Sử dụng phân trang, 10 công việc mỗi trang
+            ->paginate(6); // Sử dụng phân trang, 10 công việc mỗi trang
 
         return view('job-seeker.latest-jobs', compact('jobs'));
     }
@@ -197,7 +197,7 @@ class JobSeekerController extends Controller
         ]);
 
         Report::create([
-            'reporter_id' => auth()->id(),
+            'reporter_id' => Auth::id(),
             'reported_type' => 'job',
             'reported_id' => $jobId,
             'reason' => $request->input('reason'),
@@ -209,7 +209,7 @@ class JobSeekerController extends Controller
 
     public function getNotifications(Request $request)
     {
-        $notifications = Notification::where('user_id', auth()->id())
+        $notifications = Notification::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -220,7 +220,7 @@ class JobSeekerController extends Controller
     public function markAsRead($id)
     {
         $notification = Notification::where('id', $id)
-            ->where('user_id', auth()->id())
+            ->where('user_id', Auth::id())
             ->first();
 
         if ($notification) {
@@ -235,7 +235,7 @@ class JobSeekerController extends Controller
     public function deleteNotification($id)
     {
         $notification = Notification::where('id', $id)
-            ->where('user_id', auth()->id())
+            ->where('user_id', Auth::id())
             ->first();
 
         if ($notification) {

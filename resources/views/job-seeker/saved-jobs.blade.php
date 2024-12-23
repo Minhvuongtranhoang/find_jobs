@@ -3,7 +3,7 @@
 @section('content')
     <section class="py-5 bg-light">
         <div class="container">
-            <h2 class="mb-4">Công việc đã lưu</h2>
+          <h3 style="margin-bottom: 20px"><span style="color: #3C6E71; font-weight: bold;">Công việc đã lưu</span></h3>
 
             @if ($savedJobs->isEmpty())
                 <p>Hiện tại bạn chưa lưu công việc nào.</p>
@@ -35,9 +35,14 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @endForeach
                 </div>
             @endif
         </div>
     </section>
-@endsection
+
+@push('styles')
+<link rel="styleSheet" href="{{ asset('css/dropdown-menu.css') }}">
+@endPush
+
+@endSection

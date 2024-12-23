@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký Người Tìm Việc</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="styleSheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="styleSheet">
+    <link href="{{ asset('css/auth.css') }}" rel="styleSheet">
 </head>
 <body>
     <div class="container">
@@ -21,7 +21,7 @@
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
-                        @endforeach
+                        @endForeach
                     </ul>
                 </div>
             @endif
@@ -68,9 +68,12 @@
                 <div class="mb-3">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="terms">
-                        <label class="form-check-label" for="terms">
-                            Tôi đã đọc và đồng ý với <a href="#" class="text-success">Điều khoản dịch vụ</a> và <a href="#" class="text-success">Chính sách bảo mật</a>
+                        <label class="form-check-label" for="terms" style="display: flex; flex-wrap: wrap; align-items: center;">
+                          Tôi đã đọc và đồng ý với&nbsp;
+                          <a href="{{ route('terms-of-service') }}" class="text-decoration-none me-1"> Điều khoản sử dụng</a> và&nbsp;
+                          <a href="{{ route('privacy-policy') }}" class="text-decoration-none">Chính sách bảo mật</a>.
                         </label>
+
                     </div>
                 </div>
 
@@ -93,7 +96,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <p class="mb-0">Bạn đã có tài khoản? <a href="{{ route('login') }}" class="text-success">Đăng nhập ngay</a></p>
+                    <p class="mb-0">Bạn đã có tài khoản? <a href="{{ route('login') }}" class="text-success text-decoration-none">Đăng nhập ngay</a></p>
                     <p class="mt-3 mb-0">Bạn gặp khó khăn khi tạo tài khoản?</p>
                     <p class="text-muted">Vui lòng gọi tới số <strong>(0966) 069 848</strong> (giờ hành chính)</p>
                 </div>

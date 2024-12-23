@@ -56,7 +56,7 @@
                       </div>
                     </td>
                   </tr>
-            @endforeach
+            @endForeach
           </tbody>
         </table>
         <div class="d-flex flex-column align-items-center" style="margin-top: 30px">
@@ -73,4 +73,4 @@
   </div>
 </div>
 
-@endsection
+@endSection
