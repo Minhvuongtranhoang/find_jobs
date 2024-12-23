@@ -385,15 +385,15 @@
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="team-member" data-aos="fade-up">
-                        <img src="https://photo.znews.vn/w660/Uploaded/ycgvppwi/2022_08_17/z3649757610090_a1488d39aae272b411f0ac77c027b61d.jpg" alt="CEO">
+                        <img src="https://i.postimg.cc/QCB69Qwq/IMG-5458.jpg" alt="CEO">
                         <div class="team-member-social">
                             <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
                             <!-- Tiếp tục phần Team Section -->
                             <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.facebook.com/minhh.vuongg.967" class="social-icon"><i class="bi bi-facebook"></i></a>
                         </div>
                         <div class="team-member-info">
-                            <h5 class="mb-1">Nguyễn Văn A</h5>
+                            <h5 class="mb-1">Trần Hoàng Minh Vương</h5>
                             <p class="mb-0">CEO & Founder</p>
                         </div>
                     </div>
@@ -407,7 +407,7 @@
                             <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
                         </div>
                         <div class="team-member-info">
-                            <h5 class="mb-1">Trần Thị B</h5>
+                            <h5 class="mb-1">Đặng Quang Vinh</h5>
                             <p class="mb-0">Chief Technology Officer</p>
                         </div>
                     </div>
@@ -421,21 +421,21 @@
                             <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
                         </div>
                         <div class="team-member-info">
-                            <h5 class="mb-1">Lê Văn C</h5>
+                            <h5 class="mb-1">Nguyễn Ngọc A</h5>
                             <p class="mb-0">Design Lead</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="team-member" data-aos="fade-up" data-aos-delay="600">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIkx2iSW5wWZNNq6Fe6VvkY4O8W2V0b33wJg&s" alt="Marketing Lead">
+                        <img src="https://photo.znews.vn/w660/Uploaded/ycgvppwi/2022_08_17/z3649757610090_a1488d39aae272b411f0ac77c027b61d.jpg" alt="Marketing Lead">
                         <div class="team-member-social">
                             <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
                             <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
                         </div>
                         <div class="team-member-info">
-                            <h5 class="mb-1">Phạm Thị D</h5>
+                            <h5 class="mb-1">Võ Ngọc B</h5>
                             <p class="mb-0">Marketing Director</p>
                         </div>
                     </div>
@@ -524,16 +524,16 @@
                 <div class="col-lg-2 col-md-4">
                     <h5 class="mb-4">Liên kết</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Trang chủ</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Về chúng tôi</a></li>
+                        <li class="mb-2"><a href="{{route('home')}}" class="text-light text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="/about" class="text-light text-decoration-none">Về chúng tôi</a></li>
                         <li class="mb-2"><a href="#" class="text-light text-decoration-none">Dịch vụ</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Liên hệ</a></li>
+                        <li class="mb-2"><a href="{{route('contact')}}" class="text-light text-decoration-none">Liên hệ</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h5 class="mb-4">Dịch vụ</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Tìm việc</a></li>
+                        <li class="mb-2"><a href="{{route('latest-jobs')}}" class="text-light text-decoration-none">Tìm việc</a></li>
                         <li class="mb-2"><a href="#" class="text-light text-decoration-none">Đăng tuyển</a></li>
                         <li class="mb-2"><a href="#" class="text-light text-decoration-none">Tư vấn</a></li>
                         <li class="mb-2"><a href="#" class="text-light text-decoration-none">Đào tạo</a></li>
@@ -542,9 +542,9 @@
                 <div class="col-lg-4 col-md-4">
                     <h5 class="mb-4">Liên hệ</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
-                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (84) 123 456 789</li>
-                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@seekajob.com</li>
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Trường ĐH CNTT&TT Việt-Hàn, Làng Đại học Đà Nẵng</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (84) 966 069 848</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> seekajob2024@gmail.com</li>
                     </ul>
                 </div>
             </div>

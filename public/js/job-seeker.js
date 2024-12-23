@@ -98,7 +98,7 @@ new Swiper('.mySwiper', {
 });
 
 //============================================================
-//Quill for texteditor
+
 // Khởi tạo Quill Editor
 var quill = new Quill('#editor', {
     theme: 'snow',
