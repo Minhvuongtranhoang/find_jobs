@@ -131,14 +131,17 @@ body {
 
 .container-around {
   background: linear-gradient(135deg, #3C6E71 0%, #75ABBC 100%);
-  padding: 10px;
+  padding: 10px 20px;
   margin-left: auto;
+  margin-right: auto;
   color: white;
   font-weight: 500;
   font-size: 20px;
   border-radius: 50px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  display: inline-block; /* Cho phép chiều dài và chiều cao tự động theo nội dung */
+  display: inline-block; /* Đảm bảo kích thước phụ thuộc vào nội dung */
+  max-width: 90%; /* Đảm bảo không vượt quá khung hình */
+  text-align: center; /* Căn giữa nội dung */
 }
 
 /* Large Desktop (≥1200px) */
@@ -296,7 +299,7 @@ body {
 
 
 .job-carousel {
-  padding: 40px 0;
+  padding: 20px 0;
   background: white;
   border-radius: 20px;
   margin: 40px 0;
@@ -661,9 +664,11 @@ body {
 
 
 @media (max-width: 768px) {
-  /* .hero-section {
-      padding: 40px 0;
-  } */
+
+  .square-company-logo {
+    width: 80px;
+    height: 80px;
+  }
 
   .search-form {
       padding: 20px;
@@ -672,6 +677,27 @@ body {
   .category-card {
       margin-bottom: 20px;
   }
+
+  .container-around {
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 30px;
+  }
+  
+}
+
+@media (max-width: 576px) {
+  .square-company-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .container-around {
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
 }
 
 

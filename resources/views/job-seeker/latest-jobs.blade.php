@@ -13,8 +13,10 @@
       <div class="row" id="job-list">
           @include('job-seeker.jobs', ['jobs' => $jobs])
       </div>
-      <div id="pagination-container">
-          @include('job-seeker.pagination', ['jobs' => $jobs])
+      <div class="d-flex justify-content-center mt-3">
+        <div id="pagination-container">
+            @include('job-seeker.pagination', ['jobs' => $jobs])
+        </div>
       </div>
     </div>
     <div class="col-lg-4 col-md-6 mb-4">

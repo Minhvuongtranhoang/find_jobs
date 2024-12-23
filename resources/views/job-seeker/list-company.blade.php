@@ -41,14 +41,17 @@
                 <div class="ad-banner">
                     <div class="hero-slider owl-carousel owl-theme">
                         <div class="item">
-                            <img src="https://amis.misa.vn/wp-content/uploads/2022/09/quang-cao-tuyen-dung-nhan-su-2.jpg" alt="Recruitment Image 1" class="img-fluid">
+                            <img src="https://i.postimg.cc/7h7qcm45/a.jpg" alt="Recruitment Image 1" class="img-fluid">
                         </div>
                         <div class="item">
-                            <img src="https://insieutoc.vn/wp-content/uploads/2021/05/poster-tuyen-dung-zone-media-510x695.jpg" alt="Recruitment Image 2" class="img-fluid">
+                            <img src="https://i.postimg.cc/CxcFnZL6/a.jpg" alt="Recruitment Image 2" class="img-fluid">
                         </div>
                         <div class="item">
-                            <img src="https://insieutoc.vn/wp-content/uploads/2021/05/poster-tuyen-dung-zone-media-510x695.jpg" alt="Recruitment Image 3" class="img-fluid">
+                            <img src="https://i.postimg.cc/43TVFST9/a.jpg" alt="Recruitment Image 3" class="img-fluid">
                         </div>
+                        <div class="item">
+                          <img src="https://i.postimg.cc/C5MWC71y/a.jpg" alt="Recruitment Image 4" class="img-fluid">
+                      </div>
                     </div>
                 </div>
             </div>

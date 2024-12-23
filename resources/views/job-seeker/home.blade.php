@@ -61,7 +61,7 @@
 </section>
 
 <!-- Modern Job Carousel -->
-<section class="py-5">
+<section class="py-5" style="background-color: white;">
     <div class="container">
       <h3><span style="color: #3C6E71; font-weight: bold;">Việc làm nổi bật</span></h3>
             <div id="jobCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
@@ -94,14 +94,14 @@
                         </div>
                     @endForeach
                 </div>
-                {{-- <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#jobCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#jobCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                     <span class="visually-hidden">Next</span>
-                </button> --}}
+                </button>
             </div>
         </div>
   </section>
@@ -176,7 +176,7 @@
 </section>
 
 <!-- Newsletter Section -->
-<section class="py-5">
+<section class="py-5" style="background-color: white">
   <div class="container">
     <div class="row">
       <!-- Phần nội dung bên trái -->
@@ -305,7 +305,7 @@
           <div class="hero-slider owl-carousel owl-theme" data-autoplay="false">
             <div class="job-carousel">
               <div class="carousel-inner d-flex">
-                <div class="item col-lg-6">
+                <div class="item col-lg-6 d-none d-lg-block">
                     <img src="https://i.postimg.cc/nrFg6Q6L/a.png" style="height: 300px; width: 500px;" alt="Recruitment Image 1" class="img-fluid">
                 </div>
                 <div class="item col-lg-6 text-center">
@@ -322,7 +322,7 @@
 
             <div class="job-carousel">
               <div class="carousel-inner d-flex">
-                <div class="item col-lg-6">
+                <div class="item col-lg-6 d-none d-lg-block">
                     <img src="https://i.postimg.cc/BnS5HB2b/a.png" style="height: 300px; width: 500px;" alt="Recruitment Image 1" class="img-fluid">
                 </div>
                 <div class="item col-lg-6 text-center">
@@ -338,7 +338,7 @@
 
             <div class="job-carousel">
               <div class="carousel-inner d-flex">
-                <div class="item col-lg-6">
+                <div class="item col-lg-6 d-none d-lg-block">
                     <img src="https://i.postimg.cc/PNsj0qzV/a.png" style="height: 300px; width: 500px;" alt="Recruitment Image 1" class="img-fluid">
                 </div>
                 <div class="item col-lg-6 text-center">
@@ -348,11 +348,10 @@
                     Viettel là một trong những tập đoàn viễn thông và công nghệ hàng đầu tại Việt Nam. Với sứ mệnh "Sáng tạo vì con người", Viettel luôn đi đầu trong việc
                     phát triển các sản phẩm và dịch vụ số hiện đại, đáp ứng nhu cầu kết nối và đổi mới của khách hàng. Viettel cam kết mang lại giá trị bền vững, góp phần thúc đẩy
                     sự phát triển của xã hội và nền kinh tế số.
-                </p>
+                  </p>
                 </div>
               </div>
             </div>
-
 
           </div>
       </div>
@@ -404,9 +403,9 @@
 
 
 <!-- Blog Section -->
-<section class="py-5">
+<section class="py-5" style="background-color: white">
     <div class="container">
-        <h3><span style="color: #3C6E71; font-weight: bold;">Blog IT mới nhất</span></h3>
+        <h3 style="margin-bottom: 20px"><span style="color: #3C6E71; font-weight: bold;">Blog IT mới nhất</span></h3>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="blog-card">

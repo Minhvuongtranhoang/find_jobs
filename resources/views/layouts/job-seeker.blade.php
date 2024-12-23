@@ -75,7 +75,7 @@
                       </ul>
                   </li>
 
-                  
+
                   <li class="nav-item">
                       <a class="nav-link" href="{{ route('help') }}">Trợ giúp</a>
                   </li>
@@ -179,11 +179,11 @@
           <div class="col-6 col-lg-2 col-md-6 mb-4">
               <h5 class="mb-3">Liên kết</h5>
               <ul class="list-unstyled">
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Trang chủ</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Việc làm</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Công ty</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Trợ giúp</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Liên lạc</a></li>
+                  <li class="mb-2"><a href="{{ route('home')}}" class="text-muted mb-2 text-decoration-none">Trang chủ</a></li>
+                  <li class="mb-2"><a href="{{ route('latest-jobs') }}" class="text-muted mb-2 text-decoration-none">Việc làm</a></li>
+                  <li class="mb-2"><a href="{{ route('companies.index') }}" class="text-muted mb-2 text-decoration-none">Công ty</a></li>
+                  <li class="mb-2"><a href="{{ route('help') }}" class="text-muted mb-2 text-decoration-none">Trợ giúp</a></li>
+                  <li class="mb-2"><a href="{{ route('contact') }}" class="text-muted mb-2 text-decoration-none">Liên lạc</a></li>
               </ul>
           </div>
 
@@ -191,10 +191,10 @@
           <div class="col-6 col-lg-3 col-md-6 mb-4">
               <h5 class="mb-3">Danh mục việc làm</h5>
               <ul class="list-unstyled">
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Frontend Development</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Backend Development</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Full Stack Development</a></li>
-                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">DevOps Engineering</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Công nghệ thông tin</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Thiết kế</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Thẩm mỹ</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted mb-2 text-decoration-none">Sức Khỏe</a></li>
               </ul>
           </div>
 
@@ -202,8 +202,8 @@
           <div class="col-12 col-lg-3 col-md-6">
               <h5 class="mb-3">Liên hệ</h5>
               <ul class="list-unstyled">
-                  <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Trường ĐH CNTT&TT Việt-Hàn, Làng Đại học Đà Nẵng</li>
-                  <li class="mb-2"><i class="fas fa-phone me-2"></i>(+84) 123-456-789</li>
+                  <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i><a href="https://maps.app.goo.gl/tMky7khYP4b7K9VT8" class="text-decoration-none" style="color: #3C6E71">Trường ĐH CNTT&TT Việt-Hàn, Làng Đại học Đà Nẵng</a></li>
+                  <li class="mb-2"><i class="fas fa-phone me-2"></i>(+84) 966 069 848</li>
                   <li class="mb-2"><i class="fas fa-envelope me-2"></i>seekajob2024@gmail.com</li>
               </ul>
           </div>
