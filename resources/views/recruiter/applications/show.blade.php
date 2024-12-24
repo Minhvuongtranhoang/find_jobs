@@ -43,7 +43,7 @@
                 <div class="mb-4">
                     <h2 class="h5">Cover Letter</h2>
                     <div class="bg-light p-3 rounded">
-                        {{ $application->cover_letter }}
+                        {!! $application->cover_letter !!}
                     </div>
                 </div>
             @endif
