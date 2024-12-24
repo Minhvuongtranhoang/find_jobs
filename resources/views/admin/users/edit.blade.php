@@ -38,4 +38,4 @@
       <button type="submit" class="btn btn-success">Unban</button>
   </form>
 </div>
-@endsection
+@endSection

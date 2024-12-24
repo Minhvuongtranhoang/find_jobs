@@ -1,5 +1,5 @@
 @foreach($jobs as $job)
-<div class="col-lg-4 col-md-6 mb-4">
+<div class="col-lg-6 col-md-6 mb-4">
     <div class="job-card">
         <div class="favorite-icon" data-id="{{ $job->id }}" onclick="toggleFavorite({{ $job->id }}, this)">
             <i class="fa {{ $job->isFavoritedByUser() ? 'fas' : 'far' }} fa-heart"></i>

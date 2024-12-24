@@ -98,7 +98,7 @@
                                      value="{{ $location->google_maps_link }}" class="form-control">
                           </div>
                       </div>
-                  @endforeach
+                  @endForeach
               </div>
               <button type="button" id="add-location" class="btn btn-primary mt-2">
                 Add Location
@@ -156,11 +156,5 @@
                   }
               });
           </script>
-        @endpush
-@endsection
-
-
-
-
-
-
+        @endPush
+@endSection

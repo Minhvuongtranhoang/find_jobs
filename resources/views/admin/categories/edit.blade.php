@@ -15,7 +15,7 @@
         <ul>
             @foreach($category->jobs as $job)
             <li>{{ $job->title }}</li>
-            @endforeach
+            @endForeach
         </ul>
 
         <h2>Add Existing Jobs</h2>
@@ -28,10 +28,10 @@
                     {{ $job->title }}
                 </label>
             </div>
-            @endforeach
+            @endForeach
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
-@endsection
+@endSection

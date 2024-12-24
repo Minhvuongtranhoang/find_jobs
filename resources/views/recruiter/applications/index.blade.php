@@ -34,45 +34,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($applications as $application)
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    @if($application->user->jobSeeker->avatar)
-                                      <img src="{{ filter_var($application->user->jobSeeker->avatar, FILTER_VALIDATE_URL) ? $application->user->jobSeeker->avatar : asset('storage/' . $application->user->jobSeeker->avatar)}}" class="rounded-circle me-2" style="height: 40px" width="40px" alt="Avatar">
-                                    @endif
-                                    <div>
-                                      <h6 class="mb-0">
-                                        {{ $application->user->jobSeeker->full_name }}
-                                      </h6>
-                                      <small class="text-muted">
-                                        {{ $application->user->email }}
-                                      </small>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>{{ $application->job->title }}</td>
-                            <td>{{ $application->created_at->format('M d, Y') }}</td>
-                            <td>
-                              <span
-                                    @class([
-                                        'status-badge status-approved' => $application->status === 'approved',
-                                        'status-badge status-rejected' => $application->status === 'rejected',
-                                        'status-badge status-pending' => $application->status === 'pending',
-                                    ])>
-                                {{ ucfirst($application->status) }}
-                              </span>
-                            </td>
+                  @foreach($applications as $application)
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        @if($application->user && $application->user->jobSeeker && $application->user->jobSeeker->avatar)
+                        <img src="{{ filter_var($application->user->jobSeeker->avatar, FILTER_VALIDATE_URL)
+                                  ? $application->user->jobSeeker->avatar
+                                  : asset('' . $application->user->jobSeeker->avatar) }}"
+                             class="rounded-circle me-2"
+                             style="height: 40px"
+                             width="40px"
+                             alt="Avatar">
+                        @endif
+                          <div>
+                              <h6 class="mb-0">
+                                  {{ $application->user->jobSeeker->full_name ?? 'N/A' }}
+                              </h6>
+                              <small class="text-muted">
+                                  {{ $application->user->email ?? 'N/A' }}
+                              </small>
+                          </div>
+                      </div>
+                  </td>
+                      <td>{{ $application->job->title }}</td>
+                      <td>{{ $application->created_at->format('M d, Y') }}</td>
+                      <td>
+                        <span
+                              @class([
+                                  'status-badge status-approved' => $application->status === 'approved',
+                                  'status-badge status-rejected' => $application->status === 'rejected',
+                                  'status-badge status-pending' => $application->status === 'pending',
+                              ])>
+                          {{ ucfirst($application->status) }}
+                        </span>
+                      </td>
 
-                            <td>
-                              <div class="btn-group">
-                                <a href="{{ route('recruiter.applications.show', $application->id) }}" class="btn btn-light btn-sm" title="View"><i class="fas fa-eye"></i></a>
-                                <a href="{{ route('recruiter.applications.download-cv', $application->id) }}" class="btn btn-light btn-sm" title="Download CV"><i class="fas fa-download"></i></a>
-                                <a href="{{ route('recruiter.applications.destroy', $application->id) }}" class="btn btn-light btn-sm" title="Destroy"><i class="fas fa-trash"></i></a>
-                              </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                      <td>
+                        <div class="btn-group">
+                          <a href="{{ route('recruiter.applications.show', $application->id) }}" class="btn btn-light btn-sm" title="View"><i class="fas fa-eye"></i></a>
+                          <a href="{{ route('recruiter.applications.download-cv', $application->id) }}" class="btn btn-light btn-sm" title="Download CV"><i class="fas fa-download"></i></a>
+                          <a href="{{ route('recruiter.applications.destroy', $application->id) }}" class="btn btn-light btn-sm" title="Destroy"><i class="fas fa-trash"></i></a>
+                        </div>
+                      </td>
+                  </tr>
+                @endforeach
                 </tbody>
               </table>
 
@@ -88,5 +94,63 @@
         </div>
       </div>
     </div>
+
+    <!-- Upcoming Interviews -->
+    <div class="col-12 col-xxl-4 mb-4">
+      <div class="card">
+          <div class="card-header">
+              <div class="d-flex align-items-center justify-content-between">
+                  <h5 class="card-title mb-0">Upcoming Interviews</h5>
+                  <button class="btn btn-primary btn-sm">View Calendar</button>
+              </div>
+          </div>
+          <div class="card-body">
+              <div class="interview-list">
+                  <div class="interview-item p-3 mb-3 bg-light rounded-3">
+                      <div class="d-flex align-items-center mb-2">
+                          <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Avatar">
+                          <div>
+                              <h6 class="mb-0">David Wilson</h6>
+                              <small class="text-muted">Frontend Developer</small>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center text-muted">
+                          <i class="fas fa-calendar-alt me-2"></i>
+                          <span>Today, 2:00 PM</span>
+                      </div>
+                  </div>
+
+                  <div class="interview-item p-3 mb-3 bg-light rounded-3">
+                      <div class="d-flex align-items-center mb-2">
+                          <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Avatar">
+                          <div>
+                              <h6 class="mb-0">Emma Davis</h6>
+                              <small class="text-muted">Marketing Manager</small>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center text-muted">
+                          <i class="fas fa-calendar-alt me-2"></i>
+                          <span>Tomorrow, 10:30 AM</span>
+                      </div>
+                  </div>
+
+                  <div class="interview-item p-3 bg-light rounded-3">
+                      <div class="d-flex align-items-center mb-2">
+                          <img src="/api/placeholder/32/32" class="rounded-circle me-2" alt="Avatar">
+                          <div>
+                              <h6 class="mb-0">Alex Thompson</h6>
+                              <small class="text-muted">DevOps Engineer</small>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center text-muted">
+                          <i class="fas fa-calendar-alt me-2"></i>
+                          <span>Oct 25, 3:15 PM</span>
+                      </div>
+
+                    </div>
+              </div>
+          </div>
+      </div>
   </div>
-@endsection
+  </div>
+@endSection

@@ -87,7 +87,7 @@
     </div>
     @endif
 </div>
-@endsection
+@endSection
 
 @push('scripts')
 <!-- Include ApexCharts library -->
@@ -163,4 +163,4 @@
         }
     });
 </script>
-@endpush
+@endPush

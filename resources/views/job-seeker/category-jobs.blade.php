@@ -5,7 +5,7 @@
     <h1 class="mb-4">Công việc trong danh mục: {{ $category->name }}</h1>
     <div class="row" id="job-list">
         @foreach($jobs as $job)
-        <div class="col-12 mb-4">
+        <div class="col-4 mb-4">
             <div class="job-card border rounded p-3 d-flex align-items-center">
                 <!-- Icon yêu thích -->
                 <div class="favorite-icon me-3" data-id="{{ $job->id }}" onclick="toggleFavorite({{ $job->id }}, this)">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @endForeach
     </div>
 </div>
-@endsection
+@endSection

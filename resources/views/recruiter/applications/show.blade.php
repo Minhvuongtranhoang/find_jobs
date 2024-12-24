@@ -96,11 +96,11 @@
                                     <p class="mb-0">{{ $history->note }}</p>
                                 @endif
                             </div>
-                        @endforeach
+                        @endForeach
                     </div>
                 </div>
             @endif
         </div>
     </div>
 </div>
-@endsection
+@endSection

@@ -18,17 +18,17 @@
 
     <!-- Action Buttons -->
     <div class="d-flex flex-column flex-md-row justify-content-start align-items-start mb-4">
-        <button class="btn btn-primary btn-lg me-2" data-bs-toggle="modal" data-bs-target="#applyModal">
-            <i class="bi bi-send me-1"></i> Ứng tuyển ngay
+        <button class="btn btn-primary btn-md me-2" data-bs-toggle="modal" data-bs-target="#applyModal">
+            Ứng tuyển ngay
         </button>
 
-        <button class="btn btn-outline-success btn-lg me-2" onclick="toggleFavorite({{ $job->id }}, this)">
+        <button class="btn btn-outline-success btn-md me-2" onclick="toggleFavorite({{ $job->id }}, this)">
             <i class="fa {{ $job->isFavoritedByUser() ? 'fas' : 'far' }} fa-heart me-1"></i>
             {{ $job->isFavoritedByUser() ? 'Đã lưu' : 'Lưu tin' }}
         </button>
 
-        <button class="btn btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target="#reportModal">
-            <i class="bi bi-flag me-1"></i> Báo cáo
+        <button class="btn btn-outline-danger btn-md me-2" data-bs-toggle="modal" data-bs-target="#reportModal">
+           Báo cáo
         </button>
     </div>
 
@@ -90,12 +90,12 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="reason" class="form-label">Lý do báo cáo</label>
-                            <textarea 
-                                class="form-control" 
-                                id="reason" 
-                                name="reason" 
-                                rows="4" 
-                                placeholder="Mô tả lý do báo cáo..." 
+                            <textarea
+                                class="form-control"
+                                id="reason"
+                                name="reason"
+                                rows="4"
+                                placeholder="Mô tả lý do báo cáo..."
                                 required></textarea>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                                 {{ $category->name }}@if (!$loop->last)
                                     ,
                                 @endif
-                            @endforeach
+                            @endForeach
                         </p>
                         <p class="mb-2"><strong>Hạn nộp hồ sơ:</strong> {{ $job->deadline->format('h:m, d/m/Y') }}</p>
                         <p class="mb-2"><strong>Mức lương:</strong> {{ $job->salary }}</p>
@@ -239,36 +239,38 @@
         </div>
         <!-- Related Jobs Section -->
         <div class="container mt-4">
-            <h1 class="mb-4">Công việc liên quan</h1>
+            <h2 class="mb-4">Công việc liên quan</h2>
             <div class="row" id="job-list">
                 @foreach ($relatedJobs as $job)
-                    <div class="col-12 mb-4">
-                        <div class="job-card border rounded p-3 d-flex align-items-center">
-                            <!-- Icon yêu thích -->
-                            <div class="favorite-icon me-3" data-id="{{ $job->id }}"
-                                onclick="toggleFavorite({{ $job->id }}, this)">
-                                <i class="fa {{ $job->isFavoritedByUser() ? 'fas' : 'far' }} fa-heart"></i>
-                            </div>
-                            <!-- Logo công ty -->
-                            <div class="square-company-logo me-3">
-                                <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}"
-                                    alt="Company Logo" class="job-logo rounded">
-                            </div>
-                            <!-- Nội dung -->
-                            <div class="flex-grow-1">
-                                <a class="nav-link p-0" href="{{ route('detail-job', $job->id) }}">
-                                    <h6 class="mb-0">{{ $job->title }}</h6>
-                                </a>
-                                <p class="text-muted mb-2">{{ $job->company->name }}</p>
-                                <div class="text-muted mb-0">
-                                    <i class="fas fa-map-marker-alt me-1"></i>{{ $job->location->city }}
-                                    <i class="fas fa-dollar-sign ms-3 me-1"></i>{{ $job->salary }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="job-card">
+                      <div class="favorite-icon" data-id="{{ $job->id }}" onclick="toggleFavorite({{ $job->id }}, this)">
+                          <i class="fa {{ $job->isFavoritedByUser() ? 'fas' : 'far' }} fa-heart"></i>
+                      </div>
+                      <div class="d-flex align-items-center">
+                          <div class="square-company-logo">
+                              <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}" alt="Company Logo" class="job-logo">
+                          </div>
+                          <div>
+                              <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
+                                  <h6 class="limited-text">{{ $job->title }}</h6>
+                              </a>
+                              <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
+                              <div style="margin-left: 10px" class="text-muted mb-3">
+                                  <i class="fas fa-map-marker-alt me-1"></i>{{ $job->location->city }}
+                                  <i class="fas fa-dollar-sign ms-2 me-1"></i>{{ $job->salary }}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                @endForeach
             </div>
         </div>
     </div>
-@endsection
+
+    @push('styles')
+      <link rel="styleSheet" href="{{ asset('css/dropdown-menu.css') }}">
+    @endPush
+
+@endSection

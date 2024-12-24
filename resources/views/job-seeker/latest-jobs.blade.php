@@ -1,47 +1,52 @@
 @extends('layouts.job-seeker')
 
 @section('content')
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4">Công việc mới nhất</h2>
+    <!-- Latest Jobs -->
+<section class="py-5 bg-light" >
+  <div class="container">
+    <div class="row">
+    <div class="col-lg-8 col-md-6 mb-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h3><span style="color: #3C6E71; font-weight: bold;">Việc làm mới nhất</span></h3>
+      </div>
 
-            @if ($jobs->isEmpty())
-                <p>Hiện tại không có công việc nào mới nhất.</p>
-            @else
-                <div class="row">
-                    @foreach ($jobs as $job)
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="job-card">
-                                <div class="d-flex align-items-center">
-                                    <div class="square-company-logo">
-                                        <img src="{{ filter_var($job->company->logo, FILTER_VALIDATE_URL) ? $job->company->logo : Storage::url($job->company->logo) }}"
-                                            alt="Company Logo" class="job-logo">
-                                    </div>
-                                    <div>
-                                        <a class="nav-link" href="{{ route('detail-job', $job->id) }}">
-                                            <h6 class="limited-text">{{ $job->title }}</h6>
-                                        </a>
-                                        <p style="margin-left: 10px" class="text-muted mb-2">{{ $job->company->name }}</p>
-                                        <div style="margin-left: 10px" class="text-muted mb-3">
-                                            <i class="fas fa-map-marker-alt me-2"></i>{{ $job->location->city }}
-                                            <i class="fas fa-dollar-sign ms-3 me-2"></i>{{ $job->salary }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="d-flex flex-column align-items-center" style="margin-top: 30px">
-                    <div>
-                        {{ $jobs->links('pagination::bootstrap-4') }}
-                    </div>
-                    <div class="text-muted mt-2">
-                        Showing {{ $jobs->firstItem() }} to {{ $jobs->lastItem() }} of {{ $jobs->total() }} results
-                    </div>
-                </div>
-            @endif
+      <div class="row" id="job-list">
+          @include('job-seeker.jobs', ['jobs' => $jobs])
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <div id="pagination-container">
+            @include('job-seeker.pagination', ['jobs' => $jobs])
         </div>
-    </section>
-@endsection
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="ad-banner">
+          <div class="hero-slider owl-carousel owl-theme">
+            <div class="item">
+                <img src="https://amis.misa.vn/wp-content/uploads/2022/09/quang-cao-tuyen-dung-nhan-su-2.jpg" alt="Recruitment Image 1" class="img-fluid">
+            </div>
+            <div class="item">
+                <img src="https://insieutoc.vn/wp-content/uploads/2021/05/poster-tuyen-dung-zone-media-510x695.jpg" alt="Recruitment Image 2" class="img-fluid">
+            </div>
+            <div class="item">
+                <img src="https://banghieuquangcao.net/wp-content/uploads/2024/03/poster-tuyen-dung-14.webp" alt="Recruitment Image 3" class="img-fluid">
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+@push('styles')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="styleSheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="styleSheet">
+  <link rel="styleSheet" href="{{ asset('css/dropdown-menu.css') }}">
+@endPush
+
+@push('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{{ asset('js/hero-slider.js') }}" defer></script>
+@endPush
+
+@endSection

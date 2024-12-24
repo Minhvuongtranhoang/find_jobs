@@ -22,13 +22,12 @@ class CompanyUpdateRequest extends FormRequest
         'employee_count' => 'nullable|integer',
         'description' => 'nullable|string',
         'logo' => 'nullable|image|max:2048',
-        'locations' => 'nullable|array',
         'locations.*.house_number' => 'nullable|string|max:255',
         'locations.*.street' => 'nullable|string|max:255',
         'locations.*.ward' => 'nullable|string|max:255',
         'locations.*.district' => 'nullable|string|max:255',
         'locations.*.city' => 'nullable|string|max:255',
-        'locations.*.google_maps_link' => 'nullable|url|max:255',
+        'locations.*.google_maps_link' => 'nullable|url|max:2083',
       ];
     }
 }
