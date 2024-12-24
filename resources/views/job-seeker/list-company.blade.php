@@ -36,8 +36,7 @@
                 </div>
             </div>
 
-            <!-- Cột quảng cáo - đảm bảo phù hợp trên mobile -->
-            <div class="col-12 col-lg-4 mb-4">
+            <div class="col-12 col-lg-4 mb-4 d-none d-lg-block">
                 <div class="ad-banner">
                     <div class="hero-slider owl-carousel owl-theme">
                         <div class="item">

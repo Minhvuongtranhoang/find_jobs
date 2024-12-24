@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-6 mb-4">
+    <div class="col-lg-4 col-md-6 mb-4 d-none d-lg-block">
       <div class="ad-banner">
           <div class="hero-slider owl-carousel owl-theme">
             <div class="item">

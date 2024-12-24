@@ -40,7 +40,7 @@
               </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-6 d-none d-lg-block">
               <div class="hero-slider owl-carousel owl-theme">
                   <div class="item">
                       <img src="https://i.postimg.cc/zvf5NKyb/h1.png" alt="Recruitment Image 1" class="img-fluid">
@@ -279,7 +279,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4 d-none d-lg-block">
         <div class="ad-banner">
             <div class="hero-slider owl-carousel owl-theme">
               <div class="item">

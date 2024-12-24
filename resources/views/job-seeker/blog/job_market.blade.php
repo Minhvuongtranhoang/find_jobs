@@ -9,7 +9,7 @@
     <section>
         <h2>1. Các Công Ty Khởi Nghiệp</h2>
         <p>
-            Sự gia tăng của các công ty khởi nghiệp trong lĩnh vực công nghệ như AI, Blockchain, và Fintech đang tạo 
+            Sự gia tăng của các công ty khởi nghiệp trong lĩnh vực công nghệ như AI, Blockchain, và Fintech đang tạo
             ra một lượng lớn cơ hội việc làm. Những công ty này thường tìm kiếm nhân viên có kỹ năng đa dạng và tinh thần khởi nghiệp.
         </p>
         <ul>
@@ -22,8 +22,8 @@
     <section>
         <h2>2. Chuyển Đổi Số</h2>
         <p>
-            Doanh nghiệp truyền thống đang đẩy mạnh chuyển đổi số, tăng cường tuyển dụng các chuyên gia về dữ liệu, 
-            phần mềm, và bảo mật để bắt kịp xu thế. 
+            Doanh nghiệp truyền thống đang đẩy mạnh chuyển đổi số, tăng cường tuyển dụng các chuyên gia về dữ liệu,
+            phần mềm, và bảo mật để bắt kịp xu thế.
         </p>
         <ul>
             <li><strong>Phân tích dữ liệu:</strong> Tối ưu hóa các quy trình vận hành.</li>
@@ -35,7 +35,7 @@
     <section>
         <h2>3. Lao Động Tự Do (Freelancing)</h2>
         <p>
-            Freelancing tiếp tục bùng nổ khi nhiều công ty chuyển sang mô hình làm việc từ xa và dự án ngắn hạn. 
+            Freelancing tiếp tục bùng nổ khi nhiều công ty chuyển sang mô hình làm việc từ xa và dự án ngắn hạn.
             Những vai trò phổ biến bao gồm lập trình viên, nhà thiết kế và chuyên gia SEO.
         </p>
         <ul>
