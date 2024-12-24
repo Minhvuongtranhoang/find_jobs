@@ -136,3 +136,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/notifications/{id}/read', [JobSeekerController::class, 'markAsRead']);
     Route::delete('/notifications/{id}', [JobSeekerController::class, 'deleteNotification']); 
 });
+Route::get('/it-job-market-2024', function () {
+    return view('job-seeker.blog.thitruongIT');
+})->name('blog1');
+Route::view('/tech-trends-2024', 'job-seeker.blog.tech_trends')->name('tech-trends-2024');
+Route::view('/job-market-2024', 'job-seeker.blog.job_market')->name('job-market-2024');

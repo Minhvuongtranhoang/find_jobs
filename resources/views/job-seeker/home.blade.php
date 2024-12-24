@@ -232,7 +232,7 @@
                         <i class="far fa-user ms-3 me-2"></i>John Doe
                     </p>
                     <p class="mb-3">Khám phá những xu hướng công nghệ mới nhất đang định hình ngành IT...</p>
-                    <a href="#" class="btn btn-outline-primary">Đọc thêm</a>
+                    <a href="{{ route('tech-trends-2024') }}" class="btn btn-outline-primary">Đọc thêm</a>
                 </div>
             </div>
         </div>
@@ -246,7 +246,7 @@
                         <i class="far fa-user ms-3 me-2"></i>Jane Smith
                     </p>
                     <p class="mb-3">Những kỹ năng quan trọng mà mọi lập trình viên cần có trong năm 2024...</p>
-                    <a href="#" class="btn btn-outline-primary">Đọc thêm</a>
+                    <a href="{{ route('blog1') }}" class="btn btn-outline-primary">Đọc thêm</a>
                 </div>
             </div>
         </div>
@@ -260,7 +260,7 @@
                         <i class="far fa-user ms-3 me-2"></i>David Wilson
                     </p>
                     <p class="mb-3">Phân tích chi tiết về thị trường việc làm IT và những cơ hội trong năm 2024...</p>
-                    <a href="#" class="btn btn-outline-primary">Đọc thêm</a>
+                    <a href="{{ route('job-market-2024') }}" class="btn btn-outline-primary">Đọc thêm</a>
                 </div>
             </div>
         </div>
